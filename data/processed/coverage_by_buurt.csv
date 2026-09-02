@@ -1,0 +1,468 @@
+stadsdeel,buurt,residents,underserved,share
+Centrum,Alexanderplein e.o.,420.0,400.0,0.9523809523809523
+Centrum,Amstelveldbuurt,1695.0,1440.0,0.8495575221238938
+Centrum,Anjeliersbuurt-Noord,2285.0,2285.0,1.0
+Centrum,Anjeliersbuurt-Zuid,2615.0,2015.0,0.7705544933078394
+Centrum,BG-terrein e.o.,870.0,505.0,0.5804597701149425
+Centrum,Begijnhofbuurt,450.0,350.0,0.7777777777777778
+Centrum,Bloemgrachtbuurt,3180.0,835.0,0.26257861635220126
+Centrum,Burgwallen-Oost,1340.0,860.0,0.6417910447761194
+Centrum,Czaar Peterbuurt,2135.0,2135.0,1.0
+Centrum,Den Texbuurt,1310.0,170.0,0.1297709923664122
+Centrum,Driehoekbuurt,2800.0,2800.0,1.0
+Centrum,Elandsgrachtbuurt,3975.0,2465.0,0.620125786163522
+Centrum,Felix Meritisbuurt,2115.0,1070.0,0.5059101654846335
+Centrum,Frederikspleinbuurt,880.0,335.0,0.3806818181818182
+Centrum,Geelvinckbuurt,385.0,115.0,0.2987012987012987
+Centrum,Groenmarktkadebuurt,390.0,390.0,1.0
+Centrum,Haarlemmerbuurt-Oost,1505.0,1505.0,1.0
+Centrum,Haarlemmerbuurt-West,2125.0,2125.0,1.0
+Centrum,Hemelrijk,490.0,490.0,1.0
+Centrum,Het Funen,1085.0,1080.0,0.9953917050691244
+Centrum,Kadijken,2890.0,2890.0,1.0
+Centrum,Kalverdriehoek,340.0,285.0,0.8382352941176471
+Centrum,Kattenburg,1635.0,1635.0,1.0
+Centrum,Kazernebuurt,830.0,830.0,1.0
+Centrum,Kop Zeedijk,1090.0,850.0,0.7798165137614679
+Centrum,Langestraat e.o.,1905.0,1755.0,0.9212598425196851
+Centrum,Lastage,820.0,75.0,0.09146341463414634
+Centrum,Leidsebuurt-Noordoost,1410.0,255.0,0.18085106382978725
+Centrum,Leidsebuurt-Noordwest,215.0,0.0,0.0
+Centrum,Leidsebuurt-Zuidoost,150.0,0.0,0.0
+Centrum,Leidsebuurt-Zuidwest,230.0,0.0,0.0
+Centrum,Leidsegracht-Noord,865.0,865.0,1.0
+Centrum,Leidsegracht-Zuid,625.0,380.0,0.608
+Centrum,Leliegracht e.o.,1950.0,1045.0,0.5358974358974359
+Centrum,Marine-Etablissement,50.0,50.0,1.0
+Centrum,Marnixbuurt-Midden,105.0,105.0,1.0
+Centrum,Marnixbuurt-Noord,1395.0,1395.0,1.0
+Centrum,Marnixbuurt-Zuid,720.0,720.0,1.0
+Centrum,Nes e.o.,470.0,470.0,1.0
+Centrum,Nieuwe Kerk e.o.,790.0,60.0,0.0759493670886076
+Centrum,Nieuwendijk-Noord,575.0,455.0,0.7913043478260869
+Centrum,Nieuwmarkt,1695.0,0.0,0.0
+Centrum,Oostenburg,3865.0,3865.0,1.0
+Centrum,Oosterdokseiland,510.0,10.0,0.0196078431372549
+Centrum,Oude Kerk e.o.,915.0,875.0,0.9562841530054644
+Centrum,Passeerdersgrachtbuurt,1005.0,840.0,0.835820895522388
+Centrum,Planciusbuurt-Noord,290.0,290.0,1.0
+Centrum,Planciusbuurt-Zuid,160.0,160.0,1.0
+Centrum,Plantage,2615.0,1030.0,0.3938814531548757
+Centrum,Rapenburg,1080.0,880.0,0.8148148148148148
+Centrum,Rembrandtplein e.o.,840.0,520.0,0.6190476190476191
+Centrum,Sarphatistrook,1670.0,180.0,0.10778443113772455
+Centrum,Scheepvaarthuisbuurt,895.0,215.0,0.24022346368715083
+Centrum,Spiegelbuurt,655.0,215.0,0.3282442748091603
+Centrum,Spuistraat-Noord,790.0,0.0,0.0
+Centrum,Spuistraat-Zuid,830.0,450.0,0.5421686746987951
+Centrum,Uilenburg,1300.0,410.0,0.3153846153846154
+Centrum,Utrechtsebuurt-Zuid,1110.0,805.0,0.7252252252252253
+Centrum,Valkenburg,1095.0,1050.0,0.958904109589041
+Centrum,Vijzelstraatbuurt,1290.0,235.0,0.1821705426356589
+Centrum,Waterloopleinbuurt,700.0,240.0,0.34285714285714286
+Centrum,Weesperbuurt,3380.0,1290.0,0.3816568047337278
+Centrum,Westelijke eilanden,3100.0,3100.0,1.0
+Centrum,Westerdokseiland,1830.0,1830.0,1.0
+Centrum,Weteringbuurt,2295.0,1920.0,0.8366013071895425
+Centrum,Wittenburg,2605.0,2605.0,1.0
+Centrum,Zaagpoortbuurt,855.0,855.0,1.0
+Centrum,Zuiderkerkbuurt,1810.0,120.0,0.06629834254143646
+Nieuw-West,Andreasterrein,1215.0,45.0,0.037037037037037035
+Nieuw-West,Arondeusbuurt,2835.0,2720.0,0.9594356261022927
+Nieuw-West,Bakemabuurt,3370.0,595.0,0.17655786350148367
+Nieuw-West,Bedrijvenpark Lutkemeer,40.0,25.0,0.625
+Nieuw-West,Belgiëplein e.o.,1010.0,1010.0,1.0
+Nieuw-West,Botteskerkbuurt,3520.0,90.0,0.02556818181818182
+Nieuw-West,Bretten-Oost,130.0,130.0,1.0
+Nieuw-West,Calandlaan/Lelylaan,1250.0,1125.0,0.9
+Nieuw-West,Confuciusbuurt,3960.0,3960.0,1.0
+Nieuw-West,Coronelbuurt,1515.0,1515.0,1.0
+Nieuw-West,De Aker-Oost,5860.0,5860.0,1.0
+Nieuw-West,De Aker-West,4500.0,4500.0,1.0
+Nieuw-West,De Eendracht,2350.0,2350.0,1.0
+Nieuw-West,Delflandpleinbuurt-Oost,2110.0,2110.0,1.0
+Nieuw-West,Delflandpleinbuurt-West,4750.0,4750.0,1.0
+Nieuw-West,Dichtersbuurt,1035.0,820.0,0.7922705314009661
+Nieuw-West,Dijkgraafpleinbuurt,5910.0,5910.0,1.0
+Nieuw-West,Dobbebuurt,2910.0,2645.0,0.9089347079037801
+Nieuw-West,Dorp Sloten,735.0,735.0,1.0
+Nieuw-West,Dudokbuurt,2435.0,1795.0,0.7371663244353183
+Nieuw-West,Eendrachtspark,310.0,310.0,1.0
+Nieuw-West,Emanuel van Meterenbuurt,2400.0,2400.0,1.0
+Nieuw-West,Jacob Geelbuurt,3130.0,2030.0,0.6485623003194888
+Nieuw-West,Jacques Veltmanbuurt,3330.0,3140.0,0.9429429429429429
+Nieuw-West,Jan de Louterbuurt,3235.0,1855.0,0.5734157650695518
+Nieuw-West,Johan Jongkindbuurt,1225.0,800.0,0.6530612244897959
+Nieuw-West,Koningin Wilhelminaplein,3410.0,375.0,0.10997067448680352
+Nieuw-West,Lodewijk van Deysselbuurt,3065.0,2745.0,0.8955954323001631
+Nieuw-West,Louis Couperusbuurt,2465.0,2320.0,0.9411764705882353
+Nieuw-West,Louis Crispijnbuurt,3695.0,610.0,0.16508795669824086
+Nieuw-West,Lucas/Andreasziekenhuis e.o.,1285.0,0.0,0.0
+Nieuw-West,Medisch Centrum Slotervaart,1270.0,1270.0,1.0
+Nieuw-West,Meer en Oever,2755.0,2425.0,0.8802177858439202
+Nieuw-West,Meerwaldtbuurt,2025.0,2025.0,1.0
+Nieuw-West,Middelveldsche Akerpolder,4200.0,4200.0,1.0
+Nieuw-West,Nieuw-Sloten-Noordoost,3360.0,3360.0,1.0
+Nieuw-West,Nieuw-Sloten-Noordwest,2950.0,2950.0,1.0
+Nieuw-West,Nieuw-Sloten-Zuidoost,2125.0,2125.0,1.0
+Nieuw-West,Nieuw-Sloten-Zuidwest,2050.0,2050.0,1.0
+Nieuw-West,Nieuwe Meer,145.0,145.0,1.0
+Nieuw-West,Noordoever Sloterplas,3390.0,3275.0,0.9660766961651918
+Nieuw-West,Ookmeer,510.0,510.0,1.0
+Nieuw-West,Oostoever Sloterplas,2365.0,1590.0,0.6723044397463002
+Nieuw-West,Osdorp-Zuidoost,4145.0,3190.0,0.7696019300361882
+Nieuw-West,Osdorper Binnenpolder,140.0,140.0,1.0
+Nieuw-West,Osdorper Bovenpolder,780.0,670.0,0.8589743589743589
+Nieuw-West,Osdorpplein e.o.,4920.0,1000.0,0.2032520325203252
+Nieuw-West,Overtoomse Veld-Noord,5665.0,3725.0,0.6575463371579876
+Nieuw-West,Overtoomse Veld-Zuid,4610.0,2600.0,0.5639913232104121
+Nieuw-West,Park Haagseweg,945.0,945.0,1.0
+Nieuw-West,Reimerswaal,2795.0,235.0,0.08407871198568873
+Nieuw-West,Rembrandtpark-Noord,1110.0,1110.0,1.0
+Nieuw-West,Rembrandtpark-Zuid,895.0,895.0,1.0
+Nieuw-West,Riekerhaven,410.0,410.0,1.0
+Nieuw-West,Riekerpolder,630.0,630.0,1.0
+Nieuw-West,Ruys de Beerenbrouckbuurt,6120.0,6120.0,1.0
+Nieuw-West,Schipluidenbuurt,1800.0,675.0,0.375
+Nieuw-West,Sloterdijk De Heining,20.0,20.0,1.0
+Nieuw-West,Sloterdijk Donauhoek,15.0,15.0,1.0
+Nieuw-West,Sloterdijk Poort-Noord,20.0,20.0,1.0
+Nieuw-West,Sloterdijk Poort-Zuid,65.0,65.0,1.0
+Nieuw-West,Sloterdijk Stationskwartier,1540.0,1540.0,1.0
+Nieuw-West,Sloterpark,360.0,360.0,1.0
+Nieuw-West,Sloterweg e.o.,430.0,430.0,1.0
+Nieuw-West,Staalmanbuurt,3465.0,3465.0,1.0
+Nieuw-West,Van Tijenbuurt,3325.0,3325.0,1.0
+Nieuw-West,Wegener Sleeswijkbuurt,1450.0,640.0,0.4413793103448276
+Nieuw-West,Wildeman,5135.0,3260.0,0.634858812074002
+Nieuw-West,Zuidwestkwadrant-Noord,3245.0,2105.0,0.6486902927580893
+Nieuw-West,Zuidwestkwadrant-Zuid,6060.0,6060.0,1.0
+Noord,Banne-Noordoost,3475.0,3475.0,1.0
+Noord,Banne-Noordwest,2800.0,2705.0,0.9660714285714286
+Noord,Banne-Zuidoost,4130.0,2045.0,0.49515738498789347
+Noord,Banne-Zuidwest,3585.0,2630.0,0.7336122733612274
+Noord,Bedrijventerrein Nieuwendammerdijk,15.0,15.0,1.0
+Noord,Blauwe Zand,2075.0,2075.0,1.0
+Noord,Bloemenbuurt-Noord,2410.0,2410.0,1.0
+Noord,Bloemenbuurt-Zuid,2620.0,2620.0,1.0
+Noord,Buiksloterbreek,315.0,315.0,1.0
+Noord,Buiksloterdijk-Oost,90.0,90.0,1.0
+Noord,Buiksloterdijk-West,100.0,100.0,1.0
+Noord,Buiksloterham-Noord,1560.0,1560.0,1.0
+Noord,Buiksloterham-Zuid,2035.0,845.0,0.4152334152334152
+Noord,Buikslotermeer-Noord,2805.0,2805.0,1.0
+Noord,Buikslotermeerplein,1470.0,1470.0,1.0
+Noord,Circus/Kermisbuurt,1365.0,1325.0,0.9706959706959707
+Noord,De Bongerd,3180.0,3180.0,1.0
+Noord,De Kleine Wereld,2515.0,2515.0,1.0
+Noord,Durgerdam,425.0,425.0,1.0
+Noord,Elzenhagen-Noord,3385.0,3385.0,1.0
+Noord,Elzenhagen-Zuid,1970.0,875.0,0.44416243654822335
+Noord,Hamerstraatkwartier-Oost,5.0,5.0,1.0
+Noord,Hamerstraatkwartier-West,475.0,75.0,0.15789473684210525
+Noord,Holysloot,120.0,120.0,1.0
+Noord,IJplein e.o.,2510.0,820.0,0.32669322709163345
+Noord,Kadoelen,2455.0,2455.0,1.0
+Noord,Klaprozenbuurt,155.0,155.0,1.0
+Noord,Loenermark,1980.0,1980.0,1.0
+Noord,Marjoleinterrein,385.0,385.0,1.0
+Noord,Markengouw-Midden,3790.0,2010.0,0.5303430079155673
+Noord,Markengouw-Noord,635.0,635.0,1.0
+Noord,Markengouw-Zuid,2465.0,1905.0,0.7728194726166329
+Noord,Melkweg/Oostzanerwerf,355.0,355.0,1.0
+Noord,Molenwijk,3025.0,1330.0,0.4396694214876033
+Noord,NDSM terrein,3935.0,3935.0,1.0
+Noord,Nieuwendammerdijk-Oost,325.0,325.0,1.0
+Noord,Nieuwendammerdijk-West,630.0,630.0,1.0
+Noord,Nieuwendammerdijk-Zuid,60.0,60.0,1.0
+Noord,Nintemanterrein,115.0,40.0,0.34782608695652173
+Noord,Noorder IJplas,95.0,95.0,1.0
+Noord,Noorderstrook-West,55.0,55.0,1.0
+Noord,Oostzanerdijk,295.0,65.0,0.22033898305084745
+Noord,Overhoeks,3975.0,3960.0,0.9962264150943396
+Noord,Plan van Gool,3025.0,3025.0,1.0
+Noord,Ransdorp,275.0,275.0,1.0
+Noord,Rode Kruisbuurt,250.0,250.0,1.0
+Noord,Schellingwoude-Oost,545.0,545.0,1.0
+Noord,Schellingwoude-West,105.0,105.0,1.0
+Noord,Terrasdorp,4420.0,4415.0,0.998868778280543
+Noord,Tuindorp Nieuwendam-Oost,2435.0,2410.0,0.9897330595482546
+Noord,Tuindorp Nieuwendam-West,970.0,970.0,1.0
+Noord,Tuindorp Oostzaan-Oost,4085.0,2365.0,0.5789473684210527
+Noord,Tuindorp Oostzaan-West,1105.0,1105.0,1.0
+Noord,Twiske-Oost,1125.0,1125.0,1.0
+Noord,Twiske-West,2505.0,2505.0,1.0
+Noord,Van der Pekbuurt,4435.0,1280.0,0.28861330326944756
+Noord,Vliegenbos,470.0,470.0,1.0
+Noord,Vogelbuurt-Noord,1050.0,1050.0,1.0
+Noord,Vogelbuurt-Zuid,3820.0,1045.0,0.27356020942408377
+Noord,Walvisbuurt,1365.0,1290.0,0.945054945054945
+Noord,Werengouw-Midden,5120.0,1900.0,0.37109375
+Noord,Werengouw-Noord,520.0,520.0,1.0
+Noord,Werengouw-Zuid,1575.0,560.0,0.35555555555555557
+Noord,Zunderdorp,310.0,310.0,1.0
+Noord,Zwarte Gouw,20.0,20.0,1.0
+Oost,Ambonpleinbuurt,3650.0,0.0,0.0
+Oost,Amstelglorie,50.0,50.0,1.0
+Oost,Amstelkwartier-Noord,3050.0,3050.0,1.0
+Oost,Amstelkwartier-West,800.0,515.0,0.64375
+Oost,Amstelkwartier-Zuid,40.0,5.0,0.125
+Oost,Architectenbuurt,1795.0,1650.0,0.9192200557103064
+Oost,Baaibuurt-Oost,680.0,680.0,1.0
+Oost,Baaibuurt-West,150.0,150.0,1.0
+Oost,Bedrijvengebied Veelaan,105.0,105.0,1.0
+Oost,Bedrijvengebied Zeeburgerkade,260.0,230.0,0.8846153846153846
+Oost,Betondorp,2915.0,2915.0,1.0
+Oost,Borneo,3005.0,2020.0,0.6722129783693843
+Oost,Bovendiep/Diemerpark,25.0,25.0,1.0
+Oost,Centrumeiland,1520.0,1520.0,1.0
+Oost,Cruquiusbuurt,2600.0,2600.0,1.0
+Oost,Dapperbuurt-Noord,4635.0,2205.0,0.47572815533980584
+Oost,Dapperbuurt-Zuid,3290.0,385.0,0.11702127659574468
+Oost,De Eenhoorn,2695.0,160.0,0.059369202226345084
+Oost,De Omval,730.0,730.0,1.0
+Oost,De Wetbuurt,1695.0,1695.0,1.0
+Oost,Don Bosco,2040.0,2040.0,1.0
+Oost,Ed Pelsterparkbuurt,5585.0,1380.0,0.24709042076991944
+Oost,Entrepot-Noordwest,1410.0,615.0,0.43617021276595747
+Oost,Flevopark,200.0,200.0,1.0
+Oost,Frankendael,145.0,145.0,1.0
+Oost,Havenkwartier IJburg,2060.0,2060.0,1.0
+Oost,Java-eiland,3080.0,3080.0,1.0
+Oost,Joris Ivenspleinbuurt,3125.0,2465.0,0.7888
+Oost,Julianapark,1395.0,1290.0,0.9247311827956989
+Oost,KNSM-eiland,2315.0,2315.0,1.0
+Oost,Linnaeusparkbuurt,3005.0,3005.0,1.0
+Oost,Makassarpleinbuurt,5835.0,2990.0,0.5124250214224507
+Oost,Middenmeer-Noord,2575.0,2565.0,0.996116504854369
+Oost,Middenmeer-Zuid,5225.0,5225.0,1.0
+Oost,Nieuwe Oosterbegraafplaats,20.0,20.0,1.0
+Oost,Oostelijke Handelskade,1625.0,1625.0,1.0
+Oost,Oosterpark,300.0,115.0,0.38333333333333336
+Oost,Oosterparkbuurt-Noordwest,4050.0,115.0,0.028395061728395062
+Oost,Oosterparkbuurt-Zuidoost,3425.0,155.0,0.04525547445255475
+Oost,Oosterparkbuurt-Zuidwest,2910.0,1075.0,0.3694158075601375
+Oost,Oostpoort,2180.0,1995.0,0.9151376146788991
+Oost,Oostpunt Zeeburgereiland,70.0,70.0,1.0
+Oost,Overamstel,5.0,5.0,1.0
+Oost,Park de Meer,1565.0,1565.0,1.0
+Oost,Parooldriehoek,805.0,15.0,0.018633540372670808
+Oost,Rieteiland-Oost,295.0,295.0,1.0
+Oost,Rieteilanden-West,2530.0,1595.0,0.6304347826086957
+Oost,Rietlanden,2175.0,1140.0,0.5241379310344828
+Oost,Science Park-Noord,2690.0,2640.0,0.9814126394052045
+Oost,Science Park-Zuid,265.0,265.0,1.0
+Oost,Sluisbuurt,490.0,490.0,1.0
+Oost,Sporenburg,2690.0,2205.0,0.8197026022304833
+Oost,Sportheldenbuurt,4520.0,4520.0,1.0
+Oost,Sportpark Middenmeer-Noord,160.0,160.0,1.0
+Oost,Sportpark Middenmeer-Zuid,295.0,295.0,1.0
+Oost,Steigereiland-Noord,2215.0,2215.0,1.0
+Oost,Steigereiland-Zuid,2595.0,2595.0,1.0
+Oost,Sumatraplantsoenbuurt,3490.0,2305.0,0.660458452722063
+Oost,Theo van Goghparkbuurt,5970.0,5970.0,1.0
+Oost,Timorpleinbuurt-Noord,3680.0,0.0,0.0
+Oost,Timorpleinbuurt-Zuid,4305.0,1080.0,0.2508710801393728
+Oost,Transvaalbuurt-Oost,4800.0,4800.0,1.0
+Oost,Transvaalbuurt-West,3875.0,3875.0,1.0
+Oost,Tuindorp Amstelstation,910.0,910.0,1.0
+Oost,Tuindorp Frankendael,3890.0,3890.0,1.0
+Oost,Van der Kunbuurt,210.0,200.0,0.9523809523809523
+Oost,Weespertrekvaart,1760.0,1760.0,1.0
+Oost,Weesperzijde-Midden/Zuid,3280.0,1815.0,0.5533536585365854
+Oost,Weesperzijde-Noord,1895.0,590.0,0.3113456464379947
+Oost,Zeeburgerdijk-Oost,320.0,320.0,1.0
+Weesp,Bedrijventerrein Van Houten,30.0,30.0,1.0
+Weesp,Bedrijventerrein-Noord Weesp,400.0,400.0,1.0
+Weesp,Dorp Driemond,1470.0,1470.0,1.0
+Weesp,Hogewey-Zuid,500.0,500.0,1.0
+Weesp,Landelijk gebied Driemond,195.0,195.0,1.0
+West,Balboaplein e.o.,3055.0,485.0,0.15875613747954173
+West,Bedrijvencentrum Westerkwartier,30.0,30.0,1.0
+West,Bedrijventerrein Landlust,690.0,690.0,1.0
+West,Bellamybuurt-Noord,2395.0,2395.0,1.0
+West,Bellamybuurt-Zuid,3960.0,3960.0,1.0
+West,Borgerbuurt,2755.0,2755.0,1.0
+West,Bosleeuw,6000.0,1645.0,0.27416666666666667
+West,Buyskade e.o.,2965.0,1960.0,0.6610455311973018
+West,Columbusplein e.o.,3700.0,2805.0,0.7581081081081081
+West,Cremerbuurt-Oost,2010.0,2010.0,1.0
+West,Cremerbuurt-West,5585.0,5585.0,1.0
+West,Da Costabuurt-Noord,4920.0,3575.0,0.7266260162601627
+West,Da Costabuurt-Zuid,2095.0,2095.0,1.0
+West,De Wester Quartier,1985.0,1985.0,1.0
+West,De Wittenbuurt-Noord,1545.0,1545.0,1.0
+West,De Wittenbuurt-Zuid,955.0,515.0,0.5392670157068062
+West,Erasmusparkbuurt-Oost,1685.0,1470.0,0.8724035608308606
+West,Erasmusparkbuurt-West,4635.0,995.0,0.21467098166127294
+West,Fannius Scholtenbuurt,3210.0,2915.0,0.9080996884735203
+West,Filips van Almondekwartier,730.0,730.0,1.0
+West,Frederik Hendrikbuurt-Noord,3885.0,3885.0,1.0
+West,Frederik Hendrikbuurt-Zuidoost,2705.0,625.0,0.23105360443622922
+West,Frederik Hendrikbuurt-Zuidwest,1670.0,400.0,0.23952095808383234
+West,GWL-terrein,1330.0,1330.0,1.0
+West,Geuzenhofbuurt,1865.0,1800.0,0.9651474530831099
+West,Gibraltarbuurt,4145.0,1620.0,0.390832328106152
+West,Helmersbuurt-Oost,2590.0,2430.0,0.9382239382239382
+West,Houthavens-Oost,635.0,635.0,1.0
+West,Houthavens-West,4950.0,1570.0,0.31717171717171716
+West,Isolatorbuurt,10.0,10.0,1.0
+West,Jan Maijenbuurt,2060.0,885.0,0.42961165048543687
+West,John Franklinbuurt,1685.0,670.0,0.39762611275964393
+West,Kolenkitbuurt-Noord,4575.0,4575.0,1.0
+West,Kolenkitbuurt-Zuid,2245.0,2245.0,1.0
+West,Kortenaerkwartier,2430.0,2430.0,1.0
+West,Laan van Spartaan,2735.0,1610.0,0.5886654478976234
+West,Landlust-Noord,2235.0,1960.0,0.8769574944071589
+West,Landlust-Zuid,4075.0,4075.0,1.0
+West,Lootsbuurt,1750.0,1750.0,1.0
+West,Marcanti,985.0,880.0,0.8934010152284264
+West,Markthallen,265.0,265.0,1.0
+West,Mercatorpark,3000.0,3000.0,1.0
+West,Orteliusbuurt-Midden,1580.0,1125.0,0.7120253164556962
+West,Orteliusbuurt-Noord,1140.0,885.0,0.7763157894736842
+West,Orteliusbuurt-Zuid,1695.0,1695.0,1.0
+West,Paramariboplein e.o.,4015.0,4015.0,1.0
+West,Pieter van der Doesbuurt,1650.0,1470.0,0.8909090909090909
+West,Postjeskade e.o.,2640.0,2640.0,1.0
+West,Robert Scottbuurt-Oost,1635.0,1635.0,1.0
+West,Robert Scottbuurt-West,2190.0,2190.0,1.0
+West,Spaarndammerbuurt-Midden,1645.0,550.0,0.3343465045592705
+West,Spaarndammerbuurt-Noordoost,2525.0,1675.0,0.6633663366336634
+West,Spaarndammerbuurt-Noordwest,1565.0,900.0,0.5750798722044729
+West,Spaarndammerbuurt-Zuidoost,845.0,475.0,0.5621301775147929
+West,Spaarndammerbuurt-Zuidwest,1585.0,0.0,0.0
+West,Staatsliedenbuurt-Noordoost,1220.0,1110.0,0.9098360655737705
+West,Trompbuurt,2920.0,2920.0,1.0
+West,Van Brakelkwartier,1050.0,845.0,0.8047619047619048
+West,Vondelparkbuurt-Midden,865.0,865.0,1.0
+West,Vondelparkbuurt-Oost,1010.0,750.0,0.7425742574257426
+West,Vondelparkbuurt-West,1865.0,1865.0,1.0
+West,WG-terrein,2730.0,2730.0,1.0
+West,Westergasfabriek,190.0,125.0,0.6578947368421053
+West,Westerstaatsman,2825.0,2095.0,0.7415929203539823
+West,Woon- en Groengebied Sloterdijk,1455.0,170.0,0.11683848797250859
+West,Zaanstraat emplacement,100.0,5.0,0.05
+West,Zeeheldenbuurt,1800.0,1800.0,1.0
+Westpoort,Minervahaven-Noordoost,775.0,775.0,1.0
+Westpoort,Minervahaven-Zuidoost,80.0,80.0,1.0
+Westpoort,Westhaven-Noord,50.0,50.0,1.0
+Zuid,Aalsmeerwegbuurt-Oost,1900.0,1900.0,1.0
+Zuid,Aalsmeerwegbuurt-West,2545.0,2545.0,1.0
+Zuid,Amstelpark,5.0,5.0,1.0
+Zuid,Amsterdamse Bos,95.0,95.0,1.0
+Zuid,Banpleinbuurt,795.0,795.0,1.0
+Zuid,Bedrijventerrein Schinkel,265.0,265.0,1.0
+Zuid,Beethovenbuurt,1280.0,1280.0,1.0
+Zuid,Bertelmanpleinbuurt,1125.0,430.0,0.38222222222222224
+Zuid,Buitenveldert-Oost-Midden,3435.0,785.0,0.22852983988355166
+Zuid,Buitenveldert-West-Midden,910.0,910.0,1.0
+Zuid,Buitenveldert-Zuid-Midden,3945.0,3945.0,1.0
+Zuid,Buitenveldert-Zuidoost,4035.0,4035.0,1.0
+Zuid,Buitenveldert-Zuidwest,4550.0,2430.0,0.5340659340659341
+Zuid,Burgemeester Tellegenbuurt-Oost,2745.0,2745.0,1.0
+Zuid,Burgemeester Tellegenbuurt-West,2215.0,2215.0,1.0
+Zuid,Concertgebouwbuurt,1650.0,1650.0,1.0
+Zuid,Cornelis Schuytbuurt,2725.0,2725.0,1.0
+Zuid,Cornelis Troostbuurt,3630.0,2865.0,0.7892561983471075
+Zuid,De Klenckebuurt,820.0,585.0,0.7134146341463414
+Zuid,Diamantbuurt,2815.0,2815.0,1.0
+Zuid,Diepenbrockbuurt,990.0,990.0,1.0
+Zuid,Duivelseiland,1335.0,0.0,0.0
+Zuid,Frans Halsbuurt,2525.0,875.0,0.3465346534653465
+Zuid,Gelderlandpleinbuurt,4085.0,4085.0,1.0
+Zuid,Gerard Doubuurt,2060.0,1835.0,0.8907766990291263
+Zuid,Harmoniehofbuurt,1390.0,1390.0,1.0
+Zuid,Hemonybuurt,2525.0,2525.0,1.0
+Zuid,Hercules Seghersbuurt,2475.0,665.0,0.2686868686868687
+Zuid,Hiltonbuurt,65.0,30.0,0.46153846153846156
+Zuid,Hondecoeterbuurt,2015.0,2015.0,1.0
+Zuid,IJsbaanpad e.o.,395.0,395.0,1.0
+Zuid,IJselbuurt-Oost,2980.0,2980.0,1.0
+Zuid,IJselbuurt-West,2365.0,2365.0,1.0
+Zuid,Johannes Vermeerbuurt,1550.0,645.0,0.4161290322580645
+Zuid,Kop Zuidas,1085.0,315.0,0.2903225806451613
+Zuid,Kromme Mijdrechtbuurt,2350.0,2350.0,1.0
+Zuid,Legmeerpleinbuurt,2135.0,1645.0,0.7704918032786885
+Zuid,Lizzy Ansinghbuurt,2500.0,2325.0,0.93
+Zuid,Marathonbuurt-Oost,1500.0,80.0,0.05333333333333334
+Zuid,Marathonbuurt-West,2405.0,150.0,0.062370062370062374
+Zuid,Minervabuurt-Midden,2610.0,2610.0,1.0
+Zuid,Minervabuurt-Noord,1230.0,995.0,0.8089430894308943
+Zuid,Minervabuurt-Zuid,2290.0,2290.0,1.0
+Zuid,Museumplein,35.0,35.0,1.0
+Zuid,Olympisch Stadion e.o.,2340.0,0.0,0.0
+Zuid,P.C. Hooftbuurt,750.0,750.0,1.0
+Zuid,Prinses Irenebuurt,1290.0,1290.0,1.0
+Zuid,RAI,200.0,200.0,1.0
+Zuid,Rijnbuurt-Midden,2535.0,2500.0,0.9861932938856016
+Zuid,Rijnbuurt-Oost,2355.0,2355.0,1.0
+Zuid,Rijnbuurt-West,1760.0,1415.0,0.8039772727272727
+Zuid,Sarphatiparkbuurt,5140.0,4185.0,0.8142023346303502
+Zuid,Scheldebuurt-Midden,2805.0,2805.0,1.0
+Zuid,Scheldebuurt-Oost,2410.0,2410.0,1.0
+Zuid,Scheldebuurt-West,4150.0,3950.0,0.9518072289156626
+Zuid,Schinkelbuurt-Noord,2375.0,1440.0,0.6063157894736843
+Zuid,Schinkelbuurt-Zuid,1470.0,0.0,0.0
+Zuid,Surinamepleinbuurt,1575.0,1575.0,1.0
+Zuid,VU-kwartier,410.0,410.0,1.0
+Zuid,Valeriusbuurt-Oost,1525.0,1465.0,0.9606557377049181
+Zuid,Valeriusbuurt-West,2285.0,1600.0,0.700218818380744
+Zuid,Van Tuyllbuurt,4145.0,2215.0,0.53437876960193
+Zuid,Van der Helstpleinbuurt,3795.0,3465.0,0.9130434782608695
+Zuid,Veluwebuurt,1225.0,0.0,0.0
+Zuid,Vivaldi,1265.0,1265.0,1.0
+Zuid,Vondelpark-Oost,160.0,140.0,0.875
+Zuid,Vondelpark-West,250.0,250.0,1.0
+Zuid,Westlandgrachtbuurt,3050.0,3050.0,1.0
+Zuid,Wielingenbuurt,2775.0,2775.0,1.0
+Zuid,Willemsparkbuurt-Noord,1655.0,1455.0,0.879154078549849
+Zuid,Willibrordusbuurt,2875.0,2875.0,1.0
+Zuid,Zorgvlied,65.0,65.0,1.0
+Zuid,Zuidas-Noord,615.0,615.0,1.0
+Zuid,Zuidas-Zuid,3265.0,3265.0,1.0
+Zuid,Zuiderhof,25.0,25.0,1.0
+Zuidoost,AMC,25.0,25.0,1.0
+Zuidoost,Amstel III deel A/B-Noord,1125.0,1125.0,1.0
+Zuidoost,Amstel III deel A/B-Zuid,2735.0,1785.0,0.6526508226691042
+Zuidoost,Amstel III deel C/D-Noord,15.0,15.0,1.0
+Zuidoost,Amsterdamse Poort,2615.0,1050.0,0.40152963671128106
+Zuidoost,Bijlmermuseum-Noord,2170.0,2170.0,1.0
+Zuidoost,Bijlmermuseum-Zuid,3085.0,1495.0,0.4846029173419773
+Zuidoost,D-buurt,2450.0,2365.0,0.9653061224489796
+Zuidoost,De Kameleon e.o.,1960.0,55.0,0.02806122448979592
+Zuidoost,E-buurt,2595.0,2595.0,1.0
+Zuidoost,F-buurt,4275.0,1725.0,0.40350877192982454
+Zuidoost,G-buurt-Noord,1765.0,1765.0,1.0
+Zuidoost,G-buurt-Oost,3315.0,1925.0,0.5806938159879337
+Zuidoost,G-buurt-West,3330.0,3330.0,1.0
+Zuidoost,Gaasperplas,10.0,10.0,1.0
+Zuidoost,Gein 1,2930.0,2930.0,1.0
+Zuidoost,Gein 2,1635.0,1635.0,1.0
+Zuidoost,Gein 3,3200.0,3200.0,1.0
+Zuidoost,Gein 4,3355.0,3355.0,1.0
+Zuidoost,Gooise Kant,865.0,865.0,1.0
+Zuidoost,Grunder/Koningshoef,1570.0,1415.0,0.9012738853503185
+Zuidoost,Hakfort/Huigenbos,2410.0,2410.0,1.0
+Zuidoost,Hoge Dijk,135.0,135.0,1.0
+Zuidoost,Holendrecht-Oost,2505.0,2505.0,1.0
+Zuidoost,Holendrecht-West,2935.0,2935.0,1.0
+Zuidoost,Holendrecht-Zuid,4190.0,4190.0,1.0
+Zuidoost,Hoofdcentrum-Zuidoost,5.0,5.0,1.0
+Zuidoost,Hoptille,1965.0,1965.0,1.0
+Zuidoost,Huntum,180.0,180.0,1.0
+Zuidoost,K-buurt-Zuidoost,1835.0,1090.0,0.5940054495912807
+Zuidoost,K-buurt-Zuidwest,1565.0,430.0,0.2747603833865815
+Zuidoost,Kantershof,2345.0,2345.0,1.0
+Zuidoost,Kelbergen,1045.0,1045.0,1.0
+Zuidoost,Kortvoort,2810.0,2810.0,1.0
+Zuidoost,L-buurt,3125.0,3125.0,1.0
+Zuidoost,Nelson Mandelapark,15.0,15.0,1.0
+Zuidoost,Rechte H-buurt,2955.0,2955.0,1.0
+Zuidoost,Reigersbos 1,2040.0,2040.0,1.0
+Zuidoost,Reigersbos 2,1690.0,1690.0,1.0
+Zuidoost,Reigersbos 3,2235.0,2235.0,1.0
+Zuidoost,Reigersbos 4,2720.0,2720.0,1.0
+Zuidoost,Venserpolder-Oost,3295.0,3295.0,1.0
+Zuidoost,Venserpolder-West,5060.0,2615.0,0.516798418972332
+Zuidoost,Vogeltjeswei,635.0,475.0,0.7480314960629921

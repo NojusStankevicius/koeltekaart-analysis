@@ -1,0 +1,11 @@
+# Raw inputs are large and re-downloadable; provenance lives in SOURCES.md, which IS tracked.
+data/raw/*
+!data/raw/SOURCES.md
+
+# osmnx HTTP cache
+cache/
+
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc

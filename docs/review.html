@@ -1,0 +1,593 @@
+<title>Koeltekaart Analysis Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap">
+
+<style>
+  :root {
+    color-scheme: light;
+    --paper:   #f4f7f9;
+    --panel:   #ffffff;
+    --ink:     #0f1720;
+    --ink-2:   #4b5a68;
+    --ink-3:   #7a8794;
+    --line:    #d9e2ea;
+    --line-2:  #eaf0f5;
+    --accent:  #1f6fd0;
+    --flag:    #c0522a;
+    --ok:      #1a7d55;
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper:  #0e1419;
+      --panel:  #141c23;
+      --ink:    #eaf1f6;
+      --ink-2:  #a3b1bd;
+      --ink-3:  #7b8894;
+      --line:   #26313b;
+      --line-2: #1b242c;
+      --accent: #5fa2ec;
+      --flag:   #e08055;
+      --ok:     #4bbd8b;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper:  #0e1419;
+    --panel:  #141c23;
+    --ink:    #eaf1f6;
+    --ink-2:  #a3b1bd;
+    --ink-3:  #7b8894;
+    --line:   #26313b;
+    --line-2: #1b242c;
+    --accent: #5fa2ec;
+    --flag:   #e08055;
+    --ok:     #4bbd8b;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.25rem;
+  }
+  .measure { max-width: 40rem; }
+
+  h1, h2, h3, .label, .chip, th, .stat-v, .stat-k { font-family: var(--sans); }
+  h1 {
+    font-size: clamp(2rem, 4.6vw, 2.9rem);
+    line-height: 1.08;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: 1.32rem;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    margin: 0 0 0.2rem;
+    text-wrap: balance;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.004em;
+  }
+  p { margin: 0 0 0.95rem; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--accent); }
+  strong { font-weight: 500; color: var(--ink); }
+  em { font-style: italic; }
+  code, .num {
+    font-family: var(--mono);
+    font-size: 0.855em;
+    font-variant-numeric: tabular-nums;
+  }
+  code { color: var(--ink-2); }
+
+  .label {
+    font-size: 0.695rem;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-weight: 500;
+    color: var(--ink-3);
+  }
+
+  /* ---------- masthead ---------- */
+  header { display: flex; flex-direction: column; gap: 1.1rem; }
+  .kicker { display: flex; gap: 0.75rem; align-items: baseline; flex-wrap: wrap; }
+  .dek {
+    font-size: 1.12rem;
+    color: var(--ink-2);
+    max-width: 42rem;
+    margin: 0;
+  }
+
+  /* ---------- state strip ---------- */
+  .state {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat { padding: 0.9rem 1rem 0.95rem 0; }
+  .stat-v {
+    font-size: 1.42rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+  .stat-k {
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    margin-top: 0.15rem;
+  }
+
+  /* ---------- sections ---------- */
+  section { display: flex; flex-direction: column; gap: 1.1rem; }
+  .sec-head { display: flex; flex-direction: column; gap: 0.3rem; }
+
+  /* ---------- finding rows ---------- */
+  .rows { display: flex; flex-direction: column; gap: 0; }
+  .row {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 0 1.5rem;
+    padding: 1.05rem 0;
+    border-top: 1px solid var(--line-2);
+    align-items: start;
+  }
+  .row:first-child { border-top: 1px solid var(--line); }
+  .row:last-child { border-bottom: 1px solid var(--line); }
+  .row-k {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    padding-top: 0.22rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .row-b p { margin-bottom: 0.5rem; }
+  .row-b p:last-child { margin-bottom: 0; }
+  @media (max-width: 40rem) {
+    .row { grid-template-columns: 1fr; gap: 0.35rem; }
+  }
+
+  /* ---------- severity ---------- */
+  .flagged { border-left: 2px solid var(--flag); padding-left: 1.1rem; }
+  .solid   { border-left: 2px solid var(--ok);   padding-left: 1.1rem; }
+  .chip {
+    display: inline-block;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    padding: 0.12rem 0.42rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  .chip-stop { color: var(--flag); border-color: color-mix(in oklab, var(--flag) 40%, var(--line)); }
+
+  /* ---------- table ---------- */
+  .tablewrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--sans);
+    font-size: 0.875rem;
+  }
+  th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    padding: 0 0.9rem 0.55rem 0;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  td {
+    padding: 0.72rem 0.9rem 0.72rem 0;
+    border-bottom: 1px solid var(--line-2);
+    vertical-align: top;
+    color: var(--ink-2);
+  }
+  td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ---------- callout ---------- */
+  .note {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--accent);
+    padding: 1.15rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  ul { margin: 0; padding-left: 1.15rem; }
+  li { margin-bottom: 0.4rem; }
+  li:last-child { margin-bottom: 0; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 1.1rem;
+    color: var(--ink-3);
+    font-size: 0.83rem;
+    font-family: var(--sans);
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="kicker">
+      <span class="label">Koeltekaart Amsterdam</span>
+      <span class="label">1 September 2026</span>
+      <span class="label">Sections 1&ndash;14</span>
+    </div>
+    <h1>Where the analysis actually stands</h1>
+    <p class="dek">An honest audit of the cooling-places coverage analysis: what it establishes,
+      what it cannot support, what is quietly broken, and what to do next.</p>
+  </header>
+
+  <div class="state">
+    <div class="stat"><div class="stat-v">104</div><div class="stat-k">notebook cells</div></div>
+    <div class="stat"><div class="stat-v">80</div><div class="stat-k">cooling places</div></div>
+    <div class="stat"><div class="stat-v">7,043</div><div class="stat-k">100&thinsp;m demand squares</div></div>
+    <div class="stat"><div class="stat-v">906,775</div><div class="stat-k">residents covered</div></div>
+    <div class="stat"><div class="stat-v">11&nbsp;GB</div><div class="stat-k">raw inputs</div></div>
+    <div class="stat"><div class="stat-v" style="color:var(--flag)">0</div><div class="stat-k">git commits</div></div>
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <span class="label">01 &middot; What holds up</span>
+      <h2>Five findings I would defend in a review</h2>
+    </div>
+    <div class="rows">
+
+      <div class="row">
+        <div class="row-k">§6</div>
+        <div class="row-b solid">
+          <h3>Network distance changed the answer, not just the precision</h3>
+          <p>Straight-line distance put <span class="num">50.9%</span> of residents within 500&thinsp;m.
+            Routing over the OSM pedestrian graph gives <span class="num">23.7%</span> &mdash; a gap of up to
+            <strong>31 percentage points</strong>, median detour ratio <span class="num">1.55</span>. In a city built on
+            water this is not a refinement; it is the difference between two conclusions.</p>
+          <p>Guarded by <code>assert near["detour"].min() &gt;= 1</code>, which caught a real bug: facility-side
+            snap distance was missing, producing walking routes shorter than the straight line.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">§11 &middot; §12</div>
+        <div class="row-b solid">
+          <h3>Two independent exposure measures agree</h3>
+          <p>Green-blue land cover from BGT rises with distance from a cooling place
+            (<span class="num">r&nbsp;=&nbsp;+0.208</span>); dwelling overheating from NTA&nbsp;8800 TOjuli falls with it
+            (<span class="num">r&nbsp;=&nbsp;&minus;0.120</span>). Land cover and building physics are unrelated data
+            sources reaching the same conclusion.</p>
+          <p>This is the strongest evidence in the project, and it is the one result I would lead with:
+            <strong>the areas furthest from a cooling place are not the areas that most need one.</strong></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">§9 &middot; §10</div>
+        <div class="row-b solid">
+          <h3>Two clean nulls, reported as nulls</h3>
+          <p>Coverage for over-65s is <span class="num">22.9%</span> against <span class="num">23.7%</span> for
+            everyone; for people living alone it is <span class="num">26.1%</span> &mdash; slightly
+            <em>better</em>. Neither age nor isolation predicts access. The 80 existing places track
+            population density, because population density is what they track.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">§14</div>
+        <div class="row-b solid">
+          <h3>The weighting argument was settled by measurement</h3>
+          <p>Ranking candidate sites by unweighted population versus population weighted 5&times; toward
+            the elderly gives Spearman correlations of <span class="num">0.997&ndash;1.000</span>. The composite-versus-filter
+            debate turned out to be about a decision that does not change the answer.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">§9 &middot; §12</div>
+        <div class="row-b solid">
+          <h3>Suppression handled as bounds rather than guesses</h3>
+          <p>CBS withholds counts under 5. Rather than impute, every elderly figure was computed twice
+            &mdash; all suppressed values at 0, then at 4 &mdash; giving <span class="num">122,365&ndash;128,785</span> over-65s,
+            an interval narrow enough that no conclusion depends on it.</p>
+          <p>The same technique was then applied to the elderly-living-alone interaction and
+            <em>failed loudly</em>: bounds of <span class="num">2,920&ndash;108,830</span>, a 37-fold range. That
+            analysis was dropped rather than published. Two lines of code prevented a plausible-looking,
+            meaningless result.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="label">02 &middot; What it cannot support</span>
+      <h2>Limits a reviewer would find first</h2>
+    </div>
+    <div class="rows">
+
+      <div class="row">
+        <div class="row-k">no outcome</div>
+        <div class="row-b flagged">
+          <h3>Nothing here is validated against actual harm</h3>
+          <p>There is no outcome variable &mdash; no heat mortality, no ambulance callouts, no admissions
+            at small-area geography. Every axis is exposure or proxy. The analysis can say who is far
+            from shelter in hot housing; it cannot say that this predicts anyone being harmed. That is
+            the single biggest limitation and no amount of extra data in the current set fixes it.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">16% of city</div>
+        <div class="row-b flagged">
+          <h3>141,000 residents have unmeasurable housing</h3>
+          <p>TOjuli exists only for dwellings labelled since 2021 &mdash; <span class="num">41.4%</span> of stock.
+            Coverage is spatially even (<span class="num">37.7&ndash;46.2%</span> by stadsdeel) and the selection
+            effect is <span class="num">0.02</span> on the median, both tested. But
+            <span class="num">2,137</span> squares fall below five labelled dwellings and are excluded
+            outright. That exclusion also silently flattened the green-cover gradient, because the
+            dropped squares are disproportionately green.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">§11</div>
+        <div class="row-b flagged">
+          <h3>Surface cover cannot see trees</h3>
+          <p>BGT records <em>ground</em> cover, so a paved street under full canopy scores as pure stone
+            &mdash; and dense central streets are exactly where Amsterdam's street trees are. The
+            &ldquo;stoniest quarter is best served&rdquo; result is biased by an unknown amount in an
+            unknown direction until canopy is added.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">§6</div>
+        <div class="row-b flagged">
+          <h3>Ferries are missing from the walking graph</h3>
+          <p><code>network_type="walk"</code> excludes them, so the free GVB crossings of the IJ are modelled
+            as impossible. Measured impact is smaller than feared &mdash; Noord's median detour is
+            <span class="num">1.57</span>, in line with Oost &mdash; but Weesp at <span class="num">2.98</span> and any
+            cross-IJ conclusion remain unreliable.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">§7 &middot; §13</div>
+        <div class="row-b flagged">
+          <h3>The 1&nbsp;km threshold was chosen for legibility, not for health</h3>
+          <p>At 500&thinsp;m the underserved area is a single connected blob of 27&nbsp;km&sup2; holding
+            over 400,000 people &mdash; true and useless. 1&nbsp;km produces nameable zones. That is a
+            presentational reason, stated honestly in the notebook, but it is generous for the
+            heat-vulnerable population the analysis is about.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">scope</div>
+        <div class="row-b flagged">
+          <h3>Availability is not modelled at all</h3>
+          <p>Opening hours were excluded deliberately &mdash; they change seasonally and belong in an
+            operational tool. The consequence must travel with every figure: <strong>real availability
+            during a heatwave is lower than any number here</strong>, possibly much lower at weekends.
+            Capacity is likewise ignored; a library and a supermarket caf&eacute; count the same.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="label">03 &middot; Project health</span>
+      <h2>The uncomfortable part</h2>
+    </div>
+    <p class="measure">The analysis is in better shape than the project around it. None of the following
+      affects a result; all of it affects whether the results survive contact with next week.</p>
+    <div class="rows">
+
+      <div class="row">
+        <div class="row-k">critical</div>
+        <div class="row-b flagged">
+          <h3>No version control, at all</h3>
+          <p><code>git log</code> reports no commits on <code>main</code>. Every methodological decision, every
+            bug fix, all fourteen sections exist in exactly one 1.5&nbsp;MB file with no history. A bad
+            overwrite loses the lot. This was flagged on day one and has been outstanding since.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">critical</div>
+        <div class="row-b flagged">
+          <h3><code>data/raw/SOURCES.md</code> was never written</h3>
+          <p>Decisions 1 and 2 rest on it: raw inputs are a frozen, immutable snapshot whose provenance
+            lives in <code>SOURCES.md</code> rather than in version control. The file does not exist.
+            <span class="num">11&nbsp;GB</span> of inputs &mdash; CBS grid, BGT extracts, BAG, EP-Online, the OSM
+            graph &mdash; currently have no record of URL, retrieval date or version anywhere except
+            prose scattered through the notebook.</p>
+          <p>The raw-immutability rule was already broken once: an overwritten locations export is how
+            the original geocoder validation was lost.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">moderate</div>
+        <div class="row-b flagged">
+          <h3>One namespace, 104 cells, two collisions already</h3>
+          <p><code>gap</code> was overwritten by a float in a figure cell; <code>b</code> &mdash; the buurten frame &mdash;
+            by a loop variable. Both failures surfaced sections away from their cause. A third is a
+            matter of time; nothing has graduated into <code>src/</code>, which still contains only the
+            generated hello-world.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">minor</div>
+        <div class="row-b">
+          <h3>Environment drifts from what the code imports</h3>
+          <p><code>requests</code> is imported in §2 but absent from <code>pyproject.toml</code> &mdash; it works only
+            because osmnx pulls it in transitively, which is precisely the failure the notebook's own
+            prose warns about. <code>folium</code> is declared and no longer used. <code>README.md</code> is
+            empty; <code>notebooks/</code> is empty.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-k">minor</div>
+        <div class="row-b">
+          <h3>Six caches, all invalidated by hand</h3>
+          <p>Every expensive step short-circuits on a file in <code>data/processed/</code>. That is the right
+            design, but changing an upstream filter moves nothing until the right cache is deleted
+            manually. This has already produced one stale run.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="label">04 &middot; Evidence of process</span>
+      <h2>Eight silent bugs, caught and fixed</h2>
+    </div>
+    <p class="measure">None of these would have raised an error. Each would have produced a
+      confident, wrong number &mdash; which is the argument for the sanity checks now embedded in the
+      notebook.</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Where</th><th>Fault</th><th>Would have shown up as</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>§6</td><td>Facility snap distance omitted from routing</td><td>Walking routes shorter than straight lines</td></tr>
+          <tr><td>§11</td><td>BGT extract includes superseded records</td><td>Lawns paved over years ago counted as green</td></tr>
+          <tr><td>§11</td><td>Bridges at <code>relatieveHoogteligging &ne; 0</code></td><td>Deck and canal both counted</td></tr>
+          <tr><td>§12</td><td>Weesp postcodes outside the 1000&ndash;1109 filter</td><td>1.9% label coverage in an annexed district</td></tr>
+          <tr><td>§13</td><td>Zero-housing industrial zones read as &ldquo;cool&rdquo;</td><td>Three false negatives in the typology</td></tr>
+          <tr><td>§5</td><td>Shared column names in a merge</td><td>Silent rename to <code>_x</code>/<code>_y</code>, then a KeyError</td></tr>
+          <tr><td>§5</td><td><code>index_right</code> left on the frame</td><td>Every later spatial join refused</td></tr>
+          <tr><td>§8</td><td>Loop variables shadowing data frames</td><td>Failures two sections from the cause</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="label">05 &middot; Next steps</span>
+      <h2>What to do, in the order it matters</h2>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Priority</th><th>Work</th><th>Why now</th><th>Effort</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip chip-stop">Blocking</span></td>
+            <td><code>git init</code> and commit; write <code>SOURCES.md</code> and <code>README.md</code></td>
+            <td>Eleven gigabytes of inputs and fourteen sections of reasoning currently have no
+              provenance and no history. Everything below assumes this is done.</td>
+            <td class="n">1&ndash;2 h</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-stop">Blocking</span></td>
+            <td>Declare <code>requests</code>, drop <code>folium</code>, verify a clean install runs the notebook</td>
+            <td>The environment no longer matches what the code imports.</td>
+            <td class="n">15 min</td>
+          </tr>
+          <tr>
+            <td><span class="chip">Analysis</span></td>
+            <td>Supply side: residents per existing place, single-point-of-failure areas</td>
+            <td>Entirely untouched, explicitly asked for in the brief, and the multi-source Dijkstra
+              already computes most of it. Highest value per hour available.</td>
+            <td class="n">half day</td>
+          </tr>
+          <tr>
+            <td><span class="chip">Analysis</span></td>
+            <td>Tree canopy from the tree register, added to the exposure proxy</td>
+            <td>Removes the one known bias in the strongest finding.</td>
+            <td class="n">1 day</td>
+          </tr>
+          <tr>
+            <td><span class="chip">Analysis</span></td>
+            <td>Ferry links or a fixed crossing penalty in the walking graph</td>
+            <td>Makes Noord and Weesp defensible rather than merely plausible.</td>
+            <td class="n">2&ndash;4 h</td>
+          </tr>
+          <tr>
+            <td><span class="chip">Ask</span></td>
+            <td>Klimaatrisicokaarten and its methodology report, via Frans Wijkhuizen</td>
+            <td>Replaces two home-built proxies with the city's own measure, and settles whether this
+              analysis complements or duplicates the existing walking-distance layer.</td>
+            <td class="n">one email</td>
+          </tr>
+          <tr>
+            <td><span class="chip">Ask</span></td>
+            <td>Align with the outdoor-cooling trainee under Floris Harten and Clara Keuken</td>
+            <td>Indoor and outdoor networks are meant to read as one system; the parks and water-tap
+              scope question belongs in their lane, not ours.</td>
+            <td class="n">one meeting</td>
+          </tr>
+          <tr>
+            <td><span class="chip">Later</span></td>
+            <td>Income and limited mobility at buurt level; capacity per facility</td>
+            <td>Named in the brief, and neither needs 100&thinsp;m resolution to be useful.</td>
+            <td class="n">1 day</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="note">
+      <span class="label">If you only do one thing</span>
+      <p style="margin:0">Commit the work and write <code>SOURCES.md</code>. The analysis is genuinely good
+        &mdash; two independent exposure measures agreeing, a weighting question settled empirically, an
+        unmeasurable interaction dropped rather than fudged. All of it currently sits in one uncommitted
+        file beside eleven gigabytes of undocumented inputs. The methodology is more defensible than the
+        thing holding it.</p>
+    </div>
+  </section>
+
+  <footer>
+    Koeltekaart Amsterdam &middot; coverage, exposure and vulnerability analysis &middot;
+    sections 1&ndash;14, 104 cells, 9 figures &middot; decisions recorded in <code>docs/decisions.md</code> (18 entries)
+  </footer>
+
+</div>

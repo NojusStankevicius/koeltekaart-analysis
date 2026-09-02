@@ -1,0 +1,3941 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_0a7ba61d9b9d2a35a9e397e3598929f0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_0a7ba61d9b9d2a35a9e397e3598929f0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_0a7ba61d9b9d2a35a9e397e3598929f0 = L.map(
+                "map_0a7ba61d9b9d2a35a9e397e3598929f0",
+                {
+                    center: [52.3612725665, 4.893562100875],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8ba687c84d786454c999fc136ab5a5a8 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_8ba687c84d786454c999fc136ab5a5a8.addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var marker_e4413f375918c492301d348cbf4eda63 = L.marker(
+                [52.35946948, 4.80289857],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_d1b72e2ae1bcd382f1d3691c7fadeb99 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bcd105249e7fb18e063077d1c1a0bb5c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6e7ea9cc3959625d7ba6923fec7f2605 = $(`<div id="html_6e7ea9cc3959625d7ba6923fec7f2605" style="width: 100.0%; height: 100.0%;"><b>AH Osdorpplein XL</b><br>Osdorpplein 469, 1068 SZ Amsterdam</div>`)[0];
+                popup_bcd105249e7fb18e063077d1c1a0bb5c.setContent(html_6e7ea9cc3959625d7ba6923fec7f2605);
+            
+        
+
+        marker_e4413f375918c492301d348cbf4eda63.bindPopup(popup_bcd105249e7fb18e063077d1c1a0bb5c)
+        ;
+
+        
+    
+    
+            marker_e4413f375918c492301d348cbf4eda63.bindTooltip(
+                `<div>
+                     AH Osdorpplein XL
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e4413f375918c492301d348cbf4eda63.setIcon(icon_d1b72e2ae1bcd382f1d3691c7fadeb99);
+            
+    
+            var marker_1c4e149ca475816b298cdc18f3ab01b2 = L.marker(
+                [52.35917007, 4.79116405],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_4f3ab6c9b530a9d0ce2f6a9ecf05bdb9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_165319710cce388c700ddf457e51f75e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d0db8039715b0dd4a3db23226780550 = $(`<div id="html_4d0db8039715b0dd4a3db23226780550" style="width: 100.0%; height: 100.0%;"><b>Stadsboerderij Osdorp</b><br>Botteskerksingel 30B, 1069 XT Amsterdam</div>`)[0];
+                popup_165319710cce388c700ddf457e51f75e.setContent(html_4d0db8039715b0dd4a3db23226780550);
+            
+        
+
+        marker_1c4e149ca475816b298cdc18f3ab01b2.bindPopup(popup_165319710cce388c700ddf457e51f75e)
+        ;
+
+        
+    
+    
+            marker_1c4e149ca475816b298cdc18f3ab01b2.bindTooltip(
+                `<div>
+                     Stadsboerderij Osdorp
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1c4e149ca475816b298cdc18f3ab01b2.setIcon(icon_4f3ab6c9b530a9d0ce2f6a9ecf05bdb9);
+            
+    
+            var marker_ef5399938b90e95618ee05004c4b6538 = L.marker(
+                [52.35805143, 4.79786743],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_79ce2dccf4339296c550be8e04aa7d9e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db9d581ed0d1507eba2bd6942558ea68 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f8daa1925ea6407a99bd184fed0dc1a2 = $(`<div id="html_f8daa1925ea6407a99bd184fed0dc1a2" style="width: 100.0%; height: 100.0%;"><b>Kerk de Opgang</b><br>Tussen Meer 68, 1069 DS Amsterdam</div>`)[0];
+                popup_db9d581ed0d1507eba2bd6942558ea68.setContent(html_f8daa1925ea6407a99bd184fed0dc1a2);
+            
+        
+
+        marker_ef5399938b90e95618ee05004c4b6538.bindPopup(popup_db9d581ed0d1507eba2bd6942558ea68)
+        ;
+
+        
+    
+    
+            marker_ef5399938b90e95618ee05004c4b6538.bindTooltip(
+                `<div>
+                     Kerk de Opgang
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ef5399938b90e95618ee05004c4b6538.setIcon(icon_79ce2dccf4339296c550be8e04aa7d9e);
+            
+    
+            var marker_a90f710e9177eca8f64efe676849afe9 = L.marker(
+                [52.37932982, 4.82017471],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_f3cb876ce2a6a350bde1c594b4135403 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b74f000fd2613d2d4891b6e8b6bd9bc3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_001acd2502efcbf9e23ba318922ce799 = $(`<div id="html_001acd2502efcbf9e23ba318922ce799" style="width: 100.0%; height: 100.0%;"><b>OBA Slotermeer</b><br>Slotermeerlaan 103E, 1063 JN Amsterdam</div>`)[0];
+                popup_b74f000fd2613d2d4891b6e8b6bd9bc3.setContent(html_001acd2502efcbf9e23ba318922ce799);
+            
+        
+
+        marker_a90f710e9177eca8f64efe676849afe9.bindPopup(popup_b74f000fd2613d2d4891b6e8b6bd9bc3)
+        ;
+
+        
+    
+    
+            marker_a90f710e9177eca8f64efe676849afe9.bindTooltip(
+                `<div>
+                     OBA Slotermeer
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a90f710e9177eca8f64efe676849afe9.setIcon(icon_f3cb876ce2a6a350bde1c594b4135403);
+            
+    
+            var marker_07f93dc8417cd672af421c76bff88b8e = L.marker(
+                [52.36428404, 4.83505773],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_e3c33e78dc7b60e4792916f4f17a35b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_98d2ec0e5b7553cd819e779135fb5645 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_297d055c91252adae7cde1405a6175bf = $(`<div id="html_297d055c91252adae7cde1405a6175bf" style="width: 100.0%; height: 100.0%;"><b>OBA Postjesweg</b><br>Postjesweg 340, 1061 AX Amsterdam</div>`)[0];
+                popup_98d2ec0e5b7553cd819e779135fb5645.setContent(html_297d055c91252adae7cde1405a6175bf);
+            
+        
+
+        marker_07f93dc8417cd672af421c76bff88b8e.bindPopup(popup_98d2ec0e5b7553cd819e779135fb5645)
+        ;
+
+        
+    
+    
+            marker_07f93dc8417cd672af421c76bff88b8e.bindTooltip(
+                `<div>
+                     OBA Postjesweg
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_07f93dc8417cd672af421c76bff88b8e.setIcon(icon_e3c33e78dc7b60e4792916f4f17a35b5);
+            
+    
+            var marker_e77a1f4719ed35f1aca09941d7064d11 = L.marker(
+                [52.37802766, 4.80258063],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_e48a3e73a684b4bebf2f3c8c3170d551 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c04b4941c41dfebf60d438c7527d37ac = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bd3d204526765aeb7d91e3250008df5e = $(`<div id="html_bd3d204526765aeb7d91e3250008df5e" style="width: 100.0%; height: 100.0%;"><b>OBA Geuzenveld</b><br>Albardakade 3, 1067DD Amsterdam</div>`)[0];
+                popup_c04b4941c41dfebf60d438c7527d37ac.setContent(html_bd3d204526765aeb7d91e3250008df5e);
+            
+        
+
+        marker_e77a1f4719ed35f1aca09941d7064d11.bindPopup(popup_c04b4941c41dfebf60d438c7527d37ac)
+        ;
+
+        
+    
+    
+            marker_e77a1f4719ed35f1aca09941d7064d11.bindTooltip(
+                `<div>
+                     OBA Geuzenveld
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e77a1f4719ed35f1aca09941d7064d11.setIcon(icon_e48a3e73a684b4bebf2f3c8c3170d551);
+            
+    
+            var marker_e5e4345eed1b42ccbbb5f6aa4ca13328 = L.marker(
+                [52.35478759, 4.8253304],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_c1f574c8451466ac247ff2c6fc25b695 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_30a19cc7b3f228aeb362a557581e7e2a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8a858fd11515e55efea2edc8404b4a0f = $(`<div id="html_8a858fd11515e55efea2edc8404b4a0f" style="width: 100.0%; height: 100.0%;"><b>Kerk de Ark</b><br>Van Ollefenstraat 9, 1065 GJ Amsterdam</div>`)[0];
+                popup_30a19cc7b3f228aeb362a557581e7e2a.setContent(html_8a858fd11515e55efea2edc8404b4a0f);
+            
+        
+
+        marker_e5e4345eed1b42ccbbb5f6aa4ca13328.bindPopup(popup_30a19cc7b3f228aeb362a557581e7e2a)
+        ;
+
+        
+    
+    
+            marker_e5e4345eed1b42ccbbb5f6aa4ca13328.bindTooltip(
+                `<div>
+                     Kerk de Ark
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e5e4345eed1b42ccbbb5f6aa4ca13328.setIcon(icon_c1f574c8451466ac247ff2c6fc25b695);
+            
+    
+            var marker_0780355575aa87c0f01be63968f8da7d = L.marker(
+                [52.35905098, 4.80735213],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_c4bed3dfcc817e3ce20abdd562c6e1f5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acfc3221e2cab03dc7a8d8d213e6dfac = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_67cc00469cd03651956d755f82a80267 = $(`<div id="html_67cc00469cd03651956d755f82a80267" style="width: 100.0%; height: 100.0%;"><b>Meervaart Theater</b><br>Meer en Vaart 300, 1068 LE Amsterdam</div>`)[0];
+                popup_acfc3221e2cab03dc7a8d8d213e6dfac.setContent(html_67cc00469cd03651956d755f82a80267);
+            
+        
+
+        marker_0780355575aa87c0f01be63968f8da7d.bindPopup(popup_acfc3221e2cab03dc7a8d8d213e6dfac)
+        ;
+
+        
+    
+    
+            marker_0780355575aa87c0f01be63968f8da7d.bindTooltip(
+                `<div>
+                     Meervaart Theater
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0780355575aa87c0f01be63968f8da7d.setIcon(icon_c4bed3dfcc817e3ce20abdd562c6e1f5);
+            
+    
+            var marker_0f768f126d8e05018afd23f764cab525 = L.marker(
+                [52.38900984, 4.87832387],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_cdbcb2c4b75fe1ac1d7ccd9c19d9e6fd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_97045d294f133f63e2ee335b8addad98 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_76eca155c830bbfe2c80f4ed49522eeb = $(`<div id="html_76eca155c830bbfe2c80f4ed49522eeb" style="width: 100.0%; height: 100.0%;"><b>Amstelring De Bogt</b><br>Polanenstraat 6, 1013 VW Amsterdam</div>`)[0];
+                popup_97045d294f133f63e2ee335b8addad98.setContent(html_76eca155c830bbfe2c80f4ed49522eeb);
+            
+        
+
+        marker_0f768f126d8e05018afd23f764cab525.bindPopup(popup_97045d294f133f63e2ee335b8addad98)
+        ;
+
+        
+    
+    
+            marker_0f768f126d8e05018afd23f764cab525.bindTooltip(
+                `<div>
+                     Amstelring De Bogt
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f768f126d8e05018afd23f764cab525.setIcon(icon_cdbcb2c4b75fe1ac1d7ccd9c19d9e6fd);
+            
+    
+            var marker_08f4ae4ebb75ef631d0ef096ebbdec29 = L.marker(
+                [52.31559775, 4.95513242],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_fa7132bdc641ae9920873d9172f7e193 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ca5634f04bf9a0a5ed950a68b05a77e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_73f637d54b68d02e24dd0dcd770e98d8 = $(`<div id="html_73f637d54b68d02e24dd0dcd770e98d8" style="width: 100.0%; height: 100.0%;"><b>Albert Heijn Bijlmerplein</b><br>Bijlmerplein 526, 1102 DP Amsterdam</div>`)[0];
+                popup_7ca5634f04bf9a0a5ed950a68b05a77e.setContent(html_73f637d54b68d02e24dd0dcd770e98d8);
+            
+        
+
+        marker_08f4ae4ebb75ef631d0ef096ebbdec29.bindPopup(popup_7ca5634f04bf9a0a5ed950a68b05a77e)
+        ;
+
+        
+    
+    
+            marker_08f4ae4ebb75ef631d0ef096ebbdec29.bindTooltip(
+                `<div>
+                     Albert Heijn Bijlmerplein
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_08f4ae4ebb75ef631d0ef096ebbdec29.setIcon(icon_fa7132bdc641ae9920873d9172f7e193);
+            
+    
+            var marker_902412d6f4e6cc640baa5834c8acef24 = L.marker(
+                [52.34914696, 4.86337044],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_b9fc863ae1924706eededd910962c5aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_87bd8690afbfc5dc07a21bc2c9b0c290 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ca1e87854ce8bb2b389fae7137b9fee1 = $(`<div id="html_ca1e87854ce8bb2b389fae7137b9fee1" style="width: 100.0%; height: 100.0%;"><b>Huis van de Wijk Olympus</b><br>Olympiaweg 29, 1076 VM Amsterdam</div>`)[0];
+                popup_87bd8690afbfc5dc07a21bc2c9b0c290.setContent(html_ca1e87854ce8bb2b389fae7137b9fee1);
+            
+        
+
+        marker_902412d6f4e6cc640baa5834c8acef24.bindPopup(popup_87bd8690afbfc5dc07a21bc2c9b0c290)
+        ;
+
+        
+    
+    
+            marker_902412d6f4e6cc640baa5834c8acef24.bindTooltip(
+                `<div>
+                     Huis van de Wijk Olympus
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_902412d6f4e6cc640baa5834c8acef24.setIcon(icon_b9fc863ae1924706eededd910962c5aa);
+            
+    
+            var marker_a51751b68ddd11ce95cace9b9356ede6 = L.marker(
+                [52.31779603, 4.94680995],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_21edb81d6a4296e7e4a79eb3178c1e30 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_64352a2e543252e55e2beabfd93fd97b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b739debc0270dc528d1efb9fe978e1a7 = $(`<div id="html_b739debc0270dc528d1efb9fe978e1a7" style="width: 100.0%; height: 100.0%;"><b>Amstelring de Venser</b><br>Berthold Brechtstraat 1, 1102 RA Amsterdam</div>`)[0];
+                popup_64352a2e543252e55e2beabfd93fd97b.setContent(html_b739debc0270dc528d1efb9fe978e1a7);
+            
+        
+
+        marker_a51751b68ddd11ce95cace9b9356ede6.bindPopup(popup_64352a2e543252e55e2beabfd93fd97b)
+        ;
+
+        
+    
+    
+            marker_a51751b68ddd11ce95cace9b9356ede6.bindTooltip(
+                `<div>
+                     Amstelring de Venser
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a51751b68ddd11ce95cace9b9356ede6.setIcon(icon_21edb81d6a4296e7e4a79eb3178c1e30);
+            
+    
+            var marker_199a5341ace43e48d29053b500d7faa5 = L.marker(
+                [52.34972845, 4.85470422],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_d04920f9c5eb4fb2a102611543be71b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_48687f1bed9c07d24a354cba18800205 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_044461044834faa35df5304f9c3a7a57 = $(`<div id="html_044461044834faa35df5304f9c3a7a57" style="width: 100.0%; height: 100.0%;"><b>Huis van de Wijk Baarshaven</b><br>Baarsstraat 31, 1075 RV Amsterdam</div>`)[0];
+                popup_48687f1bed9c07d24a354cba18800205.setContent(html_044461044834faa35df5304f9c3a7a57);
+            
+        
+
+        marker_199a5341ace43e48d29053b500d7faa5.bindPopup(popup_48687f1bed9c07d24a354cba18800205)
+        ;
+
+        
+    
+    
+            marker_199a5341ace43e48d29053b500d7faa5.bindTooltip(
+                `<div>
+                     Huis van de Wijk Baarshaven
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_199a5341ace43e48d29053b500d7faa5.setIcon(icon_d04920f9c5eb4fb2a102611543be71b5);
+            
+    
+            var marker_66230388e08ac075c9c6102b1d11e832 = L.marker(
+                [52.36967233, 4.85471444],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_6dab56d420f4e591b55d56ce825fb221 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_10d0b42ebc9d75b9bdc389248c933c00 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a3cb8e520a1f721758d9398f8794e66c = $(`<div id="html_a3cb8e520a1f721758d9398f8794e66c" style="width: 100.0%; height: 100.0%;"><b>Stichting Midwest</b><br>Cabralstraat 1, 1057 CD Amsterdam</div>`)[0];
+                popup_10d0b42ebc9d75b9bdc389248c933c00.setContent(html_a3cb8e520a1f721758d9398f8794e66c);
+            
+        
+
+        marker_66230388e08ac075c9c6102b1d11e832.bindPopup(popup_10d0b42ebc9d75b9bdc389248c933c00)
+        ;
+
+        
+    
+    
+            marker_66230388e08ac075c9c6102b1d11e832.bindTooltip(
+                `<div>
+                     Stichting Midwest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_66230388e08ac075c9c6102b1d11e832.setIcon(icon_6dab56d420f4e591b55d56ce825fb221);
+            
+    
+            var marker_4519043f79db7953854873751273f4f7 = L.marker(
+                [52.35898534, 4.89616668],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_c1d55d2421aefc71f16a05e4e3b485a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e9c79dfce5d4ff99175473db415574fb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9d3f87ae71378761568ffafc513705d7 = $(`<div id="html_9d3f87ae71378761568ffafc513705d7" style="width: 100.0%; height: 100.0%;"><b>Hotel Nicolaas Witsen</b><br>Nicolaas Witsenstraat 4, 1017 ZH  Amsterdam</div>`)[0];
+                popup_e9c79dfce5d4ff99175473db415574fb.setContent(html_9d3f87ae71378761568ffafc513705d7);
+            
+        
+
+        marker_4519043f79db7953854873751273f4f7.bindPopup(popup_e9c79dfce5d4ff99175473db415574fb)
+        ;
+
+        
+    
+    
+            marker_4519043f79db7953854873751273f4f7.bindTooltip(
+                `<div>
+                     Hotel Nicolaas Witsen
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4519043f79db7953854873751273f4f7.setIcon(icon_c1d55d2421aefc71f16a05e4e3b485a5);
+            
+    
+            var marker_2dca2ff32e0dd52cf5af066116474fba = L.marker(
+                [52.37582439, 4.90837481],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_5cf8777480fd51b8d8e163fecc57b1c2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_24025aa245a9e4736efdba903e87fc65 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2595e0c83fc0675cd7f8bfb8b32b5323 = $(`<div id="html_2595e0c83fc0675cd7f8bfb8b32b5323" style="width: 100.0%; height: 100.0%;"><b>OBA Oosterdok</b><br>Oosterdokskade 143, 1011 DL Amsterdam</div>`)[0];
+                popup_24025aa245a9e4736efdba903e87fc65.setContent(html_2595e0c83fc0675cd7f8bfb8b32b5323);
+            
+        
+
+        marker_2dca2ff32e0dd52cf5af066116474fba.bindPopup(popup_24025aa245a9e4736efdba903e87fc65)
+        ;
+
+        
+    
+    
+            marker_2dca2ff32e0dd52cf5af066116474fba.bindTooltip(
+                `<div>
+                     OBA Oosterdok
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2dca2ff32e0dd52cf5af066116474fba.setIcon(icon_5cf8777480fd51b8d8e163fecc57b1c2);
+            
+    
+            var marker_39d566ed6f69deb2bd959b6cdd1f9a18 = L.marker(
+                [52.36415645, 4.93875703],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_8f157ad4806cc6325082da374529bb9e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cb7330395bfbb0eaaeaf3a28feebef2f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f1d48deb0804a6b167a393b19915f65e = $(`<div id="html_f1d48deb0804a6b167a393b19915f65e" style="width: 100.0%; height: 100.0%;"><b>OBA Javaplein</b><br>Javaplein 2, 1094 HW Amsterdam</div>`)[0];
+                popup_cb7330395bfbb0eaaeaf3a28feebef2f.setContent(html_f1d48deb0804a6b167a393b19915f65e);
+            
+        
+
+        marker_39d566ed6f69deb2bd959b6cdd1f9a18.bindPopup(popup_cb7330395bfbb0eaaeaf3a28feebef2f)
+        ;
+
+        
+    
+    
+            marker_39d566ed6f69deb2bd959b6cdd1f9a18.bindTooltip(
+                `<div>
+                     OBA Javaplein
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_39d566ed6f69deb2bd959b6cdd1f9a18.setIcon(icon_8f157ad4806cc6325082da374529bb9e);
+            
+    
+            var marker_3b432628e55b52278be581480ce47e1f = L.marker(
+                [52.35815417, 4.92623176],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_854247b37fd1a7570e0d066c5d0eb75b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_130924ac3917feb6e2f62e75c48a2ec4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_80163faf9d5c8be0e9cb2164efd0d513 = $(`<div id="html_80163faf9d5c8be0e9cb2164efd0d513" style="width: 100.0%; height: 100.0%;"><b>OBA Linnaeus</b><br>Linnaeusstraat 44, 1092 CL Amsterdam</div>`)[0];
+                popup_130924ac3917feb6e2f62e75c48a2ec4.setContent(html_80163faf9d5c8be0e9cb2164efd0d513);
+            
+        
+
+        marker_3b432628e55b52278be581480ce47e1f.bindPopup(popup_130924ac3917feb6e2f62e75c48a2ec4)
+        ;
+
+        
+    
+    
+            marker_3b432628e55b52278be581480ce47e1f.bindTooltip(
+                `<div>
+                     OBA Linnaeus
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3b432628e55b52278be581480ce47e1f.setIcon(icon_854247b37fd1a7570e0d066c5d0eb75b);
+            
+    
+            var marker_eab6c222b920b357f96307cc82813efe = L.marker(
+                [52.37967143, 4.87204229],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_68d7ad7eee9545bd9729fb6e66bb7238 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f03eda2548646da1084145266511b60e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3d343a99af0f6acd5562cb6d52ca7852 = $(`<div id="html_3d343a99af0f6acd5562cb6d52ca7852" style="width: 100.0%; height: 100.0%;"><b>OBA De Staatsliedenbuurt</b><br>Van Hallstraat 615, 1051 HE Amsterdam</div>`)[0];
+                popup_f03eda2548646da1084145266511b60e.setContent(html_3d343a99af0f6acd5562cb6d52ca7852);
+            
+        
+
+        marker_eab6c222b920b357f96307cc82813efe.bindPopup(popup_f03eda2548646da1084145266511b60e)
+        ;
+
+        
+    
+    
+            marker_eab6c222b920b357f96307cc82813efe.bindTooltip(
+                `<div>
+                     OBA De Staatsliedenbuurt
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eab6c222b920b357f96307cc82813efe.setIcon(icon_68d7ad7eee9545bd9729fb6e66bb7238);
+            
+    
+            var marker_22eaacffcc699116396664c9aab4fb43 = L.marker(
+                [52.37877015, 4.85122731],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_83a2002dcc44487c48c8b67e13ed18a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d8b11d6e875c5a03e66945c7c7bb119a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_626dc6de73478f657f7fd8cb926d88ce = $(`<div id="html_626dc6de73478f657f7fd8cb926d88ce" style="width: 100.0%; height: 100.0%;"><b>OBA Bos en Lommer</b><br>Bos en Lommerweg 233, 1055 DV Amsterdam</div>`)[0];
+                popup_d8b11d6e875c5a03e66945c7c7bb119a.setContent(html_626dc6de73478f657f7fd8cb926d88ce);
+            
+        
+
+        marker_22eaacffcc699116396664c9aab4fb43.bindPopup(popup_d8b11d6e875c5a03e66945c7c7bb119a)
+        ;
+
+        
+    
+    
+            marker_22eaacffcc699116396664c9aab4fb43.bindTooltip(
+                `<div>
+                     OBA Bos en Lommer
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_22eaacffcc699116396664c9aab4fb43.setIcon(icon_83a2002dcc44487c48c8b67e13ed18a4);
+            
+    
+            var marker_a6661a71f23fba40c80ac1d908426644 = L.marker(
+                [52.34528482, 4.85588753],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_fd8d1600c39e09cf7d94414ddf998f5a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_856cce25b086d591f8ef8182ccc5e9c4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_870018b51fdfc43aa6f3cac29bcf9f4e = $(`<div id="html_870018b51fdfc43aa6f3cac29bcf9f4e" style="width: 100.0%; height: 100.0%;"><b>OBA Olympisch Kwartier</b><br>Laan der Hesperiden 18, 1076DN Amsterdam</div>`)[0];
+                popup_856cce25b086d591f8ef8182ccc5e9c4.setContent(html_870018b51fdfc43aa6f3cac29bcf9f4e);
+            
+        
+
+        marker_a6661a71f23fba40c80ac1d908426644.bindPopup(popup_856cce25b086d591f8ef8182ccc5e9c4)
+        ;
+
+        
+    
+    
+            marker_a6661a71f23fba40c80ac1d908426644.bindTooltip(
+                `<div>
+                     OBA Olympisch Kwartier
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a6661a71f23fba40c80ac1d908426644.setIcon(icon_fd8d1600c39e09cf7d94414ddf998f5a);
+            
+    
+            var marker_a11c1718b983bc76de2d5aa6f1c01906 = L.marker(
+                [52.40773347, 4.91694809],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_eec797fe0e74701f60aa9d8dd378d173 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_239a71d4209718bc02aca46ecf8b9cf4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a77dad761d268802e2ae70f2888d7be8 = $(`<div id="html_a77dad761d268802e2ae70f2888d7be8" style="width: 100.0%; height: 100.0%;"><b>OBA Banne</b><br>Bezaanjachtplein 249, 1034CR Amsterdam</div>`)[0];
+                popup_239a71d4209718bc02aca46ecf8b9cf4.setContent(html_a77dad761d268802e2ae70f2888d7be8);
+            
+        
+
+        marker_a11c1718b983bc76de2d5aa6f1c01906.bindPopup(popup_239a71d4209718bc02aca46ecf8b9cf4)
+        ;
+
+        
+    
+    
+            marker_a11c1718b983bc76de2d5aa6f1c01906.bindTooltip(
+                `<div>
+                     OBA Banne
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a11c1718b983bc76de2d5aa6f1c01906.setIcon(icon_eec797fe0e74701f60aa9d8dd378d173);
+            
+    
+            var marker_7fa6bc5dc88fa20062cd3ba3305ccc7f = L.marker(
+                [52.39253435, 4.90196368],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_129723ad0a72fd5e29e0e86f99664df8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e213fe820fca86d372757220972767bd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7cf393a459eb47e9dcd8cb23b2590540 = $(`<div id="html_7cf393a459eb47e9dcd8cb23b2590540" style="width: 100.0%; height: 100.0%;"><b>Unmanageable Artists</b><br>Asterweg 63, 1031 HM Amsterdam</div>`)[0];
+                popup_e213fe820fca86d372757220972767bd.setContent(html_7cf393a459eb47e9dcd8cb23b2590540);
+            
+        
+
+        marker_7fa6bc5dc88fa20062cd3ba3305ccc7f.bindPopup(popup_e213fe820fca86d372757220972767bd)
+        ;
+
+        
+    
+    
+            marker_7fa6bc5dc88fa20062cd3ba3305ccc7f.bindTooltip(
+                `<div>
+                     Unmanageable Artists
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7fa6bc5dc88fa20062cd3ba3305ccc7f.setIcon(icon_129723ad0a72fd5e29e0e86f99664df8);
+            
+    
+            var marker_4b3e26334ca25f96f6867cecf7a979f8 = L.marker(
+                [52.36002683, 4.91579732],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_39e9a95bd543473f3dc233e869328c98 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_11b0a96f56dd76040a16a2ddf2eb36b8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_373d6087862c592bf170de09d87f23e4 = $(`<div id="html_373d6087862c592bf170de09d87f23e4" style="width: 100.0%; height: 100.0%;"><b>Oosterparkkerk</b><br>Oosterpark 4, 1091 AC Amsterdam</div>`)[0];
+                popup_11b0a96f56dd76040a16a2ddf2eb36b8.setContent(html_373d6087862c592bf170de09d87f23e4);
+            
+        
+
+        marker_4b3e26334ca25f96f6867cecf7a979f8.bindPopup(popup_11b0a96f56dd76040a16a2ddf2eb36b8)
+        ;
+
+        
+    
+    
+            marker_4b3e26334ca25f96f6867cecf7a979f8.bindTooltip(
+                `<div>
+                     Oosterparkkerk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4b3e26334ca25f96f6867cecf7a979f8.setIcon(icon_39e9a95bd543473f3dc233e869328c98);
+            
+    
+            var marker_cd4e22503d37c6873f6c263906635906 = L.marker(
+                [52.35665484, 4.99684699],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_717d4790049d414fbda951b555024707 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_195a9899cded12dfea2e7ca1dd30ca4a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bcf472b471c2f7e9fce55f6c8773d952 = $(`<div id="html_bcf472b471c2f7e9fce55f6c8773d952" style="width: 100.0%; height: 100.0%;"><b>OBA Ijburg</b><br>Diemerparklaan 79, 1087 GN Amsterdam</div>`)[0];
+                popup_195a9899cded12dfea2e7ca1dd30ca4a.setContent(html_bcf472b471c2f7e9fce55f6c8773d952);
+            
+        
+
+        marker_cd4e22503d37c6873f6c263906635906.bindPopup(popup_195a9899cded12dfea2e7ca1dd30ca4a)
+        ;
+
+        
+    
+    
+            marker_cd4e22503d37c6873f6c263906635906.bindTooltip(
+                `<div>
+                     OBA Ijburg
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cd4e22503d37c6873f6c263906635906.setIcon(icon_717d4790049d414fbda951b555024707);
+            
+    
+            var marker_28b2ce4806856d7bd4fdfe38326dd5ba = L.marker(
+                [52.4178054, 4.8929718],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_b6cd12fe099a7a8ee43e70de4e63edf4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d7370cd7b76bd2df1f79e99b0332dcfe = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e42eaebc2a831b36b599319b364946d8 = $(`<div id="html_e42eaebc2a831b36b599319b364946d8" style="width: 100.0%; height: 100.0%;"><b>OBA Molenwijk</b><br>Molenwijk 21, 1035 EG Amsterdam</div>`)[0];
+                popup_d7370cd7b76bd2df1f79e99b0332dcfe.setContent(html_e42eaebc2a831b36b599319b364946d8);
+            
+        
+
+        marker_28b2ce4806856d7bd4fdfe38326dd5ba.bindPopup(popup_d7370cd7b76bd2df1f79e99b0332dcfe)
+        ;
+
+        
+    
+    
+            marker_28b2ce4806856d7bd4fdfe38326dd5ba.bindTooltip(
+                `<div>
+                     OBA Molenwijk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_28b2ce4806856d7bd4fdfe38326dd5ba.setIcon(icon_b6cd12fe099a7a8ee43e70de4e63edf4);
+            
+    
+            var marker_7b458d1f5649fc73c56021e06b9e51d2 = L.marker(
+                [52.39093748, 4.91179606],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_47db2079a01899908db55b66b54c8fb9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e7e1c791fb8c8cb4018cf9c81410f4a9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_44e59324bc210c3cb12f63aac071e9ad = $(`<div id="html_44e59324bc210c3cb12f63aac071e9ad" style="width: 100.0%; height: 100.0%;"><b>OBA Van der Pek</b><br>Gentiaanstraat 1, 1031 AE Amsterdam</div>`)[0];
+                popup_e7e1c791fb8c8cb4018cf9c81410f4a9.setContent(html_44e59324bc210c3cb12f63aac071e9ad);
+            
+        
+
+        marker_7b458d1f5649fc73c56021e06b9e51d2.bindPopup(popup_e7e1c791fb8c8cb4018cf9c81410f4a9)
+        ;
+
+        
+    
+    
+            marker_7b458d1f5649fc73c56021e06b9e51d2.bindTooltip(
+                `<div>
+                     OBA Van der Pek
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7b458d1f5649fc73c56021e06b9e51d2.setIcon(icon_47db2079a01899908db55b66b54c8fb9);
+            
+    
+            var marker_860270b21a79c676ff02993826470b0d = L.marker(
+                [52.3931107, 4.95483514],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_eb5a3302e63db524834a011efc83f7d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67a375befe9244a3beab3e861fb4da43 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_054ef1429a01b91622a39a17c015a1e9 = $(`<div id="html_054ef1429a01b91622a39a17c015a1e9" style="width: 100.0%; height: 100.0%;"><b>OBA Waterlandplein</b><br>Waterlandplein 302, 1024 NB Amsterdam</div>`)[0];
+                popup_67a375befe9244a3beab3e861fb4da43.setContent(html_054ef1429a01b91622a39a17c015a1e9);
+            
+        
+
+        marker_860270b21a79c676ff02993826470b0d.bindPopup(popup_67a375befe9244a3beab3e861fb4da43)
+        ;
+
+        
+    
+    
+            marker_860270b21a79c676ff02993826470b0d.bindTooltip(
+                `<div>
+                     OBA Waterlandplein
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_860270b21a79c676ff02993826470b0d.setIcon(icon_eb5a3302e63db524834a011efc83f7d9);
+            
+    
+            var marker_30931aa905ec4f594dd786f21353c664 = L.marker(
+                [52.35962834, 4.77473722],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_e4412fa08da099417106666507846cbf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3e7ff9016b7a8be2f8f9dadd4c5dca7c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5609426dc3ac17414c43576865d180e3 = $(`<div id="html_5609426dc3ac17414c43576865d180e3" style="width: 100.0%; height: 100.0%;"><b>ParkCafé</b><br>Ookmeerweg 275, 1067 SP Amsterdam</div>`)[0];
+                popup_3e7ff9016b7a8be2f8f9dadd4c5dca7c.setContent(html_5609426dc3ac17414c43576865d180e3);
+            
+        
+
+        marker_30931aa905ec4f594dd786f21353c664.bindPopup(popup_3e7ff9016b7a8be2f8f9dadd4c5dca7c)
+        ;
+
+        
+    
+    
+            marker_30931aa905ec4f594dd786f21353c664.bindTooltip(
+                `<div>
+                     ParkCafé
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_30931aa905ec4f594dd786f21353c664.setIcon(icon_e4412fa08da099417106666507846cbf);
+            
+    
+            var marker_10d1b1a6bb8d9f8dbe9baffd5ab24e6c = L.marker(
+                [52.35688775, 4.81718616],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_0f3ca6bdd7380c4b838fde19f5b1e2a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_941d0615306af3bfd3fb031a9c2029dc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e7e9af766af3451021c59d975ab883ec = $(`<div id="html_e7e9af766af3451021c59d975ab883ec" style="width: 100.0%; height: 100.0%;"><b>Het EECO</b><br>S.F. van Ossstraat 1, 1068 JJ Amsterdam</div>`)[0];
+                popup_941d0615306af3bfd3fb031a9c2029dc.setContent(html_e7e9af766af3451021c59d975ab883ec);
+            
+        
+
+        marker_10d1b1a6bb8d9f8dbe9baffd5ab24e6c.bindPopup(popup_941d0615306af3bfd3fb031a9c2029dc)
+        ;
+
+        
+    
+    
+            marker_10d1b1a6bb8d9f8dbe9baffd5ab24e6c.bindTooltip(
+                `<div>
+                     Het EECO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_10d1b1a6bb8d9f8dbe9baffd5ab24e6c.setIcon(icon_0f3ca6bdd7380c4b838fde19f5b1e2a5);
+            
+    
+            var marker_2f5878508019136211aad7c6dfd092e8 = L.marker(
+                [52.3645642, 4.89239808],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_d5d1aa59db7089d243a060ff2692f8cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0c70bec04c9046aaddda1bc870e6558c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d9acee7d15ef05fb07715d8dff31b6a6 = $(`<div id="html_d9acee7d15ef05fb07715d8dff31b6a6" style="width: 100.0%; height: 100.0%;"><b>Stadsarchief</b><br>Vijzelstraat 32, 1017 HL  Amsterdam</div>`)[0];
+                popup_0c70bec04c9046aaddda1bc870e6558c.setContent(html_d9acee7d15ef05fb07715d8dff31b6a6);
+            
+        
+
+        marker_2f5878508019136211aad7c6dfd092e8.bindPopup(popup_0c70bec04c9046aaddda1bc870e6558c)
+        ;
+
+        
+    
+    
+            marker_2f5878508019136211aad7c6dfd092e8.bindTooltip(
+                `<div>
+                     Stadsarchief
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2f5878508019136211aad7c6dfd092e8.setIcon(icon_d5d1aa59db7089d243a060ff2692f8cd);
+            
+    
+            var marker_a1ed667066754a7886bb1b08c377889d = L.marker(
+                [52.35767241, 4.84453874],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_ed55743d848238cd29e20c890ea012f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_41b1138e05046cc7b69c541fa58892c4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0f7955ab13c19c02315482f473d85c4c = $(`<div id="html_0f7955ab13c19c02315482f473d85c4c" style="width: 100.0%; height: 100.0%;"><b>WestCord Fashion Hotel Amsterdam</b><br>Hendrikje Stoffelsstraat 1, 1058 GC Amsterdam</div>`)[0];
+                popup_41b1138e05046cc7b69c541fa58892c4.setContent(html_0f7955ab13c19c02315482f473d85c4c);
+            
+        
+
+        marker_a1ed667066754a7886bb1b08c377889d.bindPopup(popup_41b1138e05046cc7b69c541fa58892c4)
+        ;
+
+        
+    
+    
+            marker_a1ed667066754a7886bb1b08c377889d.bindTooltip(
+                `<div>
+                     WestCord Fashion Hotel Amsterdam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a1ed667066754a7886bb1b08c377889d.setIcon(icon_ed55743d848238cd29e20c890ea012f8);
+            
+    
+            var marker_f41d6a9adca0ebb8e224ef69e4acc8b1 = L.marker(
+                [52.36536146, 4.9355026],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_f75e50ef9a0fca3a2ef195a8abccf665 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_64ef7dadba12dd7b6f18e300afd077bd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a3258e3945f2639e86d136860da872ee = $(`<div id="html_a3258e3945f2639e86d136860da872ee" style="width: 100.0%; height: 100.0%;"><b>Stayokay Amsterdam Oost</b><br>Timorplein 21, 1094 CC Amsterdam</div>`)[0];
+                popup_64ef7dadba12dd7b6f18e300afd077bd.setContent(html_a3258e3945f2639e86d136860da872ee);
+            
+        
+
+        marker_f41d6a9adca0ebb8e224ef69e4acc8b1.bindPopup(popup_64ef7dadba12dd7b6f18e300afd077bd)
+        ;
+
+        
+    
+    
+            marker_f41d6a9adca0ebb8e224ef69e4acc8b1.bindTooltip(
+                `<div>
+                     Stayokay Amsterdam Oost
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f41d6a9adca0ebb8e224ef69e4acc8b1.setIcon(icon_f75e50ef9a0fca3a2ef195a8abccf665);
+            
+    
+            var marker_d4d101923f953455e55fc80ed416f62a = L.marker(
+                [52.39277953, 4.8688489],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_a3a2cc77200acf130c55c20691abba64 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fd1a07979ed8a05da2fef41b00f33218 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_10f9f7ccfa866d4488d8185e60c1114e = $(`<div id="html_10f9f7ccfa866d4488d8185e60c1114e" style="width: 100.0%; height: 100.0%;"><b>Westcord Art Hotel</b><br>Spaarndammerdijk 302, 1013 ZX Amsterdam</div>`)[0];
+                popup_fd1a07979ed8a05da2fef41b00f33218.setContent(html_10f9f7ccfa866d4488d8185e60c1114e);
+            
+        
+
+        marker_d4d101923f953455e55fc80ed416f62a.bindPopup(popup_fd1a07979ed8a05da2fef41b00f33218)
+        ;
+
+        
+    
+    
+            marker_d4d101923f953455e55fc80ed416f62a.bindTooltip(
+                `<div>
+                     Westcord Art Hotel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d4d101923f953455e55fc80ed416f62a.setIcon(icon_a3a2cc77200acf130c55c20691abba64);
+            
+    
+            var marker_8c4e497b39164c52d8c6cd03ac72c909 = L.marker(
+                [52.3319421, 4.88355528],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_77c69d821760d7a9ae7473efa1f536c7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3d3d7cc6cfb165887d4ad46454b4f0ae = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cf9e7cc0e96e552027eb9cf1e5a20616 = $(`<div id="html_cf9e7cc0e96e552027eb9cf1e5a20616" style="width: 100.0%; height: 100.0%;"><b>Dynamo Ernst </b><br>Arent Janszoon Ernststraat 195-197, 1083 GV Amsterdam</div>`)[0];
+                popup_3d3d7cc6cfb165887d4ad46454b4f0ae.setContent(html_cf9e7cc0e96e552027eb9cf1e5a20616);
+            
+        
+
+        marker_8c4e497b39164c52d8c6cd03ac72c909.bindPopup(popup_3d3d7cc6cfb165887d4ad46454b4f0ae)
+        ;
+
+        
+    
+    
+            marker_8c4e497b39164c52d8c6cd03ac72c909.bindTooltip(
+                `<div>
+                     Dynamo Ernst 
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8c4e497b39164c52d8c6cd03ac72c909.setIcon(icon_77c69d821760d7a9ae7473efa1f536c7);
+            
+    
+            var marker_dcacc6036e4a013acdd6fba282f00dee = L.marker(
+                [52.39434428, 4.88210814],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_37ddbfd5818bbacd9daf539baa6864b1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d3c6f065771b611c8d51b4d6ab1af32f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_19361bcff35e237e7e3625135c1f20aa = $(`<div id="html_19361bcff35e237e7e3625135c1f20aa" style="width: 100.0%; height: 100.0%;"><b>The July Boat & Co</b><br>Revaleiland 500, 1014 ZG Amsterdam </div>`)[0];
+                popup_d3c6f065771b611c8d51b4d6ab1af32f.setContent(html_19361bcff35e237e7e3625135c1f20aa);
+            
+        
+
+        marker_dcacc6036e4a013acdd6fba282f00dee.bindPopup(popup_d3c6f065771b611c8d51b4d6ab1af32f)
+        ;
+
+        
+    
+    
+            marker_dcacc6036e4a013acdd6fba282f00dee.bindTooltip(
+                `<div>
+                     The July Boat & Co
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dcacc6036e4a013acdd6fba282f00dee.setIcon(icon_37ddbfd5818bbacd9daf539baa6864b1);
+            
+    
+            var marker_7dcee768cee77dd42fb2eeaef5abd9cb = L.marker(
+                [52.33706026, 4.91295182],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_0a998e282b77e0c542edb2bd922d608c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_094f569a7bb564eb31fd9822c5a25996 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_737caf8c82b67ff230da37dffb958397 = $(`<div id="html_737caf8c82b67ff230da37dffb958397" style="width: 100.0%; height: 100.0%;"><b>Mercure Amsterdam City Hotel</b><br>Joan Muyskenweg 10, 1096 CJ Amsterdam</div>`)[0];
+                popup_094f569a7bb564eb31fd9822c5a25996.setContent(html_737caf8c82b67ff230da37dffb958397);
+            
+        
+
+        marker_7dcee768cee77dd42fb2eeaef5abd9cb.bindPopup(popup_094f569a7bb564eb31fd9822c5a25996)
+        ;
+
+        
+    
+    
+            marker_7dcee768cee77dd42fb2eeaef5abd9cb.bindTooltip(
+                `<div>
+                     Mercure Amsterdam City Hotel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7dcee768cee77dd42fb2eeaef5abd9cb.setIcon(icon_0a998e282b77e0c542edb2bd922d608c);
+            
+    
+            var marker_3d22e4a4db4cde7655a95dc3604514e6 = L.marker(
+                [52.33245481, 4.91795215],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_5cc1bc9b6bd2bfa5a510098d1c0f84ce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2266f3a97e5f20fcfe0150eaea962673 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b9ebacf174f7859c787f4cd09fedaec8 = $(`<div id="html_b9ebacf174f7859c787f4cd09fedaec8" style="width: 100.0%; height: 100.0%;"><b>Leonardo Royal</b><br>Paul van Vlissingenstraat 24, 1096 BK Amsterdam</div>`)[0];
+                popup_2266f3a97e5f20fcfe0150eaea962673.setContent(html_b9ebacf174f7859c787f4cd09fedaec8);
+            
+        
+
+        marker_3d22e4a4db4cde7655a95dc3604514e6.bindPopup(popup_2266f3a97e5f20fcfe0150eaea962673)
+        ;
+
+        
+    
+    
+            marker_3d22e4a4db4cde7655a95dc3604514e6.bindTooltip(
+                `<div>
+                     Leonardo Royal
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d22e4a4db4cde7655a95dc3604514e6.setIcon(icon_5cc1bc9b6bd2bfa5a510098d1c0f84ce);
+            
+    
+            var marker_0e9c0a4952761792bb598a6a68f7e011 = L.marker(
+                [52.35582448, 4.88611728],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_644823e60dfd0d2f8fd5df127bd60404 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7fbe0f0fc1a1c7bc06466de33294273c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9460caaf543c2ea2ad6ffc42e5ff299b = $(`<div id="html_9460caaf543c2ea2ad6ffc42e5ff299b" style="width: 100.0%; height: 100.0%;"><b>Avani Museum Quarter</b><br>Hobbemakade 50, 1071 XL Amsterdam</div>`)[0];
+                popup_7fbe0f0fc1a1c7bc06466de33294273c.setContent(html_9460caaf543c2ea2ad6ffc42e5ff299b);
+            
+        
+
+        marker_0e9c0a4952761792bb598a6a68f7e011.bindPopup(popup_7fbe0f0fc1a1c7bc06466de33294273c)
+        ;
+
+        
+    
+    
+            marker_0e9c0a4952761792bb598a6a68f7e011.bindTooltip(
+                `<div>
+                     Avani Museum Quarter
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0e9c0a4952761792bb598a6a68f7e011.setIcon(icon_644823e60dfd0d2f8fd5df127bd60404);
+            
+    
+            var marker_4e48f4b7efd463f5ac0cbdd95dcb2555 = L.marker(
+                [52.35278098, 4.89548676],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_fee37d15100f62475cf898e60106987b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cfeefd1ce0c8324ca1c3d3e0fc2b0a51 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dfd6b09e4ca1a800bc361fd8d1f5f8ea = $(`<div id="html_dfd6b09e4ca1a800bc361fd8d1f5f8ea" style="width: 100.0%; height: 100.0%;"><b>De Oranjekerk</b><br>Van Ostadestraat 151-hs, 1073 TK Amsterdam</div>`)[0];
+                popup_cfeefd1ce0c8324ca1c3d3e0fc2b0a51.setContent(html_dfd6b09e4ca1a800bc361fd8d1f5f8ea);
+            
+        
+
+        marker_4e48f4b7efd463f5ac0cbdd95dcb2555.bindPopup(popup_cfeefd1ce0c8324ca1c3d3e0fc2b0a51)
+        ;
+
+        
+    
+    
+            marker_4e48f4b7efd463f5ac0cbdd95dcb2555.bindTooltip(
+                `<div>
+                     De Oranjekerk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4e48f4b7efd463f5ac0cbdd95dcb2555.setIcon(icon_fee37d15100f62475cf898e60106987b);
+            
+    
+            var marker_e076fb5b9e779448f553c7f58f47eef6 = L.marker(
+                [52.35569678, 4.84099594],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_3ce0ddf8f1bb2235e4907c96869bf810 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6ecf904d2063f1c2586aa287774b5169 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_31f0682993ce2a9662b1ca49ba0ad381 = $(`<div id="html_31f0682993ce2a9662b1ca49ba0ad381" style="width: 100.0%; height: 100.0%;"><b>Muna café & kringloop</b><br>Kon. Wilhelminaplein 1, 1062 HG Amsterdam</div>`)[0];
+                popup_6ecf904d2063f1c2586aa287774b5169.setContent(html_31f0682993ce2a9662b1ca49ba0ad381);
+            
+        
+
+        marker_e076fb5b9e779448f553c7f58f47eef6.bindPopup(popup_6ecf904d2063f1c2586aa287774b5169)
+        ;
+
+        
+    
+    
+            marker_e076fb5b9e779448f553c7f58f47eef6.bindTooltip(
+                `<div>
+                     Muna café & kringloop
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e076fb5b9e779448f553c7f58f47eef6.setIcon(icon_3ce0ddf8f1bb2235e4907c96869bf810);
+            
+    
+            var marker_2847f49d351d2a638421aff9daea12ae = L.marker(
+                [52.29233356, 4.95903762],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_560fe5ec56916ec3185a5acf5fb9d883 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6acbb30aa482e307b8351758e06990f6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0644f491af6ff36d031678825e63183d = $(`<div id="html_0644f491af6ff36d031678825e63183d" style="width: 100.0%; height: 100.0%;"><b>AMC Sport Centrum (ASC)</b><br>Meibergdreef 27, 1105 AZ Amsterdam</div>`)[0];
+                popup_6acbb30aa482e307b8351758e06990f6.setContent(html_0644f491af6ff36d031678825e63183d);
+            
+        
+
+        marker_2847f49d351d2a638421aff9daea12ae.bindPopup(popup_6acbb30aa482e307b8351758e06990f6)
+        ;
+
+        
+    
+    
+            marker_2847f49d351d2a638421aff9daea12ae.bindTooltip(
+                `<div>
+                     AMC Sport Centrum (ASC)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2847f49d351d2a638421aff9daea12ae.setIcon(icon_560fe5ec56916ec3185a5acf5fb9d883);
+            
+    
+            var marker_f710ac2d0ed4ca3c98f6f6370301564c = L.marker(
+                [52.31582515, 4.97729835],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_edf403fd1645a532a11c73e97efdc24b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7524b8b78c2af3cceeac05b83ac41e80 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_98fc98e70b55343cfc456e6067fd620b = $(`<div id="html_98fc98e70b55343cfc456e6067fd620b" style="width: 100.0%; height: 100.0%;"><b>Hemelsbreed Café</b><br>Karspeldreef 1227, 1104 SE Amsterdam</div>`)[0];
+                popup_7524b8b78c2af3cceeac05b83ac41e80.setContent(html_98fc98e70b55343cfc456e6067fd620b);
+            
+        
+
+        marker_f710ac2d0ed4ca3c98f6f6370301564c.bindPopup(popup_7524b8b78c2af3cceeac05b83ac41e80)
+        ;
+
+        
+    
+    
+            marker_f710ac2d0ed4ca3c98f6f6370301564c.bindTooltip(
+                `<div>
+                     Hemelsbreed Café
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f710ac2d0ed4ca3c98f6f6370301564c.setIcon(icon_edf403fd1645a532a11c73e97efdc24b);
+            
+    
+            var marker_fdb343446e272ff3bbbabfd8760af005 = L.marker(
+                [52.32624321, 4.97643097],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_382df53d66caafcefcbbe918352bd27e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3f16d002cad151123eac458794c1d94 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b2bc4421c57aa4605ef038a1c21cd08f = $(`<div id="html_b2bc4421c57aa4605ef038a1c21cd08f" style="width: 100.0%; height: 100.0%;"><b>Café Groenhoven</b><br>Groenhoven 650, 1103 LT Amsterdam</div>`)[0];
+                popup_b3f16d002cad151123eac458794c1d94.setContent(html_b2bc4421c57aa4605ef038a1c21cd08f);
+            
+        
+
+        marker_fdb343446e272ff3bbbabfd8760af005.bindPopup(popup_b3f16d002cad151123eac458794c1d94)
+        ;
+
+        
+    
+    
+            marker_fdb343446e272ff3bbbabfd8760af005.bindTooltip(
+                `<div>
+                     Café Groenhoven
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fdb343446e272ff3bbbabfd8760af005.setIcon(icon_382df53d66caafcefcbbe918352bd27e);
+            
+    
+            var marker_b2a22002745553853e2d15c099d888e7 = L.marker(
+                [52.35456993, 4.91320364],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_ab13e7d62be394210c674e0d94d551a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ea2831698d51acc4a384e198fc12b1de = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_515dc975153b4ce64a05760d45de5b87 = $(`<div id="html_515dc975153b4ce64a05760d45de5b87" style="width: 100.0%; height: 100.0%;"><b>The Social Hub Amsterdam City</b><br>Wibautstraat 129, 1091 GL Amsterdam</div>`)[0];
+                popup_ea2831698d51acc4a384e198fc12b1de.setContent(html_515dc975153b4ce64a05760d45de5b87);
+            
+        
+
+        marker_b2a22002745553853e2d15c099d888e7.bindPopup(popup_ea2831698d51acc4a384e198fc12b1de)
+        ;
+
+        
+    
+    
+            marker_b2a22002745553853e2d15c099d888e7.bindTooltip(
+                `<div>
+                     The Social Hub Amsterdam City
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b2a22002745553853e2d15c099d888e7.setIcon(icon_ab13e7d62be394210c674e0d94d551a5);
+            
+    
+            var marker_65f2b43b2b050ba6926699c933a46c69 = L.marker(
+                [52.37184554, 4.83729947],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_97353cb2d72c085277dcf55f73cf1242 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9f9e38622b7a6b843bf7609a2c0e82c9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e396071ba21a2aa19d9a7d73fb2f6e37 = $(`<div id="html_e396071ba21a2aa19d9a7d73fb2f6e37" style="width: 100.0%; height: 100.0%;"><b>The Social Hub Amsterdam West</b><br>van de Sande Bakhuijzenstraat 4, 1061 AG Amsterdam</div>`)[0];
+                popup_9f9e38622b7a6b843bf7609a2c0e82c9.setContent(html_e396071ba21a2aa19d9a7d73fb2f6e37);
+            
+        
+
+        marker_65f2b43b2b050ba6926699c933a46c69.bindPopup(popup_9f9e38622b7a6b843bf7609a2c0e82c9)
+        ;
+
+        
+    
+    
+            marker_65f2b43b2b050ba6926699c933a46c69.bindTooltip(
+                `<div>
+                     The Social Hub Amsterdam West
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_65f2b43b2b050ba6926699c933a46c69.setIcon(icon_97353cb2d72c085277dcf55f73cf1242);
+            
+    
+            var marker_890bc95c17222119cae100a840a9ae22 = L.marker(
+                [52.37412512, 4.89077125],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_e6f4c042c386d8a0f97c747a657327ae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_273e2cec31372f1a2e70370e6e51106a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9c5cfd706dd6776200005498a6593044 = $(`<div id="html_9c5cfd706dd6776200005498a6593044" style="width: 100.0%; height: 100.0%;"><b>Die Port van Cleve</b><br>Nieuwezijds Voorburgwal 176-180, 1012 SJ Amsterdam</div>`)[0];
+                popup_273e2cec31372f1a2e70370e6e51106a.setContent(html_9c5cfd706dd6776200005498a6593044);
+            
+        
+
+        marker_890bc95c17222119cae100a840a9ae22.bindPopup(popup_273e2cec31372f1a2e70370e6e51106a)
+        ;
+
+        
+    
+    
+            marker_890bc95c17222119cae100a840a9ae22.bindTooltip(
+                `<div>
+                     Die Port van Cleve
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_890bc95c17222119cae100a840a9ae22.setIcon(icon_e6f4c042c386d8a0f97c747a657327ae);
+            
+    
+            var marker_838437756f998a0a28e0f4d7d4823d6d = L.marker(
+                [52.34998053, 4.91856054],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_f27fd0ba8a4ddc90758090d6bc89592c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9e58daa1a6ee9a8ff2f036597f8bf5bf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0f529d980dcb361ac81d693bf6bf19fc = $(`<div id="html_0f529d980dcb361ac81d693bf6bf19fc" style="width: 100.0%; height: 100.0%;"><b>Hotel Casa</b><br>Eerste Ringdijkstraat 4, 1097 BC Amsterdam</div>`)[0];
+                popup_9e58daa1a6ee9a8ff2f036597f8bf5bf.setContent(html_0f529d980dcb361ac81d693bf6bf19fc);
+            
+        
+
+        marker_838437756f998a0a28e0f4d7d4823d6d.bindPopup(popup_9e58daa1a6ee9a8ff2f036597f8bf5bf)
+        ;
+
+        
+    
+    
+            marker_838437756f998a0a28e0f4d7d4823d6d.bindTooltip(
+                `<div>
+                     Hotel Casa
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_838437756f998a0a28e0f4d7d4823d6d.setIcon(icon_f27fd0ba8a4ddc90758090d6bc89592c);
+            
+    
+            var marker_91e5571ff6661ce1c541db70de6dc115 = L.marker(
+                [52.33844332, 4.89100669],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_646cf088eab6d98be3745d45e8059d14 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_94524e1d6d80c0ee90e3f42b4ed9ba62 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1c03cf835b028e138956a1834cd13807 = $(`<div id="html_1c03cf835b028e138956a1834cd13807" style="width: 100.0%; height: 100.0%;"><b>NHOW</b><br>Europaboulevard 2b, 1078 RV Amsterdam</div>`)[0];
+                popup_94524e1d6d80c0ee90e3f42b4ed9ba62.setContent(html_1c03cf835b028e138956a1834cd13807);
+            
+        
+
+        marker_91e5571ff6661ce1c541db70de6dc115.bindPopup(popup_94524e1d6d80c0ee90e3f42b4ed9ba62)
+        ;
+
+        
+    
+    
+            marker_91e5571ff6661ce1c541db70de6dc115.bindTooltip(
+                `<div>
+                     NHOW
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_91e5571ff6661ce1c541db70de6dc115.setIcon(icon_646cf088eab6d98be3745d45e8059d14);
+            
+    
+            var marker_02d1cb50692db9469fa5c2d5c19dec97 = L.marker(
+                [52.36585716, 4.91287235],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_99fa9382375bc197283928157ef1e82d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_072a5178b8304d0af9c5d10e7288876e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4c65bd6780d6edb36e20514b8b8a4ed2 = $(`<div id="html_4c65bd6780d6edb36e20514b8b8a4ed2" style="width: 100.0%; height: 100.0%;"><b>The Lancaster</b><br>Plantage Middenlaan 48, 1018 DH Amsterdam</div>`)[0];
+                popup_072a5178b8304d0af9c5d10e7288876e.setContent(html_4c65bd6780d6edb36e20514b8b8a4ed2);
+            
+        
+
+        marker_02d1cb50692db9469fa5c2d5c19dec97.bindPopup(popup_072a5178b8304d0af9c5d10e7288876e)
+        ;
+
+        
+    
+    
+            marker_02d1cb50692db9469fa5c2d5c19dec97.bindTooltip(
+                `<div>
+                     The Lancaster
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_02d1cb50692db9469fa5c2d5c19dec97.setIcon(icon_99fa9382375bc197283928157ef1e82d);
+            
+    
+            var marker_724611c470fcdbc78857054117a6cbd5 = L.marker(
+                [52.29775068, 4.95096663],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_939f0482d11195b32c168dc2f1d7af58 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_06f1e784256ae749852aaa9812f87296 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7e3fb57bcc59b8746c4c17b162fe56a6 = $(`<div id="html_7e3fb57bcc59b8746c4c17b162fe56a6" style="width: 100.0%; height: 100.0%;"><b>Stichting Virginlight Global Church</b><br>Paasheuvelweg 14, 1105 BH Amsterdam</div>`)[0];
+                popup_06f1e784256ae749852aaa9812f87296.setContent(html_7e3fb57bcc59b8746c4c17b162fe56a6);
+            
+        
+
+        marker_724611c470fcdbc78857054117a6cbd5.bindPopup(popup_06f1e784256ae749852aaa9812f87296)
+        ;
+
+        
+    
+    
+            marker_724611c470fcdbc78857054117a6cbd5.bindTooltip(
+                `<div>
+                     Stichting Virginlight Global Church
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_724611c470fcdbc78857054117a6cbd5.setIcon(icon_939f0482d11195b32c168dc2f1d7af58);
+            
+    
+            var marker_8b6b7d4c55e17676404095d467444fea = L.marker(
+                [52.36936916, 4.90124965],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_494ff597ae417cbf547aa4e349047f63 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2168c491d8efed3b16a3e46a5b5975c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_231233280bc12f8e31957e852d5dd73e = $(`<div id="html_231233280bc12f8e31957e852d5dd73e" style="width: 100.0%; height: 100.0%;"><b>museum Rembrandthuis</b><br>Jodenbreestraat 4, 1011 NK Amsterdam</div>`)[0];
+                popup_a2168c491d8efed3b16a3e46a5b5975c.setContent(html_231233280bc12f8e31957e852d5dd73e);
+            
+        
+
+        marker_8b6b7d4c55e17676404095d467444fea.bindPopup(popup_a2168c491d8efed3b16a3e46a5b5975c)
+        ;
+
+        
+    
+    
+            marker_8b6b7d4c55e17676404095d467444fea.bindTooltip(
+                `<div>
+                     museum Rembrandthuis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8b6b7d4c55e17676404095d467444fea.setIcon(icon_494ff597ae417cbf547aa4e349047f63);
+            
+    
+            var marker_8e3534953f3e7b4fdeec3ce7bda8889c = L.marker(
+                [52.37295311, 4.87273906],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_8bb4802eeada0b5fbbcec0b1f18bc5fb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cce5aac38c9d87106d0b50862d34821b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c33cda4fbbdc8f8afd71bf37d134202e = $(`<div id="html_c33cda4fbbdc8f8afd71bf37d134202e" style="width: 100.0%; height: 100.0%;"><b>Amsta De Poort</b><br>Hugo de Grootkade 18-28, 1052 LS Amsterdam</div>`)[0];
+                popup_cce5aac38c9d87106d0b50862d34821b.setContent(html_c33cda4fbbdc8f8afd71bf37d134202e);
+            
+        
+
+        marker_8e3534953f3e7b4fdeec3ce7bda8889c.bindPopup(popup_cce5aac38c9d87106d0b50862d34821b)
+        ;
+
+        
+    
+    
+            marker_8e3534953f3e7b4fdeec3ce7bda8889c.bindTooltip(
+                `<div>
+                     Amsta De Poort
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8e3534953f3e7b4fdeec3ce7bda8889c.setIcon(icon_8bb4802eeada0b5fbbcec0b1f18bc5fb);
+            
+    
+            var marker_48ef2938697208ad943ba1f167ecf0ed = L.marker(
+                [52.36401478, 4.91066045],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_6b952cd76e3c04064e06178e21d62f58 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_201d6da1cae3cc0f3ccfac30aef3a278 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d118be7954c4b5106c21623e1d1a19f8 = $(`<div id="html_d118be7954c4b5106c21623e1d1a19f8" style="width: 100.0%; height: 100.0%;"><b>Amsta - Dr. Sarphatihuis</b><br>Roetersstraat 2, 1018 WC Amsterdam</div>`)[0];
+                popup_201d6da1cae3cc0f3ccfac30aef3a278.setContent(html_d118be7954c4b5106c21623e1d1a19f8);
+            
+        
+
+        marker_48ef2938697208ad943ba1f167ecf0ed.bindPopup(popup_201d6da1cae3cc0f3ccfac30aef3a278)
+        ;
+
+        
+    
+    
+            marker_48ef2938697208ad943ba1f167ecf0ed.bindTooltip(
+                `<div>
+                     Amsta - Dr. Sarphatihuis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_48ef2938697208ad943ba1f167ecf0ed.setIcon(icon_6b952cd76e3c04064e06178e21d62f58);
+            
+    
+            var marker_628c2d7ea6e8f0f0925f7b6eefdac585 = L.marker(
+                [52.36328557, 4.91285555],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_de53b7e18116c529bdb2aa3a9e33d726 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_276c66fc3fe1854d33573b78c7f71e0e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_053ed55c5fef7e47ed191e7adcdd47d9 = $(`<div id="html_053ed55c5fef7e47ed191e7adcdd47d9" style="width: 100.0%; height: 100.0%;"><b>CREA</b><br>Nieuwe Achtergracht 170, 1018 WV Amsterdam</div>`)[0];
+                popup_276c66fc3fe1854d33573b78c7f71e0e.setContent(html_053ed55c5fef7e47ed191e7adcdd47d9);
+            
+        
+
+        marker_628c2d7ea6e8f0f0925f7b6eefdac585.bindPopup(popup_276c66fc3fe1854d33573b78c7f71e0e)
+        ;
+
+        
+    
+    
+            marker_628c2d7ea6e8f0f0925f7b6eefdac585.bindTooltip(
+                `<div>
+                     CREA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_628c2d7ea6e8f0f0925f7b6eefdac585.setIcon(icon_de53b7e18116c529bdb2aa3a9e33d726);
+            
+    
+            var marker_af39267fc268fd1d18562e3bb95aab93 = L.marker(
+                [52.36269958, 4.78904149],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_e815302253219bd47671a75d0fee3f43 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0b3a129911946d6197c996aa16553804 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_903723b627f8384697b582afda9f50a9 = $(`<div id="html_903723b627f8384697b582afda9f50a9" style="width: 100.0%; height: 100.0%;"><b>Amstelring Leo Polak</b><br>Saaftingestraat 8, 1069 BW Amsterdam</div>`)[0];
+                popup_0b3a129911946d6197c996aa16553804.setContent(html_903723b627f8384697b582afda9f50a9);
+            
+        
+
+        marker_af39267fc268fd1d18562e3bb95aab93.bindPopup(popup_0b3a129911946d6197c996aa16553804)
+        ;
+
+        
+    
+    
+            marker_af39267fc268fd1d18562e3bb95aab93.bindTooltip(
+                `<div>
+                     Amstelring Leo Polak
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_af39267fc268fd1d18562e3bb95aab93.setIcon(icon_e815302253219bd47671a75d0fee3f43);
+            
+    
+            var marker_62c8158e8dea61ad0df47183c2a8fe80 = L.marker(
+                [52.38443626, 4.91777047],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_ffc76a104ce69bc2927236367900a008 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8c50b18aefe02c04fa5f7f92da8b070b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_39095ca96ccc403d7a1068cfcd1c3bae = $(`<div id="html_39095ca96ccc403d7a1068cfcd1c3bae" style="width: 100.0%; height: 100.0%;"><b>Huis van de Wijk De Meeuw</b><br>Motorwal 300, 1021 PH Amsterdam</div>`)[0];
+                popup_8c50b18aefe02c04fa5f7f92da8b070b.setContent(html_39095ca96ccc403d7a1068cfcd1c3bae);
+            
+        
+
+        marker_62c8158e8dea61ad0df47183c2a8fe80.bindPopup(popup_8c50b18aefe02c04fa5f7f92da8b070b)
+        ;
+
+        
+    
+    
+            marker_62c8158e8dea61ad0df47183c2a8fe80.bindTooltip(
+                `<div>
+                     Huis van de Wijk De Meeuw
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_62c8158e8dea61ad0df47183c2a8fe80.setIcon(icon_ffc76a104ce69bc2927236367900a008);
+            
+    
+            var marker_669e080c5b61bd2432d0914d8bf39d1f = L.marker(
+                [52.3931107, 4.95483514],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_fd60b369c81f63fc51baf0ae5a0855bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_07bf32d8e8e089006459f1223e3fd771 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b5356be77c110f1330fe6a5405d06bf2 = $(`<div id="html_b5356be77c110f1330fe6a5405d06bf2" style="width: 100.0%; height: 100.0%;"><b>Huis van de Wijk Waterlandplein</b><br>Waterlandplein 302, 1024 NB Amsterdam</div>`)[0];
+                popup_07bf32d8e8e089006459f1223e3fd771.setContent(html_b5356be77c110f1330fe6a5405d06bf2);
+            
+        
+
+        marker_669e080c5b61bd2432d0914d8bf39d1f.bindPopup(popup_07bf32d8e8e089006459f1223e3fd771)
+        ;
+
+        
+    
+    
+            marker_669e080c5b61bd2432d0914d8bf39d1f.bindTooltip(
+                `<div>
+                     Huis van de Wijk Waterlandplein
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_669e080c5b61bd2432d0914d8bf39d1f.setIcon(icon_fd60b369c81f63fc51baf0ae5a0855bc);
+            
+    
+            var marker_b92fa936f02dd0bc82fa61f18a28fff0 = L.marker(
+                [52.40770011, 4.91693904],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_12b27348d7b9a67828426bd9afe5a1d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_32d5816940301681f40468105ac896eb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2e83adfb8ab010e3ed208076951bbcf9 = $(`<div id="html_2e83adfb8ab010e3ed208076951bbcf9" style="width: 100.0%; height: 100.0%;"><b>Huis van de Wijk De Banne</b><br>Bezaanjachtplein 243, 1034 CR Amsterdam</div>`)[0];
+                popup_32d5816940301681f40468105ac896eb.setContent(html_2e83adfb8ab010e3ed208076951bbcf9);
+            
+        
+
+        marker_b92fa936f02dd0bc82fa61f18a28fff0.bindPopup(popup_32d5816940301681f40468105ac896eb)
+        ;
+
+        
+    
+    
+            marker_b92fa936f02dd0bc82fa61f18a28fff0.bindTooltip(
+                `<div>
+                     Huis van de Wijk De Banne
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b92fa936f02dd0bc82fa61f18a28fff0.setIcon(icon_12b27348d7b9a67828426bd9afe5a1d8);
+            
+    
+            var marker_fec75d1840be086a237e4a6c815f2d1c = L.marker(
+                [52.34205809, 4.96473058],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_77dc9338ebc015bb4242e0b4cbd51396 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_05938ca1d78247894c74a7a12f87d661 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dbe4e974a6e57a5d395d20097bfe62e3 = $(`<div id="html_dbe4e974a6e57a5d395d20097bfe62e3" style="width: 100.0%; height: 100.0%;"><b>OBA Diemen</b><br>Theater De Omval, Ouddiemerlaan 104, 1111 HL Diemen</div>`)[0];
+                popup_05938ca1d78247894c74a7a12f87d661.setContent(html_dbe4e974a6e57a5d395d20097bfe62e3);
+            
+        
+
+        marker_fec75d1840be086a237e4a6c815f2d1c.bindPopup(popup_05938ca1d78247894c74a7a12f87d661)
+        ;
+
+        
+    
+    
+            marker_fec75d1840be086a237e4a6c815f2d1c.bindTooltip(
+                `<div>
+                     OBA Diemen
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fec75d1840be086a237e4a6c815f2d1c.setIcon(icon_77dc9338ebc015bb4242e0b4cbd51396);
+            
+    
+            var marker_a32d6efa9edc42b021681ae71ff338e3 = L.marker(
+                [52.31679198, 4.97968182],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_65ffb88f665bb9e913702d4d4fc5dd51 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e4844abb4a8ac9f0e26fe1d17da76abd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_729def839436390513505aba4a50b3f7 = $(`<div id="html_729def839436390513505aba4a50b3f7" style="width: 100.0%; height: 100.0%;"><b>OBA Next lab Kraainnest</b><br>Kraaiennest 80, 1104 CE Amsterdam</div>`)[0];
+                popup_e4844abb4a8ac9f0e26fe1d17da76abd.setContent(html_729def839436390513505aba4a50b3f7);
+            
+        
+
+        marker_a32d6efa9edc42b021681ae71ff338e3.bindPopup(popup_e4844abb4a8ac9f0e26fe1d17da76abd)
+        ;
+
+        
+    
+    
+            marker_a32d6efa9edc42b021681ae71ff338e3.bindTooltip(
+                `<div>
+                     OBA Next lab Kraainnest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a32d6efa9edc42b021681ae71ff338e3.setIcon(icon_65ffb88f665bb9e913702d4d4fc5dd51);
+            
+    
+            var marker_29fb985d64ec6c7b3cbd011411ff1938 = L.marker(
+                [52.39280069, 4.95540835],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_3d9a96124e872be150fa9b2354dd9da6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35a2c934ec2654b371e3ac6cdec2aaf8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cbccd83932f785179ab9f529143b1a4f = $(`<div id="html_cbccd83932f785179ab9f529143b1a4f" style="width: 100.0%; height: 100.0%;"><b>AH Waterlandplein</b><br>Waterlandplein 255, 1024 LT Amsterdam</div>`)[0];
+                popup_35a2c934ec2654b371e3ac6cdec2aaf8.setContent(html_cbccd83932f785179ab9f529143b1a4f);
+            
+        
+
+        marker_29fb985d64ec6c7b3cbd011411ff1938.bindPopup(popup_35a2c934ec2654b371e3ac6cdec2aaf8)
+        ;
+
+        
+    
+    
+            marker_29fb985d64ec6c7b3cbd011411ff1938.bindTooltip(
+                `<div>
+                     AH Waterlandplein
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_29fb985d64ec6c7b3cbd011411ff1938.setIcon(icon_3d9a96124e872be150fa9b2354dd9da6);
+            
+    
+            var marker_0a4fa44debe8f4e8e18c23bbf2c0005d = L.marker(
+                [52.41438071, 4.88645458],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_235da8af28f873a6ea0805b7e752b775 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_232dda9f3a6a99da72089b4fc9decfab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5ff83fe2a6edf15e0f5a6a5b46760d0a = $(`<div id="html_5ff83fe2a6edf15e0f5a6a5b46760d0a" style="width: 100.0%; height: 100.0%;"><b>Huis van de Wijk de Evenaar</b><br>Kometensingel 189, 1033 BE Amsterdam</div>`)[0];
+                popup_232dda9f3a6a99da72089b4fc9decfab.setContent(html_5ff83fe2a6edf15e0f5a6a5b46760d0a);
+            
+        
+
+        marker_0a4fa44debe8f4e8e18c23bbf2c0005d.bindPopup(popup_232dda9f3a6a99da72089b4fc9decfab)
+        ;
+
+        
+    
+    
+            marker_0a4fa44debe8f4e8e18c23bbf2c0005d.bindTooltip(
+                `<div>
+                     Huis van de Wijk de Evenaar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0a4fa44debe8f4e8e18c23bbf2c0005d.setIcon(icon_235da8af28f873a6ea0805b7e752b775);
+            
+    
+            var marker_f9808d91ff05e6fdcc2d2d265763e06d = L.marker(
+                [52.34561, 4.93883561],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_fabfbe40936710ab7b18232f04566a9f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3171ed7d24fc31a16958d6a8092a9423 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3b14ce031a8b393925a20348bca54729 = $(`<div id="html_3b14ce031a8b393925a20348bca54729" style="width: 100.0%; height: 100.0%;"><b>De Nieuwe Ooster</b><br>Kruislaan 126, 1097 GA Amsterdam</div>`)[0];
+                popup_3171ed7d24fc31a16958d6a8092a9423.setContent(html_3b14ce031a8b393925a20348bca54729);
+            
+        
+
+        marker_f9808d91ff05e6fdcc2d2d265763e06d.bindPopup(popup_3171ed7d24fc31a16958d6a8092a9423)
+        ;
+
+        
+    
+    
+            marker_f9808d91ff05e6fdcc2d2d265763e06d.bindTooltip(
+                `<div>
+                     De Nieuwe Ooster
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f9808d91ff05e6fdcc2d2d265763e06d.setIcon(icon_fabfbe40936710ab7b18232f04566a9f);
+            
+    
+            var marker_99b5f3deb533f302f2d84e094b800947 = L.marker(
+                [52.37195777, 4.90348266],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_34c6d3f724a367793e13797a691a69c2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e7b7ad0bc4b656fcdae37f52996c7121 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_26d3fedea7735fb63d8de7db76db8c1a = $(`<div id="html_26d3fedea7735fb63d8de7db76db8c1a" style="width: 100.0%; height: 100.0%;"><b>Buurthuis de Boomsspijker </b><br>Recht Boomssloot 52, 1011 EC Amsterdam</div>`)[0];
+                popup_e7b7ad0bc4b656fcdae37f52996c7121.setContent(html_26d3fedea7735fb63d8de7db76db8c1a);
+            
+        
+
+        marker_99b5f3deb533f302f2d84e094b800947.bindPopup(popup_e7b7ad0bc4b656fcdae37f52996c7121)
+        ;
+
+        
+    
+    
+            marker_99b5f3deb533f302f2d84e094b800947.bindTooltip(
+                `<div>
+                     Buurthuis de Boomsspijker 
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99b5f3deb533f302f2d84e094b800947.setIcon(icon_34c6d3f724a367793e13797a691a69c2);
+            
+    
+            var marker_718f69a107b455f9c1317730761a6475 = L.marker(
+                [52.36265379, 4.90970612],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_1b6db535fa4f05a3f804a1aaedea4bc3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_534b3650278d38cb84967a28b358a85b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b19a98dfb50fbeefab14e2882bbcbb6e = $(`<div id="html_b19a98dfb50fbeefab14e2882bbcbb6e" style="width: 100.0%; height: 100.0%;"><b>Poolbar de Gracht</b><br>Nieuwe Achtergracht 110, 1018 WT Amsterdam</div>`)[0];
+                popup_534b3650278d38cb84967a28b358a85b.setContent(html_b19a98dfb50fbeefab14e2882bbcbb6e);
+            
+        
+
+        marker_718f69a107b455f9c1317730761a6475.bindPopup(popup_534b3650278d38cb84967a28b358a85b)
+        ;
+
+        
+    
+    
+            marker_718f69a107b455f9c1317730761a6475.bindTooltip(
+                `<div>
+                     Poolbar de Gracht
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_718f69a107b455f9c1317730761a6475.setIcon(icon_1b6db535fa4f05a3f804a1aaedea4bc3);
+            
+    
+            var marker_d9eb9d15554aa5308f2f1ac916dd7846 = L.marker(
+                [52.35752782, 4.92022769],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_a0d92f662cf62625643f5ad6bc164eb4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d1dfd8074d8721c78ef793f72418e654 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e3f56e5ead359d5b7f9917b82c4377a0 = $(`<div id="html_e3f56e5ead359d5b7f9917b82c4377a0" style="width: 100.0%; height: 100.0%;"><b>Oosterparkhuis</b><br>Derde Oosterparkstraat 159, 1092 CW Amsterdam</div>`)[0];
+                popup_d1dfd8074d8721c78ef793f72418e654.setContent(html_e3f56e5ead359d5b7f9917b82c4377a0);
+            
+        
+
+        marker_d9eb9d15554aa5308f2f1ac916dd7846.bindPopup(popup_d1dfd8074d8721c78ef793f72418e654)
+        ;
+
+        
+    
+    
+            marker_d9eb9d15554aa5308f2f1ac916dd7846.bindTooltip(
+                `<div>
+                     Oosterparkhuis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d9eb9d15554aa5308f2f1ac916dd7846.setIcon(icon_a0d92f662cf62625643f5ad6bc164eb4);
+            
+    
+            var marker_17ce496a0e1f7487968b00148a2eb4df = L.marker(
+                [52.34841584, 4.86469995],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_aec44df62f05c37acbc9d1067d098f9d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dafecba6c223698acbc4e12c16808e0a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_95c00bc0417412c9478b63ba1f80432a = $(`<div id="html_95c00bc0417412c9478b63ba1f80432a" style="width: 100.0%; height: 100.0%;"><b>Odensehuis</b><br>Hygiëastraat 4, 1076 RM Amsterdam</div>`)[0];
+                popup_dafecba6c223698acbc4e12c16808e0a.setContent(html_95c00bc0417412c9478b63ba1f80432a);
+            
+        
+
+        marker_17ce496a0e1f7487968b00148a2eb4df.bindPopup(popup_dafecba6c223698acbc4e12c16808e0a)
+        ;
+
+        
+    
+    
+            marker_17ce496a0e1f7487968b00148a2eb4df.bindTooltip(
+                `<div>
+                     Odensehuis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_17ce496a0e1f7487968b00148a2eb4df.setIcon(icon_aec44df62f05c37acbc9d1067d098f9d);
+            
+    
+            var marker_59a02070f2b57f430454fff2fe3c5bc9 = L.marker(
+                [52.33914379, 4.89698774],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_e207f2d6e6275565ea61d666262b25c9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a284f723df3ecee71228bb78716a7d07 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4978749078074750662fdc987735f460 = $(`<div id="html_4978749078074750662fdc987735f460" style="width: 100.0%; height: 100.0%;"><b>Weteringskerk</b><br>Veluwelaan 20, 1079 RA Amsterdam, Nederland</div>`)[0];
+                popup_a284f723df3ecee71228bb78716a7d07.setContent(html_4978749078074750662fdc987735f460);
+            
+        
+
+        marker_59a02070f2b57f430454fff2fe3c5bc9.bindPopup(popup_a284f723df3ecee71228bb78716a7d07)
+        ;
+
+        
+    
+    
+            marker_59a02070f2b57f430454fff2fe3c5bc9.bindTooltip(
+                `<div>
+                     Weteringskerk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_59a02070f2b57f430454fff2fe3c5bc9.setIcon(icon_e207f2d6e6275565ea61d666262b25c9);
+            
+    
+            var marker_8c63df9e4d498f6bd962631bd2fe6268 = L.marker(
+                [52.3701224, 4.90083026],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_41887eaa43b6df98bf124a46a2294f65 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3a900282226ce4b4d8c4a1dfc3c03e8c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_497790f0f5e4ac7021977ed0f5bcc7c2 = $(`<div id="html_497790f0f5e4ac7021977ed0f5bcc7c2" style="width: 100.0%; height: 100.0%;"><b>Huis de Pinto</b><br>Sint Antoniesbreestraat 69, 1011 HB Amsterdam</div>`)[0];
+                popup_3a900282226ce4b4d8c4a1dfc3c03e8c.setContent(html_497790f0f5e4ac7021977ed0f5bcc7c2);
+            
+        
+
+        marker_8c63df9e4d498f6bd962631bd2fe6268.bindPopup(popup_3a900282226ce4b4d8c4a1dfc3c03e8c)
+        ;
+
+        
+    
+    
+            marker_8c63df9e4d498f6bd962631bd2fe6268.bindTooltip(
+                `<div>
+                     Huis de Pinto
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8c63df9e4d498f6bd962631bd2fe6268.setIcon(icon_41887eaa43b6df98bf124a46a2294f65);
+            
+    
+            var marker_92b51c49c7de5933945f311a09a035ae = L.marker(
+                [52.37452582, 4.88349767],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_f8eaa84f0892d1253463ba63cc7ceac3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7df7c927793883b6f527433f615c3f36 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_310cb90ea9d93949cafe7b3d5edb86b0 = $(`<div id="html_310cb90ea9d93949cafe7b3d5edb86b0" style="width: 100.0%; height: 100.0%;"><b>Westerkerk</b><br>Prinsengracht 279, 1016 GW Amsterdam</div>`)[0];
+                popup_7df7c927793883b6f527433f615c3f36.setContent(html_310cb90ea9d93949cafe7b3d5edb86b0);
+            
+        
+
+        marker_92b51c49c7de5933945f311a09a035ae.bindPopup(popup_7df7c927793883b6f527433f615c3f36)
+        ;
+
+        
+    
+    
+            marker_92b51c49c7de5933945f311a09a035ae.bindTooltip(
+                `<div>
+                     Westerkerk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_92b51c49c7de5933945f311a09a035ae.setIcon(icon_f8eaa84f0892d1253463ba63cc7ceac3);
+            
+    
+            var marker_f45964a577b7a796dd8c24806f2c4e40 = L.marker(
+                [52.37071909, 4.93812049],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_88d9c9351142111ac6396a699071ac5e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_943884d5942e256ef04eef4d6c5c9fb9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4253694017fdd5dcda18fcef8562e9f8 = $(`<div id="html_4253694017fdd5dcda18fcef8562e9f8" style="width: 100.0%; height: 100.0%;"><b>De Eester</b><br>C. van Eesterenlaan 266, 1019 JR Amsterdam</div>`)[0];
+                popup_943884d5942e256ef04eef4d6c5c9fb9.setContent(html_4253694017fdd5dcda18fcef8562e9f8);
+            
+        
+
+        marker_f45964a577b7a796dd8c24806f2c4e40.bindPopup(popup_943884d5942e256ef04eef4d6c5c9fb9)
+        ;
+
+        
+    
+    
+            marker_f45964a577b7a796dd8c24806f2c4e40.bindTooltip(
+                `<div>
+                     De Eester
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f45964a577b7a796dd8c24806f2c4e40.setIcon(icon_88d9c9351142111ac6396a699071ac5e);
+            
+    
+            var marker_57b82e8d3e47cc94e74c5746769a46f0 = L.marker(
+                [52.36309024, 4.88274662],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_f25b90751c369e62edf421623a0513a8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6fd579fb5f2851bf3a1e6a9cd249b6c7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_58fad4d0a3afaac9c1fba26bfb816748 = $(`<div id="html_58fad4d0a3afaac9c1fba26bfb816748" style="width: 100.0%; height: 100.0%;"><b>De Balie</b><br>Kleine-Gartmanplantsoen 10, 1017 RR Amsterdam</div>`)[0];
+                popup_6fd579fb5f2851bf3a1e6a9cd249b6c7.setContent(html_58fad4d0a3afaac9c1fba26bfb816748);
+            
+        
+
+        marker_57b82e8d3e47cc94e74c5746769a46f0.bindPopup(popup_6fd579fb5f2851bf3a1e6a9cd249b6c7)
+        ;
+
+        
+    
+    
+            marker_57b82e8d3e47cc94e74c5746769a46f0.bindTooltip(
+                `<div>
+                     De Balie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_57b82e8d3e47cc94e74c5746769a46f0.setIcon(icon_f25b90751c369e62edf421623a0513a8);
+            
+    
+            var marker_1a7ffd9d27f63f03975c7de7816d790a = L.marker(
+                [52.39981171, 4.92826224],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_9f6020ea56f46977c5d25f8deaf957d2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_182eca81726bef80d574fb6b8544b843 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b4cad039b59955b8a2c08462941dfd1a = $(`<div id="html_b4cad039b59955b8a2c08462941dfd1a" style="width: 100.0%; height: 100.0%;"><b>Buurtkamer de Buurtsingel</b><br>Elzenhagensingel 1537A, 1022 LA Amsterdam</div>`)[0];
+                popup_182eca81726bef80d574fb6b8544b843.setContent(html_b4cad039b59955b8a2c08462941dfd1a);
+            
+        
+
+        marker_1a7ffd9d27f63f03975c7de7816d790a.bindPopup(popup_182eca81726bef80d574fb6b8544b843)
+        ;
+
+        
+    
+    
+            marker_1a7ffd9d27f63f03975c7de7816d790a.bindTooltip(
+                `<div>
+                     Buurtkamer de Buurtsingel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1a7ffd9d27f63f03975c7de7816d790a.setIcon(icon_9f6020ea56f46977c5d25f8deaf957d2);
+            
+    
+            var marker_26bf576a7f081896fd34903ba16655d0 = L.marker(
+                [52.35916154, 4.90964519],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_4cdfc1a43cb3d98077c2d119e7f2dbcc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5ee377226d6d671d868522066b87843b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_867aadd1e7723c0c2f4696c49013b98f = $(`<div id="html_867aadd1e7723c0c2f4696c49013b98f" style="width: 100.0%; height: 100.0%;"><b>HvA Wibauthuis</b><br>Amstelcampus, Wibautstraat 3b, 1091 GH Amsterdam</div>`)[0];
+                popup_5ee377226d6d671d868522066b87843b.setContent(html_867aadd1e7723c0c2f4696c49013b98f);
+            
+        
+
+        marker_26bf576a7f081896fd34903ba16655d0.bindPopup(popup_5ee377226d6d671d868522066b87843b)
+        ;
+
+        
+    
+    
+            marker_26bf576a7f081896fd34903ba16655d0.bindTooltip(
+                `<div>
+                     HvA Wibauthuis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_26bf576a7f081896fd34903ba16655d0.setIcon(icon_4cdfc1a43cb3d98077c2d119e7f2dbcc);
+            
+    
+            var marker_f351f81fcf1f050fa3da93fb867c941a = L.marker(
+                [52.35952196, 4.93820664],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_89a65940b1402d295b71e8acacb447d0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b896518032130e9838176f6536b9ac03 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bc5bd1827a03eb9a29181e9ef093de25 = $(`<div id="html_bc5bd1827a03eb9a29181e9ef093de25" style="width: 100.0%; height: 100.0%;"><b>Restaurant Elixer</b><br>Batjanstraat 1a, 1094 RC Amsterdam</div>`)[0];
+                popup_b896518032130e9838176f6536b9ac03.setContent(html_bc5bd1827a03eb9a29181e9ef093de25);
+            
+        
+
+        marker_f351f81fcf1f050fa3da93fb867c941a.bindPopup(popup_b896518032130e9838176f6536b9ac03)
+        ;
+
+        
+    
+    
+            marker_f351f81fcf1f050fa3da93fb867c941a.bindTooltip(
+                `<div>
+                     Restaurant Elixer
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f351f81fcf1f050fa3da93fb867c941a.setIcon(icon_89a65940b1402d295b71e8acacb447d0);
+            
+    
+            var marker_428e945bf1e105316bfe8eaa22128aa0 = L.marker(
+                [52.36137828, 4.92807069],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_3dad88a741dc87946d357a116fe00532 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ac8ba3d493948d0f3faed278aa9c0b6a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a16294234120931033e2fd4d3cd47ef9 = $(`<div id="html_a16294234120931033e2fd4d3cd47ef9" style="width: 100.0%; height: 100.0%;"><b>Het Afvalpaleis</b><br>Dapperstraat 76, Dapperstraat 82, 1093 BX Amsterdam</div>`)[0];
+                popup_ac8ba3d493948d0f3faed278aa9c0b6a.setContent(html_a16294234120931033e2fd4d3cd47ef9);
+            
+        
+
+        marker_428e945bf1e105316bfe8eaa22128aa0.bindPopup(popup_ac8ba3d493948d0f3faed278aa9c0b6a)
+        ;
+
+        
+    
+    
+            marker_428e945bf1e105316bfe8eaa22128aa0.bindTooltip(
+                `<div>
+                     Het Afvalpaleis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_428e945bf1e105316bfe8eaa22128aa0.setIcon(icon_3dad88a741dc87946d357a116fe00532);
+            
+    
+            var marker_4b115b44ad9e5a284922e807f2a67614 = L.marker(
+                [52.38475384, 4.84877545],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_80e18000ea929b8eb631d35229543db0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_539510739464d28e96b1442362c35362 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_131c5eb00e11dca6d3f1a42b6c67dc80 = $(`<div id="html_131c5eb00e11dca6d3f1a42b6c67dc80" style="width: 100.0%; height: 100.0%;"><b>Buurthuis de gibraltar</b><br>Haarlemmerweg 645a, 1055 PS Amsterdam</div>`)[0];
+                popup_539510739464d28e96b1442362c35362.setContent(html_131c5eb00e11dca6d3f1a42b6c67dc80);
+            
+        
+
+        marker_4b115b44ad9e5a284922e807f2a67614.bindPopup(popup_539510739464d28e96b1442362c35362)
+        ;
+
+        
+    
+    
+            marker_4b115b44ad9e5a284922e807f2a67614.bindTooltip(
+                `<div>
+                     Buurthuis de gibraltar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4b115b44ad9e5a284922e807f2a67614.setIcon(icon_80e18000ea929b8eb631d35229543db0);
+            
+    
+            var marker_3ed489e38f445437a2d1e1acd1529e8b = L.marker(
+                [52.32562825, 4.86103505],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_1a546dc049d8ea2fb8dc4a72432a7508 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b868a2ef98c07b8c4c27b4dbe8cc376 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_869d856d515e1291150d5618f0d07bfe = $(`<div id="html_869d856d515e1291150d5618f0d07bfe" style="width: 100.0%; height: 100.0%;"><b>Dynamo Meergeneratieplein Goudestein</b><br>Landskroon 90, 1081 CG Amsterdam</div>`)[0];
+                popup_8b868a2ef98c07b8c4c27b4dbe8cc376.setContent(html_869d856d515e1291150d5618f0d07bfe);
+            
+        
+
+        marker_3ed489e38f445437a2d1e1acd1529e8b.bindPopup(popup_8b868a2ef98c07b8c4c27b4dbe8cc376)
+        ;
+
+        
+    
+    
+            marker_3ed489e38f445437a2d1e1acd1529e8b.bindTooltip(
+                `<div>
+                     Dynamo Meergeneratieplein Goudestein
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3ed489e38f445437a2d1e1acd1529e8b.setIcon(icon_1a546dc049d8ea2fb8dc4a72432a7508);
+            
+    
+            var marker_a7de11055ea3b302feb1df7fc5bd22ac = L.marker(
+                [52.29743861, 4.91431776],
+                {
+}
+            ).addTo(map_0a7ba61d9b9d2a35a9e397e3598929f0);
+        
+    
+            var icon_0b6f70b8d544d45607d16288ac409611 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f4d6dea23d1106ece156683807383d50 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8a41855abf4d08d0b1259833b47a8bf8 = $(`<div id="html_8a41855abf4d08d0b1259833b47a8bf8" style="width: 100.0%; height: 100.0%;"><b>Jumbo Ouderkerk aan de Amstel Sluisplein</b><br>Sluisplein 41-46, 1191 GV Ouderkerk aan de Amstel</div>`)[0];
+                popup_f4d6dea23d1106ece156683807383d50.setContent(html_8a41855abf4d08d0b1259833b47a8bf8);
+            
+        
+
+        marker_a7de11055ea3b302feb1df7fc5bd22ac.bindPopup(popup_f4d6dea23d1106ece156683807383d50)
+        ;
+
+        
+    
+    
+            marker_a7de11055ea3b302feb1df7fc5bd22ac.bindTooltip(
+                `<div>
+                     Jumbo Ouderkerk aan de Amstel Sluisplein
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a7de11055ea3b302feb1df7fc5bd22ac.setIcon(icon_0b6f70b8d544d45607d16288ac409611);
+            
+</script>
+</html>
