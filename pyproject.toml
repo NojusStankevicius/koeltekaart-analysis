@@ -1,7 +1,7 @@
 [project]
 name = "koeltekaart-analysis"
 version = "0.1.0"
-description = "Add your description here"
+description = "Where Amsterdam is underserved by cooling places, and where that overlaps with heat exposure and vulnerability"
 readme = "README.md"
 authors = [
     { name = "NojusStankevicius" }
@@ -16,9 +16,6 @@ dependencies = [
     "requests>=2.34.2",
     "scipy>=1.18.1",
 ]
-
-[project.scripts]
-koeltekaart-analysis = "koeltekaart_analysis:main"
 
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
