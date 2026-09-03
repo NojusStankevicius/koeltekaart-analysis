@@ -595,6 +595,51 @@ the same CBS grid. Until then it stays out of the README.
 the Nationaal Georegister record for "Afstand tot koelte - koelteplekken"
 (`776b8c7a-b382-402d-b157-6918c8c2d0d6`).
 
+
+## 23. The three priority lists are reconciled into two decisions, not one ranking
+
+Sections 13, 14 and 15 each end in a priority list and they name different places: Lootsbuurt by
+reach, small central dock islands by need, OBA Bos en Lommer by fragility. Section 16 reconciles
+them without collecting any new data.
+
+**The move that does the work is noticing that one of the three is about different people.**
+Sections 13 and 14 both describe the 692,175 residents with no cooling place within 500 m. Section
+15 describes the 214,600 who have one and might stop. Those populations are disjoint *by
+construction* - an underserved zone is defined as being far from every venue, so no venue's failure
+can reach it. There are therefore two decisions, **expand** and **protect**, and reach and need are
+commensurable only within the first.
+
+**Rejected: a composite priority score.** Blending reach, severity and fragility into one ranked
+list would be the `build_hvi.py` object of decision 15 with more inputs - a number nobody can see
+inside or test. The output is a table with the axes kept apart plus a rule for reading it: reach
+says how much a site buys, the typology says what kind of need it buys it for, fragility is a
+different budget about different residents.
+
+**Rejected: an exchange rate between expanding and protecting.** The best new site reaches 21,687
+residents; the largest single point of failure holds 7,520. Converting one into the other requires
+a judgement about gaining access versus losing it that is political, not measurable. Both are
+reported and neither is netted off.
+
+**Finding - reach and need barely overlap.** Exactly **one** of the eight high-effect areas sits in
+a *hot + elderly* zone (Haarlemmerbuurt-West, fifth by reach). The rest split across every other
+class. Siting on reach alone puts seven of eight venues outside the most severe category; siting on
+severity alone forgoes the top four by reach.
+
+**Finding - one site satisfies every criterion.** Zone 87, the Westelijke eilanden and
+Haarlemmerbuurt-West: 11,160 residents, 21.3% over 65 against a city median of 13.5%, TOjuli 2.19
+against 1.80, and the highest achievable reach of the six severe zones. This is the closest thing
+to an unambiguous recommendation the analysis produces, and it does not depend on which section
+you start from.
+
+**Finding, and it is a limit of the method rather than of the data.** Hogewey-Zuid in Weesp is *hot
++ elderly* and contains no candidate point at all - too small and thin for the 200 m grid, and
+physically separate from the city. No reach-based exercise will ever surface it. Recorded so that
+its absence from the siting output is not read as its absence from the problem.
+
+**A units error caught in the writing.** The section-14 gain is *weighted* demand and section 15's
+criticality is a headcount; the first draft printed 27,267 beside 7,520 as though they were the
+same quantity. The unweighted reach of that site is 21,687, and that is the number now compared.
+
 ---
 
 ## Open questions
