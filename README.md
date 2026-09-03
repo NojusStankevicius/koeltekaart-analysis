@@ -3,6 +3,12 @@
 Where in Amsterdam are people underserved by the city's ~80 indoor cooling places
 (*koelteplekken*), and where does that lack of access coincide with genuine need?
 
+**These are indoor places you can sit in.** That is the whole distinction from the national
+*Afstand tot koelte* layer, which maps outdoor public space of 200 m² or more at a 300 m threshold.
+Both measure walking distance to the nearest cool place and disagree only about what a cool place
+is — so the two maps are complementary, and no figure below should be read as a claim about
+outdoor green space. See [decision 22](docs/decisions.md).
+
 The analysis works at **100 m resolution** using CBS population squares, measures **walking
 distance over the OpenStreetMap pedestrian network** rather than straight lines, and
 characterises need along two independent axes: **exposure** (vegetation cover from BGT, and
@@ -21,11 +27,12 @@ how many residents each venue carries, and how many of them have no second optio
 - Neither age nor living alone predicts access. The existing places track population density.
 - 42 underserved zones hold 331,895 residents; they divide into four distinct kinds of need.
 - Coverage is not only thin, it is **single-threaded**: of the 214,600 residents within 500 m of a
-  cooling place, **180,685 (84%) can reach exactly one**, and 50 of the 78 venues have no backup at
-  all — everyone they serve has nowhere else to walk.
+  cooling place, **177,160 (83%) can reach exactly one**, and 49 of the 78 sites have no backup at
+  all — everyone they serve has nowhere else to walk. The modelled failure is a venue *leaving the
+  scheme*, not a building closing; both figures are reported.
 
 Full reasoning, including every rejected alternative, is in **[`docs/decisions.md`](docs/decisions.md)**
-(21 entries). An honest audit of what the analysis can and cannot support is in
+(22 entries). An honest audit of what the analysis can and cannot support is in
 [`docs/review.html`](docs/review.html).
 
 ## Running it

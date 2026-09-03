@@ -483,11 +483,35 @@ number is not doing any work.
 two house numbers, one building, 3.7 m apart. Proximity is the property that matters; the address
 is a proxy for it that fails here.
 
-**Why it is needed now and was not before.** Decision 6 is correct that distance-to-nearest cannot
-tell two organisations in one building apart. That stops being harmless the moment a metric
-*counts* venues: without clustering, squares around Waterlandplein and the Banne would score two
-options where there is one building, look redundantly served, and drop out of the single-point-of
--failure list in section 15. Both sites are in Noord, near zones this analysis already highlights.
+**What the clustering is for, and what it is not for.** Decision 6 is correct that
+distance-to-nearest cannot tell two organisations in one building apart. Clustering matters the
+moment a metric *sums* over venues: two records at an identical coordinate are exactly tied, so
+the network argmin hands one of them the whole catchment and the other zero. Per-venue load would
+show OBA Waterlandplein serving 1,785 residents and the Huis van de Wijk serving none, which is an
+artefact of tie-breaking. That is the de-duplication guard decision 6 asked for, and it is the
+*only* job clustering does here.
+
+**Corrected 3 Sep 2026 - clustering is not a failure model.** This decision originally used venues
+as the unit for criticality too, on the reasoning that a shared building fails as one. Nojus's
+objection is right and overturns it: the failure that matters is **a venue leaving the scheme** -
+an organisation withdrawing, losing funding, or changing what it offers - not a building being
+demolished. These are voluntary participants in a programme that went live this summer;
+participation is the volatile thing, masonry is not. Against *that* failure, two organisations in
+one building are two independent chances of survival, and merging them understates redundancy.
+
+**So the two metrics are counted in different units, deliberately:** load per building (a
+tie-breaking guard), criticality per organisation (the modelled failure). Both are reported.
+
+**What it changes, measured rather than asserted.** Residents whose only option is a single
+organisation: **177,160** against **180,685** for a single building - 83% of the covered population
+against 84%. Exactly two sites differ, which is the two merged pairs and nothing else: the Banne
+falls from 3,135 sole-dependent residents to **0**, Waterlandplein from 390 to **0**, because in
+each case the co-located neighbour survives the failure. Venues with no backup at all: 49 rather
+than 50. The aggregate barely moves; the claim about those two sites reverses completely.
+
+**The real lesson, and it is not about clustering.** The original merge rule was defensible and
+still wrong, because the decision never said *which failure* it was modelling. A redundancy metric
+is meaningless until the failure is named. It is named now, in section 15 and above.
 
 **Identity from the network.** `sjoin_nearest` in section 5 named each square's **straight-line**
 nearest facility; section 6 replaced the distance and never the name. `scipy.sparse.csgraph
@@ -531,6 +555,46 @@ on the page.
 **Not measured:** whether the venues that are open at weekends are the ones people would actually
 use in a heatwave. That is a question about behaviour, and nothing in this data touches it.
 
+
+## 22. This maps indoor shelter; the gemeente's map is outdoor cool space
+
+The open question asked whether this duplicates the municipal product and told us to settle it
+before claiming novelty. Settled 3 Sep 2026: it does not, and the difference is definitional
+rather than methodological.
+
+**The official layer.** "Afstand tot koelte" in the Klimaateffectatlas defines a *koele plek* as
+outdoor public space of at least **200 m2**, with a **300 m** threshold from the WHO guideline
+(sometimes 200 m for more vulnerable groups), measured over the **shortest walking route from a
+building**. The methodology traces to the HvA report *De hittebestendige stad*.
+
+**This project.** Indoor venues a person can sit inside during a heatwave - libraries, community
+centres, supermarkets, hotels, churches - published on koeltekaartamsterdam.nl, live since the
+summer of 2026 and not part of any published research.
+
+**Same city, same verb, different object.** Both measure walking distance to the nearest cool
+place; they disagree about what a cool place is. A resident with a shaded park 200 m away and no
+indoor venue within a kilometre is covered on one map and uncovered on the other, and both are
+correct. The maps are complementary, not competing.
+
+**What this does to the framing, and it is the useful part.** The contribution here is not
+methodological novelty - network distance to the nearest facility is exactly what the national
+atlas already does. It is the **object**: what changes when "cooling place" means somewhere you can
+sit indoors rather than a patch of green you can stand on. That belongs in the README's opening
+rather than in a footnote, and no coverage figure from this project should ever be quoted without
+saying which kind of koelteplek it counts.
+
+**Deliberately not claimed yet.** Press coverage of the municipal heat plan reports roughly 87% of
+residents within 1 km of a koelteplek and about half within 500 m, against 23.7% within 500 m here.
+That contrast is striking and is **not yet evidence of anything** - the figure has not been checked
+against the published layer, and the two numbers count different objects on possibly different
+population bases. It becomes a finding only after the layer is downloaded and both are recomputed on
+the same CBS grid. Until then it stays out of the README.
+
+**Sources:** the Klimaateffectatlas bijsluiter
+(`klimaatadaptatienederland.nl/stresstest/bijsluiter/bepalen-dreigingen/hitte/afstand-koelte/`) and
+the Nationaal Georegister record for "Afstand tot koelte - koelteplekken"
+(`776b8c7a-b382-402d-b157-6918c8c2d0d6`).
+
 ---
 
 ## Open questions
@@ -543,10 +607,10 @@ use in a heatwave. That is a question about behaviour, and nothing in this data 
 - **Real PET.** Ask the gemeente (`klimaatadaptatie@amsterdam.nl`) for the Klimaatrisicokaarten
   data and its methodology report. If it arrives, it replaces the surface-cover proxy and the
   proxy becomes the validation check.
-- **How this relates to the official product.** The gemeente publishes a "walking distance to
-  cooling areas" layer with 0-200 / 300-400 / 500+ m bands. Its definition of a koelteplek is
-  not documented publicly and is probably outdoor green space rather than indoor shelter. Settle
-  this before claiming novelty.
+- **Overlay the official layer.** Decision 22 settles what the gemeente's map *is* - outdoor space
+  of 200 m2 or more, at a 300 m threshold - but not how the two compare in numbers. Download the
+  "Afstand tot koelte" layer, recompute both on the same CBS grid, and report the two coverage
+  figures side by side. Until that is done, the reported municipal figures stay out of the README.
 - **Income and limited mobility.** Both named in the assignment brief. Income is too suppressed
   at 100 m; the Klimaatrisicokaarten carries `INWONERS_BEPERKT_MOBIEL` at buurt level. Neither
   needs 100 m resolution to be useful.
