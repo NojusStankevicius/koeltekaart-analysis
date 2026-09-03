@@ -3,7 +3,7 @@
 Every methodological choice in `koeltekaart.ipynb`, what was rejected, and why. Written so
 the analysis can be defended - or corrected - by someone who was not here when it was made.
 
-Started 31 Aug 2026. Last updated 1 Sep 2026 (sections 1-14).
+Started 31 Aug 2026. Last updated 3 Sep 2026 (sections 1-15).
 
 ---
 
@@ -82,6 +82,9 @@ depends on facilities this project does not otherwise account for and cannot kee
 OBA Waterlandplein and Huis van de Wijk Waterlandplein share a building and a coordinate.
 
 **Why:** for distance-to-nearest they are indistinguishable, so the duplicate is harmless.
+
+**Superseded for counting, 2 Sep 2026** - see decision 20. The reasoning below was right about
+what would break, and section 15 is exactly that case.
 
 **Consequence:** this would matter for any metric that counts facilities or models capacity.
 `sjoin_nearest` emits one row per tied facility, so the duplicate must be de-duplicated before
@@ -234,10 +237,11 @@ buurt level, applied as a conditional probability and labelled an assumption.
 against 23.7%), because single-person households concentrate in the well-served dense centre.
 Second null in a row.
 
-## 14. Exposure is surface cover from BGT, and it is a proxy, not PET
+## 14. Exposure is vegetation cover from BGT, and it is a proxy, not PET
 
-Green-blue fraction per 100 m square - vegetation plus water as a share of the square - computed
-from BGT `begroeidterreindeel` and `waterdeel` via the PDOK bulk download API.
+Green fraction per 100 m square - vegetation as a share of the square - computed from BGT
+`begroeidterreindeel` via the PDOK bulk download API. `waterdeel` is still downloaded and still
+computed, but only so that sections 12e and 13b can show why pooling it was wrong.
 
 **Rejected:** the Klimaateffectatlas PET raster (behind a contact form) and the gemeente's
 Klimaatrisicokaarten PET scores. Both are better measures. Neither was obtainable without
@@ -257,13 +261,21 @@ source - the same base the municipal maps are built from.
 
 **Limits, stated in the notebook:** no building height, albedo, wind or radiation, so a shaded
 narrow street and an open plaza score alike; BGT is *ground* cover, so a paved street under full
-tree canopy scores as stone; green and blue are pooled, though the correlation holds for green
-alone (0.159 against 0.208).
+tree canopy scores as stone.
+
+**Amended 2 Sep 2026, resolved 3 Sep 2026 - the pooling was a defect, not a caveat.** This decision
+originally pooled green and water, with a note that the correlation "holds for green alone (0.159
+against 0.208)". Sections 12e and 13b measured what that footnote was hiding: dropping water
+roughly doubles the agreement with TOjuli at square level (-0.096 to -0.222) and lifts zone-level
+agreement from chance to fair (kappa +0.015 to +0.345). Water had been kept because it correlated
+better with *distance* - selecting a proxy on its association with the independent variable rather
+than on whether it measures the thing it names. **The measure is now vegetation alone throughout.**
+See decision 19 for the evidence and for what moved.
 
 **Finding, and it is the strongest in the analysis:** access and exposure run in **opposite**
-directions. Green-blue cover rises monotonically with distance from a cooling place (18.9% in
-the nearest quintile to 33.0% in the farthest), and the stoniest quartile of the city has the
-best coverage (28.5% within 500 m) while the greenest has the worst (14.8%). Cooling places sit
+directions. Vegetation cover rises monotonically with distance from a cooling place (11.6% in
+the nearest quintile to 20.1% in the farthest), and the stoniest quartile of the city has the
+best coverage (28.6% within 500 m) while the greenest has the worst (16.6%). Cooling places sit
 where the libraries and supermarkets are, which is the dense stone centre. "Distance to cooling"
 and "need for cooling" are different maps.
 
@@ -273,8 +285,10 @@ Access, sensitivity and exposure are held as separate measured quantities. They 
 two ways, both reported:
 
 - **By filtering** (section 13) - a zone is "hot" or "elderly" if it exceeds the *city* median.
-  Of 342,220 residents beyond 1 km, 198,850 are also in stonier-than-median squares; 120,990
+  Of 342,220 residents beyond 1 km, 185,835 are also in stonier-than-median squares; 120,990
   are in overheating-prone housing; 52,645 are also in above-median-elderly areas.
+  *(The first figure was 198,850 under the pooled green-blue proxy; recomputed on vegetation alone
+  per decision 19.)*
 - **By weighting the people, not the criteria** (section 14) -
   `demand = residents x (1 + (RR-1) x elderly_share) x (TOjuli / city median)`.
 
@@ -349,6 +363,12 @@ Collapsing those into one order hides the distinction that matters for what to a
 **Zones with no measurable exposure are marked `unknown`**, not counted as cool. Three are
 industrial areas with no labelled housing at all.
 
+**Amended 2 Sep 2026 - "hot" here means indoor heat.** The typology's hot axis is TOjuli alone.
+Section 13b tested the alternative: defined from vegetation cover instead, four of these six zones
+survive; defined from the pooled green-blue proxy, one does. The classification is therefore stable
+against a *defensible* alternative and unstable against a *defective* one, which is a finding about
+the proxy rather than about the typology - but the label should be read as "indoor-hot + elderly".
+
 **Finding:** four of the six *hot + elderly* zones are central or near-central islands -
 Oostenburg, the Westelijke eilanden, KNSM/Borneo. Dense converted-dock and pre-war stock,
 elderly residents, and surrounded by water so the walking network makes them remote despite
@@ -376,6 +396,141 @@ residents; Gein 2 reaches 11,865. That gradient is the actionable part.
 risk is highest. Reaching 2,975 people in KNSM/Borneo will never outscore 27,000 in West, so
 section 17's typology remains the record of small-but-severe need.
 
+
+## 19. The two exposure measures were checked against each other, and the pooled proxy failed
+
+Sections 11 and 12 each compared one exposure measure against distance and found the same
+inversion. Section 12e asked the question neither had: do they agree *square by square*?
+
+**Why it needed asking.** "Two unrelated measures, one conclusion" was the strongest claim in the
+project, and agreeing about a distance gradient is much weaker evidence than it sounds - both
+measures could be tracking density and nothing else, since dense squares are stony and their
+housing is older and deeper. That would be one fact counted twice.
+
+**What was measured.** Spearman rank correlation between the two, raw and with the population rank
+residualised out; then at zone level, Cohen's kappa between the two possible definitions of
+"hot", and the resulting typology crosstab.
+
+**Result 1 - the pooled proxy is close to worthless for this.** Green-blue against TOjuli is
+**-0.096** at square level (**-0.056** net of density), and at zone level **kappa = +0.015** against
+a chance agreement of 0.541. Raw agreement of 55% looks like weak concordance and is in fact a
+coin flip; kappa is the statistic to report, because both measures call most zones not-hot and the
+marginals inflate everything else.
+
+**Result 2 - the water term is the cause.** Dropping water: **-0.222** at square level (-0.199 net
+of density) and **kappa = +0.345** at zone level. The mechanism is visible in the priority zones -
+KNSM-eiland / Borneo is 53.8% green-blue of which 49.9 points is open water and 3.9 is vegetation.
+The pooled proxy was scoring the stoniest converted dock islands in Amsterdam as among its greenest
+places, and those are exactly the zones decision 17 leads with.
+
+**The methodological error being corrected.** Decision 14 pooled green and water partly because the
+pooled column correlated better with *distance to a cooling place* (0.208 against 0.159). That is
+selecting a proxy on its association with the independent variable rather than on whether it
+measures the thing it names. Cooling places sit inland in the dense centre, so the water term
+encodes distance from the IJ and the canal belt; it made the headline correlation larger and the
+measure worse. Open water has negligible evapotranspiration, releases stored heat overnight when
+the risk peaks, and shades nothing.
+
+**Result 3, and the one that matters most - there is still no convergent validity.** -0.222 is
+five percent of variance. Ground cover and NTA 8800 exceedance are different mechanisms: TOjuli is
+driven by glazing, orientation, insulation and ventilation, so a sealed new-build on a bare plaza
+reads cool and a pre-war top-floor flat under a plane tree reads hot. They are two axes and neither
+substitutes for the other. The claim that survives is about the **distance gradient** - both
+measures invert against access - not about which square is hot.
+
+**Resolved 3 Sep 2026.** All four dependent places now use `green_frac`: the section 11b gradient,
+the section 11c intersection, the two exposure figures and the section 13 display column. Section
+14's demand weighting never used surface cover (it weights by TOjuli) and section 15 uses no proxy
+at all, so nothing else moved.
+
+**What changed, and it is less than the diagnostic implied.** The distance gradient falls from
+18.9%-33.0% to **11.6%-20.1%** and its correlation with distance from 0.208 to **0.159**. Coverage
+by stoniness quartile barely moves: stoniest 28.5% -> **28.6%** within 500 m, greenest 14.8% ->
+**16.6%**. The section 11c intersection falls from 198,850 to **185,835**, a 6.5% reduction. Every
+conclusion in sections 11-13 survives unchanged - the direction, the ranking and the inversion are
+all intact - and that is the point worth recording: **the defective proxy was not producing false
+conclusions, it was producing overstated magnitudes and one badly wrong classification.**
+
+**Where it did matter:** the zone table in section 11c. Oostenburg (mean vegetation 0.032) and the
+Westelijke eilanden (0.014) now appear in the stonier-than-median list they were excluded from,
+which is exactly the failure decision 19 predicted, showing up in the section that first used the
+proxy.
+
+**Still true:** vegetation cover and TOjuli agree at -0.222, five percent of variance. Repointing
+the variable fixed a defect; it did not create convergent validity, and the paragraph below still
+stands.
+
+**What this costs the project, stated plainly.** Two proxies for the same construct disagree at
+close to chance, and nothing in the data can adjudicate between them - no measurement of heat harm
+exists at this resolution to check either against. That is the exact shape of the missing outcome
+variable named in the README. The gap was always on the need side of the analysis, not the access
+side; the coverage figures are geometry and need no external validation, while every statement
+about *which* underserved areas matter rests on proxies that have now been shown to disagree.
+
+
+## 20. Facilities are clustered into venues, and identity comes from the network
+
+Section 6e makes two changes to what counts as one cooling place.
+
+**Venues, not records.** The 80 active records collapse to **78 venues** by clustering anything
+within 10 m. The threshold is read off the data, not chosen: the pairwise distances are
+**0.0 m** (OBA Waterlandplein / Huis van de Wijk Waterlandplein, one address), **3.7 m** (OBA Banne
+/ Huis van de Wijk De Banne, house numbers 249 and 243) and then **51.9 m** (AH Waterlandplein, a
+supermarket on the same square). Any cut between 4 and 50 m gives the same clustering, so the
+number is not doing any work.
+
+**Rejected: matching on address.** It merges the Waterlandplein pair and misses the Banne pair -
+two house numbers, one building, 3.7 m apart. Proximity is the property that matters; the address
+is a proxy for it that fails here.
+
+**Why it is needed now and was not before.** Decision 6 is correct that distance-to-nearest cannot
+tell two organisations in one building apart. That stops being harmless the moment a metric
+*counts* venues: without clustering, squares around Waterlandplein and the Banne would score two
+options where there is one building, look redundantly served, and drop out of the single-point-of
+-failure list in section 15. Both sites are in Noord, near zones this analysis already highlights.
+
+**Identity from the network.** `sjoin_nearest` in section 5 named each square's **straight-line**
+nearest facility; section 6 replaced the distance and never the name. `scipy.sparse.csgraph
+.dijkstra(min_only=True)` settles every node once and reports which source reached it, so one pass
+replaces 80 - and its distances must reproduce the section 6b multi-source result exactly.
+
+**How wrong the straight line was: it names a different venue for 1,802 of 7,043 squares - 24.2% of
+residents.** Concentrated in Oost, Centrum and Noord, which is the water again. No published figure
+used that column; every figure in section 15 depends on it.
+
+**Two implementation bugs, recorded because the second is the instructive one.**
+
+1. The graph has been **undirected** since section 6a (`ox.convert.to_undirected`). Rebuilding it
+   as a `DiGraph` for scipy made every edge one-way and left the entire city unreachable from every
+   facility.
+2. The assertion that should have caught it **passed vacuously**. It compared the two distance
+   vectors on the intersection of their non-null indices - and with everything unreachable, that
+   set was empty. `np.allclose` over an empty array is `True`. An assertion over a filtered set
+   must also assert the size of the set, or it tests nothing precisely when everything is broken.
+   The check now compares the count first.
+
+## 21. Opening hours are an annotation on supply, and still not an input
+
+Decision 7 excludes opening hours from coverage: they change season to season, and a structural
+finding conditioned on them is stale on arrival. That argument still holds, and coverage is
+unchanged.
+
+It does not survive intact into section 15. "These residents have exactly one place to walk to" is
+a claim about **reliability**, and **45 of the 78 venues are closed on Sunday** (42 of 80 records;
+29 records are also closed on Saturday). Nine of the twelve largest single points of failure are
+Sunday closures. A sole provider that is shut does not provide.
+
+**The resolution:** hours stay out of the computation and appear as an **annotation** on the venue
+chart. The structural claim stays hours-free and stays comparable with sections 1-14; the reader
+can still see which single points of failure are also weekend gaps.
+
+**Rejected: a Sunday-only coverage figure.** Same objection as decision 7 - it would be stale on
+arrival - and worse here, because it would quietly redefine the denominator of every supply number
+on the page.
+
+**Not measured:** whether the venues that are open at weekends are the ones people would actually
+use in a heatwave. That is a question about behaviour, and nothing in this data touches it.
+
 ---
 
 ## Open questions
@@ -395,10 +550,11 @@ section 17's typology remains the record of small-but-severe need.
 - **Income and limited mobility.** Both named in the assignment brief. Income is too suppressed
   at 100 m; the Klimaatrisicokaarten carries `INWONERS_BEPERKT_MOBIEL` at buurt level. Neither
   needs 100 m resolution to be useful.
-- **Supply-side questions, entirely untouched.** How many residents each existing cooling place
-  serves, which areas depend on a single one, and where demand exceeds what one place can hold.
-  The multi-source Dijkstra already computes the first two.
+- ~~**Supply-side questions, entirely untouched.**~~ **Answered in section 15** for load and
+  single-point dependency. **Capacity is struck as unanswerable:** every venue counts the same
+  regardless of size - a library and a supermarket cafe are not equivalent shelter - but there is
+  no floor area, occupancy limit or headcount in any available source, so "where demand exceeds
+  what one place can hold" would have to be built on an invented proxy. It is not a to-do; it is
+  out of reach until someone surveys the buildings.
 - **Garden access.** In the municipal framework as adaptive capacity. Someone with a shaded
   garden does not need to walk anywhere - a demand-side correction this analysis lacks entirely.
-- **Capacity.** Every facility currently counts the same regardless of size. A library and a
-  supermarket cafe are not equivalent shelter.

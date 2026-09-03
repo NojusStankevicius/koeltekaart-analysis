@@ -9,3 +9,6 @@ cache/
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
+
+# macOS
+.DS_Store
