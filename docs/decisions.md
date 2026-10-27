@@ -3,7 +3,7 @@
 Every methodological choice in `koeltekaart.ipynb`, what was rejected, and why. Written so
 the analysis can be defended - or corrected - by someone who was not here when it was made.
 
-Started 31 Aug 2026. Last updated 3 Sep 2026 (sections 1-15).
+Started 31 Aug 2026. Last updated 29 Sep 2026 (decision 30: study extent and walking network).
 
 ---
 
@@ -105,7 +105,10 @@ lower on weekends. Recorded here so this is not mistaken for an oversight.
 
 ## 8. Distance is measured over the pedestrian network
 
-Walking distance over the OSM `network_type="walk"` graph, computed with one multi-source
+*Amended 29 Sep 2026 by decision 30: the graph now covers the whole city and treats cycle paths as
+walkable, as Dutch law does where there is no footway. Figures below are post-fix.*
+
+Walking distance over the OSM walking graph, computed with one multi-source
 Dijkstra seeded from all facilities at once. Snap distances at **both** ends are included -
 the facility end via a virtual node carrying its snap distance, since multi-source Dijkstra
 starts every source at zero.
@@ -113,19 +116,22 @@ starts every source at zero.
 **Rejected:** straight-line distance, used in section 5 and superseded.
 
 **Why:** Amsterdam is built on water, and straight-line distance systematically overstates
-coverage - by up to **31 percentage points**. At 500 m it reports 50.9% of residents covered
-where the true figure is 23.7%. That is not a refinement; it is the difference between two
-conclusions. Median detour ratio is 1.55.
+coverage - by up to **23 percentage points**. At 500 m it reports 49.6% of residents covered
+where the true figure is 27.3%. That is not a refinement; it is the difference between two
+conclusions. Median detour ratio is 1.42. *(Pre-fix: 31 pp, 50.9% against 23.7%, 1.55.)*
 
 **Guardrail:** `assert near["detour"].min() >= 1`. No walking route can be shorter than the
 straight line, so a ratio below 1 means a snap distance is missing at one end. This assertion
 caught exactly that bug.
 
-**Known limitation - ferries.** `network_type="walk"` excludes ferry routes, so the free and
+**Known limitation - ferries.** The walking filter excludes ferry routes, so the free and
 frequent GVB crossings of the IJ are treated as impossible. This was expected to distort
-Noord badly; measured, Noord's median detour is 1.57, in line with Oost (1.64) and Zuidoost
-(1.60), because Noord residents' nearest facility is generally already in Noord. The real
-outlier is Weesp at 2.98 - annexed in 2022, physically separate, and genuinely isolated.
+Noord badly; measured, Noord's median detour is 1.36, the lowest of any district (Oost 1.46,
+Zuidoost 1.44), because Noord residents' nearest facility is generally already in Noord.
+
+**Withdrawn 29 Sep 2026:** "the real outlier is Weesp at 2.98 - genuinely isolated." That figure
+measured the edge of a graph that did not reach Weesp (decision 30). Weesp's detour is 1.38; what
+isolates it is that it has no cooling place, not its streets.
 
 ## 9. Thresholds: 500 m headline, 1,000 m for zones
 
@@ -138,9 +144,9 @@ chronically ill, mobility-limited - move at roughly half that, in the heat, whic
 why they need somewhere to go. 500 m is 10-12 minutes for them.
 
 **Why 1,000 m for zones, and this is a genuine tension:** clusters are only useful if they are
-smaller than the city. At 500 m the underserved area is a single connected blob of 27 km2
-holding over 400,000 people - true, and useless as a recommendation. At 1,000 m the largest
-zone is 3.7 km2, neighbourhood-sized and nameable.
+smaller than the city. At 500 m the underserved area is a single connected blob of 25 km2
+holding 378,000 people - true, and useless as a recommendation. At 1,000 m the largest
+zone is 3.5 km2, neighbourhood-sized and nameable.
 
 This threshold was chosen for what it makes *visible*, not for what it makes the numbers say,
 and both figures are reported. Note the direction of the bias: 1,000 m is generous for this
@@ -149,11 +155,11 @@ standard.
 
 **Report the curve, not a single number.** Any one threshold is arbitrary; the curve shows how
 sensitive the conclusion is to that arbitrariness. And with 80 facilities for ~900,000 people,
-near-total undersupply at any walkable threshold is arithmetically inevitable - "77% of
+near-total undersupply at any walkable threshold is arithmetically inevitable - "73% of
 Amsterdam is underserved" is true but close to uninformative, and invites the response that
 the threshold was picked to produce it.
 
-## 10. Output is areas, not buildings
+## 10. Output is areas, not buildings  *(revised by decision 27)*
 
 Section 7 reports contiguous underserved zones, ranked by the population inside them, each
 labelled with the neighbourhoods it spans.
@@ -284,7 +290,9 @@ and "need for cooling" are different maps.
 Access, sensitivity and exposure are held as separate measured quantities. They are combined
 two ways, both reported:
 
-- **By filtering** (section 13) - a zone is "hot" or "elderly" if it exceeds the *city* median.
+- **By filtering** (section 13) - a zone is "hot" if its TOjuli is at or above the *city median*
+  across squares (1.80), and "elderly" if its 65+ share is at or above the *city share* (13.5%, a
+  population-weighted mean, not a median).
   Of 342,220 residents beyond 1 km, 185,835 are also in stonier-than-median squares; 120,990
   are in overheating-prone housing; 52,645 are also in above-median-elderly areas.
   *(The first figure was 198,850 under the pooled green-blue proxy; recomputed on vegetation alone
@@ -349,10 +357,14 @@ was caught.
 
 ## 17. Underserved zones are classified, not ranked
 
-Section 13 sorts the 42 zones with 500+ residents into *hot + elderly*, *hot only*, *elderly
-only*, *neither*, against city-wide medians.
+*Amended 28 Sep 2026: descriptive only, not a priority rule - see decision 29.*
 
-**Why city medians, not medians across the gaps:** comparing gaps only to other gaps would
+Section 13 sorts the 42 zones with 500+ residents into *hot + elderly*, *hot only*, *elderly
+only*, *neither*, against city-wide levels: the median TOjuli across squares, and the city's 65+ share.
+The two axes use different statistics; the notebook's variable names say so (`city_tojuli` is a
+median, `city_eld` a share), and every label should too.
+
+**Why city levels, not levels across the gaps:** comparing gaps only to other gaps would
 guarantee half of them look fine by construction.
 
 **Why a typology rather than a ranking:** the four groups need different responses, and the
@@ -503,11 +515,12 @@ one building are two independent chances of survival, and merging them understat
 tie-breaking guard), criticality per organisation (the modelled failure). Both are reported.
 
 **What it changes, measured rather than asserted.** Residents whose only option is a single
-organisation: **177,160** against **180,685** for a single building - 83% of the covered population
-against 84%. Exactly two sites differ, which is the two merged pairs and nothing else: the Banne
+organisation: **207,125** against **212,140** for a single building - 82% of the covered population
+against 84% *(post decision 30; the paragraph's other figures are pre-fix)*. Exactly two sites differ, which is the two merged pairs and nothing else: the Banne
 falls from 3,135 sole-dependent residents to **0**, Waterlandplein from 390 to **0**, because in
-each case the co-located neighbour survives the failure. Venues with no backup at all: 49 rather
-than 50. The aggregate barely moves; the claim about those two sites reverses completely.
+each case the co-located neighbour survives the failure. Sites with no backup at all, among the
+73 that serve anyone: 44 rather than 45. (This was published as 49, which counted the five sites
+that are nearest to nobody - they have no backup only vacuously.) The aggregate barely moves; the claim about those two sites reverses completely.
 
 **The real lesson, and it is not about clustering.** The original merge rule was defensible and
 still wrong, because the decision never said *which failure* it was modelling. A redundancy metric
@@ -518,9 +531,10 @@ nearest facility; section 6 replaced the distance and never the name. `scipy.spa
 .dijkstra(min_only=True)` settles every node once and reports which source reached it, so one pass
 replaces 80 - and its distances must reproduce the section 6b multi-source result exactly.
 
-**How wrong the straight line was: it names a different venue for 1,802 of 7,043 squares - 24.2% of
-residents.** Concentrated in Oost, Centrum and Noord, which is the water again. No published figure
-used that column; every figure in section 15 depends on it.
+**How wrong the straight line was: it names a different venue for 1,112 of 7,438 squares - 14.5% of
+residents** (24.2% before decision 30, when cycle paths were not walkable and routes were longer).
+Concentrated in Oost, Nieuw-West and West. No published figure used that column; every figure in
+section 15 depends on it.
 
 **Two implementation bugs, recorded because the second is the instructive one.**
 
@@ -584,7 +598,7 @@ rather than in a footnote, and no coverage figure from this project should ever 
 saying which kind of koelteplek it counts.
 
 **Deliberately not claimed yet.** Press coverage of the municipal heat plan reports roughly 87% of
-residents within 1 km of a koelteplek and about half within 500 m, against 23.7% within 500 m here.
+residents within 1 km of a koelteplek and about half within 500 m, against 27.3% within 500 m here.
 That contrast is striking and is **not yet evidence of anything** - the figure has not been checked
 against the published layer, and the two numbers count different objects on possibly different
 population bases. It becomes a finding only after the layer is downloaded and both are recomputed on
@@ -612,8 +626,8 @@ commensurable only within the first.
 **Rejected: a composite priority score.** Blending reach, severity and fragility into one ranked
 list would be the `build_hvi.py` object of decision 15 with more inputs - a number nobody can see
 inside or test. The output is a table with the axes kept apart plus a rule for reading it: reach
-says how much a site buys, the typology says what kind of need it buys it for, fragility is a
-different budget about different residents.
+says how much a site buys, the neighbourhood indicators say whom it buys it for (read side by
+side, decision 29), fragility is a different budget about different residents.
 
 **Rejected: an exchange rate between expanding and protecting.** The best new site reaches 21,687
 residents; the largest single point of failure holds 7,520. Converting one into the other requires
@@ -625,8 +639,11 @@ a *hot + elderly* zone (Haarlemmerbuurt-West, fifth by reach). The rest split ac
 class. Siting on reach alone puts seven of eight venues outside the most severe category; siting on
 severity alone forgoes the top four by reach.
 
+*Amended 28 Sep 2026: "severe" below means* hot + elderly, *which decision 29 withdraws as a
+measure of severity. The findings stand as statements about that class.*
+
 **Finding - one site satisfies every criterion.** Zone 87, the Westelijke eilanden and
-Haarlemmerbuurt-West: 11,160 residents, 21.3% over 65 against a city median of 13.5%, TOjuli 2.19
+Haarlemmerbuurt-West: 11,160 residents, 21.3% over 65 against a city share of 13.5%, TOjuli 2.19
 against 1.80, and the highest achievable reach of the six severe zones. This is the closest thing
 to an unambiguous recommendation the analysis produces, and it does not depend on which section
 you start from.
@@ -640,23 +657,394 @@ its absence from the siting output is not read as its absence from the problem.
 criticality is a headcount; the first draft printed 27,267 beside 7,520 as though they were the
 same quantity. The unweighted reach of that site is 21,687, and that is the number now compared.
 
+## 24. Outdoor exposure is measured, not proxied - and the proxy was the wrong variable
+
+Section 17 replaces `green_frac` with **gevoelstemperatuur (PET)** at 2 m and **tree canopy** at
+25 cm, both from the Klimaateffectatlas, both aggregated to the CBS 100 m grid by exact block
+reduction.
+
+**Why this was possible now.** Decision 19 closed by stating that no measurement of outdoor heat
+existed at this resolution to adjudicate between the two proxies, and the open questions listed
+"Real PET" as something to request from the gemeente by email. It did not need requesting: the
+national Klimaateffectatlas publishes it as open data under CC BY 4.0.
+
+**The result, and it is not the one the proxy implied.**
+
+| proxy | vs PET, all squares | vs PET, `pet_cov` >= 0.7 |
+|---|---|---|
+| tree canopy | **-0.680** | **-0.869** |
+| vegetation cover (`green_frac`) | -0.104 | -0.364 |
+
+**Rejected: that the denominator explains it.** `green_frac` divides by the whole 10,000 m2
+including roofs while PET is defined only on open ground. Renormalising green onto PET's own
+footprint moves it from -0.104 to -0.120. The denominator is not the problem; the variable is.
+
+**The mechanism, stated plainly.** Shade sets outdoor perceived temperature. Canopy is where the
+shade is. Ground cover measures lawns, beds and verges - real vegetation casting almost no shade on
+a person standing beside it. This is decision 19's argument one level deeper: that decision removed
+open water because it "shades nothing", and the same test applied honestly reaches most of the
+remaining green term.
+
+**The consequence, and it costs the project a headline.** `green_frac` correlates with network
+distance at **+0.212**. Canopy correlates at **-0.000** and PET at **+0.046**, and the PET
+quartiles are not monotonic (20.2%, 23.9%, 26.1%, 24.6%). The vegetation gradient was real about
+vegetation and wrong about heat: it was tracking **density**, exactly as decision 19 warned it
+might be. Stony squares are dense, dense squares are central, central squares are near the existing
+cooling places. One fact, counted as two.
+
+**What survives.** TOjuli still inverts against access at **-0.135**, monotonically, 17.4% to
+27.4%. It is an indoor measure from an unrelated source and nothing here touches it. The coverage
+figures are geometry and are unaffected.
+
+**What must change in the README.** "Two unrelated measures agree on that gradient" no longer
+holds. The supportable claim is narrower: the indoor measure shows the inversion, the direct
+outdoor measure shows no gradient, and the vegetation proxy that appeared to show one was reading
+density.
+
+**Not done, deliberately.** The section 13 typology is unchanged - its hot axis is TOjuli alone and
+is unaffected. The 13b robustness check used `green_frac` as its alternative definition and should
+be rerun against canopy; that is an open question, not a silent edit.
+
+## 25. Socio-economic vulnerability enters at buurt level, as a third axis
+
+Section 18 adds frail health, severe loneliness, SES-WOA and rental share from the
+Klimaateffectatlas, all CBS-buurt resolution, all dated 22 July 2026.
+
+**`-99997` is a suppression sentinel** stored as a plain number in all four columns, with no null
+and no flag. Unmasked, the population-weighted city mean of `broze_gezondheid` is **-2012.77**.
+
+**Rejected: filtering on `< 0`.** `ses_woa` is a standardised score with genuine values down to
+-1.632; that filter would discard half of Amsterdam. The mask is on the sentinel alone.
+
+**Suppression is reported per resident, not per buurt.** 307 of Amsterdam's 517 buurten are
+suppressed for `ses_woa` and they hold **1.3% of residents**, because the suppressed buurten are
+the near-empty ones. All four layers land between 1.1% and 2.2%.
+
+**This closes the income question decision 11 left open.** Income was rejected at 100 m for being
+54% suppressed across 71% of residents. The same variable at buurt level costs 1.3%. The trade is
+coarser resolution for near-complete coverage, and at buurt level it is worth taking.
+
+**Finding - age and frailty run in opposite directions.** Across the 42 underserved zones, frail
+health against elderly share is **-0.267** and loneliness against elderly share is **-0.453**. The
+three social measures agree strongly with each other (frailty-loneliness **+0.721**,
+loneliness-SES **-0.801**) and with neither existing axis (frailty-TOjuli **-0.122**). It is a
+third axis, not a better version of either.
+
+Two zones make the cost concrete. Both are classed `neither` by the section 13 typology - the class
+that is greyed out of the priority set. Zone 131 (Hakfort/Huigenbos) is 49.4% frail and 28.2%
+lonely; zone 125 (Venserpolder-Oost) is 44.3% frail. The city is 37.0% and 18.2%. They are
+invisible to the typology precisely because they are young, cool-housed and far from everything.
+
+**Rejected: replacing age with frailty.** They do different jobs. Age drives walking speed, which
+is the assumption the 500 m threshold rests on (decision 9); frailty drives harm once the heat
+arrives. Collapsing them into one score is the composite decision 23 refused.
+
+**Left open.** Whether frailty enters the priority rule is a judgement about who the city is for.
+The typology keeps its section 13 definition until a person decides otherwise.
+
+**Limits.** Buurt resolution means ecological inference - these *areas* differ, and no individual
+is described. The RIVM figures are self-reported survey data with their own response bias.
+
+## 26. The dashboard orders candidate areas greedily, and that is arithmetic, not a plan
+
+Section 14b exports twelve candidate areas with their catchments, and the dashboard orders them by
+marginal gain at whatever threshold the reader has set: the best area first, then the best of what
+remains once the first one's catchment is already covered.
+
+**This is a maximum-coverage heuristic, which decision 18 rejected.** What decision 18 rejected was
+running it over **named buildings** and presenting the output as a recommendation - it "made a
+social recommendation from geometric evidence", naming specific supermarkets and a mosque. The
+distinction that makes this admissible:
+
+- the units are 200 m grid points thinned to areas at least 1,200 m apart, reported as areas;
+- the output is a quantity (residents newly within a walk), not a shortlist of premises;
+- the ordering exists to show **overlap**, which is the one thing a ranked list of individual
+  scores cannot show. The second-best site on its own merits is often not the second-best
+  addition, because much of what it reaches the first one already covers.
+
+**Why the order differs from section 14's ranking.** Section 14 scores by *weighted* demand within
+1 km; the dashboard counts *unweighted* residents within the chosen threshold and subtracts
+overlap. At 500 m this puts IJselbuurt-West first where section 14 leads with Lootsbuurt. Neither
+is wrong - they answer different questions, and both are shown.
+
+**The finding, and it is the uncomfortable one.** Twelve new cooling places move coverage from
+**23.7% to 28.5%** at 500 m. Twelve sites - a 15% increase in the network - buy under five
+percentage points. At 1,000 m the same twelve buy 62.3% to 76.4%, because catchments that overlap
+little at 500 m overlap a great deal at 1,000 m.
+
+This is decision 9's arithmetic made concrete: with 80 places for ~900,000 people, no plausible
+number of additions fixes coverage at a walkable threshold. The honest read is that siting is
+about *which* underserved people get reached, not about closing the gap.
+
+**Not a build order.** Availability, suitability and willingness are not in this data, and the
+ranking knows nothing about them. It says what each area would buy, not which to acquire.
+
+## 27. Decision 10 is revised: the dashboard names venues, because a person is choosing
+
+Decision 10 rejected a greedy maximum-coverage search over OSM buildings, which "made a social
+recommendation from geometric evidence" and named specific supermarkets, a restaurant and a
+mosque as sites. The dashboard now lists named venues inside each underserved area. That is a
+change of position, not an oversight, and the reasoning is:
+
+**What decision 10 was protecting was the judgement, not the names.** The objection was to a
+*model* declaring a winner from geometry alone. The planner declares nothing: it lists what
+already stands in a gap, ordered by how many unserved residents each would bring within a walk,
+and a person picks. The notebook still names no site and the analysis still ends in areas.
+
+**Excluding shops was inconsistent with the scheme being analysed.** The 80 existing
+koelteplekken include supermarkets (AH Osdorpplein XL, AH Waterlandplein, Albert Heijn
+Bijlmerplein, Jumbo Ouderkerk), hotels (Hotel Casa, Leonardo Royal), cafes and restaurants
+(Cafe Groenhoven, Hemelsbreed Cafe, Die Port van Cleve), care homes (Amsta, Amstelring), a
+university building (HvA Wibauthuis), churches, buurthuizen, libraries and theatres. A candidate
+list that ruled out the very venue types the gemeente already uses would be describing a
+different scheme. **Rejected: a civic-only shortlist**, tried first and discarded for exactly
+this reason.
+
+**Method.** OSM features across nineteen kinds, named only (4,433 features), one venue per name
+and kind *within 50 m* (an OSM node and its building outline are one shop), dropped if within
+40 m of an existing koelteplek: **4,322 venues city-wide**. Each gets a network catchment to
+`SLIDER_MAX`, cached to `venue_reach.npz`. **Every venue that would newly reach anyone, or give
+anyone a second option, at some walk up to 1,500 m is exported: 4,242.** The dashboard ranks
+them; it does not shortlist them.
+
+**Amended 28 Sep 2026 - no shortlist, and three biases removed.**
+
+- **A de-duplication bug.** Venues were de-duplicated on name and kind *city-wide*, which left
+  Amsterdam with exactly one Albert Heijn, one Jumbo, one Lidl and one Dirk. It is now by place:
+  82 Albert Heijn branches, 250 supermarkets where there were 84. The query itself is unchanged -
+  it is served from the osmnx cache of 14 Sep 2026.
+- **A threshold bias.** Selection scored venues on residents beyond `RADIUS` (1,000 m) only, so a
+  venue whose catchment lay in the 500-1,000 m band - uncovered at the page's default walk - scored
+  zero and was never listed. Value is now the 300-1,500 m average the dashboard itself offers.
+- **Nothing was selected for a second option**, so that ranking ranked a sample chosen for
+  something else.
+
+**Rejected: a shortlist.** Quotas per stadsdeel, 120 m spacing and per-kind caps used to prune the
+list to a few hundred. But most listed venues will be unsuitable or will refuse, so the useful
+output is a long ranked list, and the near neighbours that spacing removed are exactly the fallback
+when the first choice says no. The density bias the quotas corrected is handled in the dashboard
+instead, with a district filter. The five venues topping *Newly reached* at 500 m were all absent
+from the old shortlist.
+
+**Rejected: attributing a venue to the zone it stands in.** Containment is the wrong test - a
+venue two streets outside a gap can serve it better than anything within. Judged that way, 13
+zones and 24,955 residents had no suggestion at all, among them Ruys de Beerenbrouckbuurt, the
+frailest neighbourhood in Amsterdam. Attribution is now by catchment overlap, and 41 of the 42
+zones have something to offer; the exception is Hogewey-Zuid, already recorded in decision 23 as
+physically isolated.
+
+**Rejected: searching only inside the underserved zones**, which is what the first version did.
+It made the zones the navigation, and the zones are a geometric artefact - contiguous stretches
+beyond a 1,000 m walk holding 500+ residents. A venue two streets outside a blob can serve more
+unmet need than one inside it, and that search could never see it. The evidence is in the result:
+**103 of the 264 exported candidates sit outside every named area**, and the highest-reaching
+venue in the city - Cafe Chris Scholten, 9,970 people - is one of them. Zone membership is now a
+label on a candidate, not a filter over them.
+
+**What is still not claimed.** Availability, suitability, willingness, floor area, opening hours
+and whether the owner would ever agree are all outside this data. The ordering is reach, and
+reach only. The footer says so on every view.
+
+**Why it is worth having.** Decision 26 established that no plausible number of additions closes
+the gap, so the question was never "which sites solve it" but "which of the places that exist
+would reach whom". That is a question about named buildings, and refusing to name them left the
+reader unable to ask it.
+
+## 28. Underserved areas stop being a unit of navigation
+
+Sections 7 and 13 build 42 contiguous "underserved areas" - stretches beyond a 1,000 m walk
+holding 500+ residents - and decision 10 made them the analysis's output. The dashboard no longer
+navigates by them. Three measurements decided it:
+
+**They only see half the problem at the working threshold.** At 500 m, **48%** of the 692,175
+people beyond reach fall inside a named area. At 1,000 m it is 97% - because 1,000 m is the
+threshold the areas were built at. They are a lens calibrated to one boundary, used in an
+interface where the boundary moves.
+
+**They are not comparable to each other.** 555 to 35,140 residents, a **63x** spread. The five
+largest hold 44% of all area residents. "42 underserved areas" is a count of things that are not
+the same kind of thing.
+
+**They are not homogeneous in what matters.** Across the 31 areas spanning more than one buurt,
+frail health varies by a median of **9.3 percentage points** within a single area, and up to
+**28.6** - Holendrecht-Zuid runs from 21.8% to 50.4%. A unit that averages across that range in
+the measure driving the decision is a bucket, not a unit.
+
+**What replaces them.** Places (442 named venues, ranked by reach) and neighbourhoods (467 CBS
+buurten). Buurten carry real names, are the native grain of the frail-health, loneliness and SES
+data, do not depend on a threshold, and give ten times the resolution. The section 13 typology
+applies unchanged at buurt level - same median splits on the same two axes - classifying 442
+buurten instead of 42 areas.
+
+**What is kept.** The areas remain a finding: contiguity is the evidence for decision 9's point
+that at 500 m the gap is a single 27 km² blob rather than scattered pockets, and the 42-area
+figure stays in the README as an analysis result. They are simply not how a reader browses.
+
+**Rejected: keeping areas as a third lens.** Three units competing as peers is what made the
+grain confusing in the first place, and this one was the weakest of the three.
+
 ---
+
+
+
+
+
+## 29. The heat x age typology describes; it does not set priority
+
+Section 13 sorts underserved areas into *hot + elderly*, *hot only*, *elderly only* and
+*neither*, and until now *hot + elderly* was read as "the most severe" - in section 13c's
+"priority zones", in section 16's "six most severe", and in decision 23's single unambiguous
+recommendation. That reading is withdrawn. The typology stays as one descriptive lens.
+
+**Why two flags were carrying too much.**
+
+- **The heat axis is narrow.** TOjuli exists only for dwellings with an energy label from 2021;
+  roughly 141,000 residents, 16% of the city, live in housing it does not measure (decision 16).
+  It is indoor overheating risk alone, and agrees with outdoor heat at only -0.222.
+- **The age axis points away from frailty.** Across the 42 zones, elderly share correlates with
+  frail health at -0.267 and with severe loneliness at -0.453 (decision 25). A rule built on age
+  therefore passes over the most health-vulnerable places by construction: Hakfort/Huigenbos and
+  Venserpolder-Oost are *neither*, and Ruys de Beerenbrouckbuurt, the frailest neighbourhood in the
+  city at 50.2%, is *hot only* on a TOjuli of 1.88 against a split of 1.80.
+- **Median splits are cliffs.** Decision 15 already argued this against filtering: a zone at 13.4%
+  over 65 and one at 13.6% land in different classes.
+- **The two were chosen before the better measures existed.** Measured PET and canopy (section 17)
+  and frailty, loneliness and SES (section 18) arrived after the typology was fixed.
+
+**What changes.** The dashboard no longer labels neighbourhoods or plots heat against age. A
+neighbourhood is compared with the city on all seven indicators side by side - 65+, frail health,
+severe loneliness, indoor overheating, PET, canopy, mean walk - with none promoted over the others.
+No ranking ever used the typology, so no number on the page moves. In the notebook, section 13c
+and section 16 now name the class for what it is rather than calling it priority, and decision
+23's zone-87 finding reads as the one place where the two original flags and reach agree, not as
+the recommendation.
+
+**Rejected: a composite vulnerability index.** Decision 15's objection stands - weights nobody can
+see or test. **Rejected: adding a frailty flag.** A third median split is a third cliff; it would
+make the typology more elaborate without making it more defensible.
+
+## 30. The study extent is the city, and the walking network includes cycle paths
+
+*29 Sep 2026. Two defects, found together while rebuilding section 6 from scratch
+(`walking_distance.ipynb`). Both made the analysis wrong about Weesp; the second also made it
+pessimistic everywhere.*
+
+**Defect 1 - the extent was the facilities', not the city's.** The CBS grid was read with the
+bounding box of the 80 cooling places plus 2 km, and the OSM graph was downloaded for the same
+bounding box plus 0.02°. Both end at x ≈ 130 km (RD); Weesp runs to 136 km. **23,505 Weesp
+residents (2.5% of the city) were never in the analysis**, and the 2,595 who were had no network
+under them - a median snap of **461 m** onto the last nodes downloaded. The city-wide check (906,775
+against 917,890 in `buurten.geojson`, a 1.2% gap) looked healthy and hid a district at 11%. **A total
+can pass while one district is missing; the check is now per district** (`walking_distance.ipynb`
+step 2).
+
+**Defect 2 - osmnx's `walk` network drops every `highway=cycleway`.** Widening the extent did not
+fix Weesp. Weesp's walking network formed its own connected component, osmnx keeps only the
+largest, and every Weesp square snapped kilometres across the Amsterdam-Rijnkanaal (median
+**1,852 m**). It stayed disconnected even with a bbox reaching Hilversum. The link that exists on
+the ground is the *Gulden Kruispad*, which OSM tags `highway=cycleway` - and osmnx's walk filter
+excludes that value outright, regardless of `foot=*`.
+
+**That filter is wrong for the Netherlands.** RVV 1990 art. 4: pedestrians use the pavement or
+footway, *and the cycle path where there is none*. The graph now uses osmnx's own walk filter with
+`cycleway` removed from its exclusions (`WALK_NL` in section 6). Everything else is kept, including
+`foot!~"no"`, so a cycle path signed closed to pedestrians is still excluded.
+
+**Rejected: `retain_all=True` with the stock filter.** Weesp would be kept as an island with no
+cooling place on it (there are none in Weesp), so all 26,100 residents would be *unreachable* -
+NaN, dropped from the denominator, and absent again, this time by a different route.
+
+**Rejected: adding the Gulden Kruispad alone.** Singling out the one path that fixes the visible
+symptom, while the same rule excludes park and polder paths elsewhere, is a patch, not a method.
+
+**The OSM data did not change - only extent and filter did.** The new graph is queried with an
+Overpass attic date, `[date:"2026-08-31T23:35:01Z"]`: the base timestamp of the original download
+(its "01:36" in `SOURCES.md` is local time). Over the old bbox the pinned query returns all 429,244
+original elements unchanged plus one (`way/1317378238`). The old graph is kept in `data/raw/`
+(decision 2).
+
+**Decomposition - which change moved what** (network coverage within 500 m):
+
+| | squares | residents | within 500 m | within 1 km |
+|---|---|---|---|---|
+| before (old extent, stock filter) | 7,043 | 906,775 | 23.7% | 62.3% |
+| same squares, cycle paths walkable | 7,033* | 906,165 | 28.0% | 71.8% |
+| **city extent, cycle paths walkable** | **7,438** | **930,340** | **27.3%** | **70.0%** |
+
+*\*squares inside the old x-range; the decomposition was run outside the notebook.* Cycle paths
+account for nearly all of the change in the rest of the city: 74% of squares get a shorter walk
+(median −28 m), most in Noord (−123 m), Westpoort (−158 m) and Zuidoost (−63 m), where paths through
+parks and polders are tagged as cycleways. 4% get *longer* (median +30 m): a square that used to snap
+straight across a barrier onto a street now snaps to a nearer cycle path and walks round. Those are
+corrections, not regressions. Adding Weesp lowers the city figure slightly, because none of Weesp is
+covered.
+
+**Weesp, measured for the first time.** 26,100 residents; median walk to a cooling place
+**5.8 km**; **nobody within 1,500 m**. Its median detour is 1.38 - ordinary. Decision 8's "Weesp at
+2.98, genuinely isolated" was the edge of the graph, not geography, and is withdrawn. Weesp *is*
+isolated, but in supply, not in its streets: it has no cooling place at all.
+
+**What moved, across the analysis** (old → new; every figure is regenerated by the notebook):
+
+| | before | after |
+|---|---|---|
+| residents in the analysis | 906,775 | 930,340 |
+| covered within 500 m (network) | 23.7% | **27.3%** |
+| covered within 1,000 m | 62.3% | 70.0% |
+| straight line overstates at 500 m | 27.2 pp | 22.3 pp (max 30.6 → 22.8 pp, at 750 m) |
+| median detour ratio | 1.55 | 1.42 |
+| straight line names the wrong venue | 24.2% of residents | 14.5% |
+| underserved zones (1,000 m) / residents | 183 / 342,220 | 190 / 279,330 |
+| zones with 500+ residents | 42 | 40 |
+| *hot + elderly* zones / residents | 6 / 34,455 | 6 / 35,320 |
+| best new site (weighted / unweighted reach) | 27,267 / 21,687 | 27,783 / 22,138 |
+| largest single point of failure | OBA Bos en Lommer, 7,520 | OBA Bos en Lommer, 8,405 |
+| residents with exactly one organisation | 177,160 (83%) | 207,125 (82%) |
+| zones with no candidate point | 1 (Hogewey-Zuid) | 0 |
+
+**Findings that changed, not just their numbers.**
+
+- **Weesp** enters as the third-largest underserved zone (23,855 residents, mean walk 5.9 km), and
+  the **second-best new site in the city is in Weesp** (Herensingelkwartier, weighted gain 16,691).
+- **Decision 23's Hogewey-Zuid finding is withdrawn.** It "contained no candidate point" because
+  there was no network under it: candidates must snap within 200 m. Every zone now has one.
+- **Reach and need overlap more than decision 23 says.** Two of the eight high-effect areas are now
+  in *hot + elderly* zones, not one: Lootsbuurt, first by reach (its zone is now *hot + elderly*, at
+  13.8% over 65 against a city share of 13.6% - on the cliff decision 29 describes) and
+  Haarlemmerbuurt-West, eighth.
+- **The *hot + elderly* set changed membership.** Now: Cremerbuurt-West/Paramariboplein (zone 44),
+  Westelijke eilanden (73), KNSM-eiland (98), Cornelis Schuytbuurt/Vondelpark (63), Overhoeks (81),
+  Schellingwoude (130). Oostenburg is no longer in it; decision 17's "four of six are central
+  islands" no longer holds as written. Zone numbers are reassigned by every re-run - decision 23's
+  "zone 87" is now zone 73.
+- **The straight line's wrong-venue error roughly halves** (24.2% → 14.5%), because cycle paths
+  make many walks closer to straight. It is now concentrated in Oost, Nieuw-West and West.
+
+**Findings that survive.** Straight-line distance still overstates coverage by ~20 pp across the
+walkable range; there is still no age gradient (26.5-25.9% of over-65s within 500 m against 27.3%);
+the weighting still does not matter (Spearman 0.997-1.000); TOjuli still inverts against access
+(-0.123), though no longer monotonically - the two farthest quartiles are level (31.6%, 31.1%).
+
+**Consequence for the text.** Decisions 8, 9, 20 and 22 and the README are updated to these
+numbers. Decisions 11-29 and the notebook's markdown still quote pre-fix figures where they cite
+them; the table above is authoritative until each is revised.
 
 ## Open questions
 
 - **Ferry routing.** Adding ferry ways via `custom_filter`, or a fixed crossing penalty, would
   make Noord's numbers exact rather than merely plausible.
-- **Tree canopy.** BGT ground cover misses shade entirely. The tree register, or a shade model
+- ~~**Tree canopy.** BGT ground cover misses shade entirely. The tree register, or a shade model
   built from AHN heights plus BAG buildings and solar position, is the natural next step - and
-  would be reproducible from primary data rather than inherited.
-- **Real PET.** Ask the gemeente (`klimaatadaptatie@amsterdam.nl`) for the Klimaatrisicokaarten
+  would be reproducible from primary data rather than inherited.~~ **Answered in section 17** from the KEA AHN5 canopy mask at 25 cm. Canopy predicts PET at -0.680; it is the dominant term in outdoor exposure.
+- ~~**Real PET.** Ask the gemeente (`klimaatadaptatie@amsterdam.nl`) for the Klimaatrisicokaarten
   data and its methodology report. If it arrives, it replaces the surface-cover proxy and the
-  proxy becomes the validation check.
+  proxy becomes the validation check.~~ **Answered in section 17** - it is open data on the Klimaateffectatlas, and the proxy did not survive the check. See decision 24.
 - **Overlay the official layer.** Decision 22 settles what the gemeente's map *is* - outdoor space
   of 200 m2 or more, at a 300 m threshold - but not how the two compare in numbers. Download the
   "Afstand tot koelte" layer, recompute both on the same CBS grid, and report the two coverage
   figures side by side. Until that is done, the reported municipal figures stay out of the README.
-- **Income and limited mobility.** Both named in the assignment brief. Income is too suppressed
+- ~~**Income and limited mobility.**~~ **Income answered in section 18** via SES-WOA at buurt level, 1.3% suppressed by resident. Limited mobility still outstanding.
+- **Superseded:** Both named in the assignment brief. Income is too suppressed
   at 100 m; the Klimaatrisicokaarten carries `INWONERS_BEPERKT_MOBIEL` at buurt level. Neither
   needs 100 m resolution to be useful.
 - ~~**Supply-side questions, entirely untouched.**~~ **Answered in section 15** for load and
