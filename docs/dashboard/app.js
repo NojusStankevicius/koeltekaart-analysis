@@ -607,12 +607,12 @@ function kpis(){
     tile("Rely on a single place", fmt(m.one), d(m.one, b.one), `within ${km(state.thr)}`),
     tile("Have two or more places", fmt(m.byOpts[2] + m.byOpts[3]),
       d(m.byOpts[2] + m.byOpts[3], b.byOpts[2] + b.byOpts[3]), `within ${km(state.thr)}`),
-    tile("Places with no backup", `${m.orphans} of ${m.inUse}`, "", "sites in use; nobody they serve has an alternative")
+    tile("Sites without redundancy", `${m.orphans} of ${m.inUse}`, "", "No resident served has an alternative")
   ];
   const n = state.added.length, r = state.removed.length;
   tiles.push(`<button type="button" class="kpi" id="kpiplan"><div class="kl">Plan</div>
     <div class="kv">${r ? (n ? `+${n} <span class="kvs">·</span> ` : "") + `−${r}` : `${n} ${n === 1 ? "place" : "places"}`}</div>
-    <div class="ks">${r ? `${n} added, ${r} removed` : n ? "View and edit" : "Add or remove places to compare"}</div></button>`);
+    <div class="ks">${r ? `${n} added, ${r} removed` : n ? `${n} added` : "No changes"}</div></button>`);
   const el = document.getElementById("kpis");
   el.innerHTML = tiles.join("");
   document.getElementById("kpiplan").onclick = () => {
@@ -740,12 +740,10 @@ function detailHTML(){
       <div class="sec"><h3>Within ${km(state.thr)}</h3><table class="kvt"><tbody>
         ${kvRow("Residents in reach", fmt(h.total))}
         ${kvRow("Reached by no other place", fmt(h.sole), "strong")}
-        ${kvRow("Their second option", fmt(h.second))}
+        ${kvRow("Second option for", fmt(h.second))}
         ${kvRow("Have other options", fmt(Math.max(h.total - h.sole - h.second, 0)))}
-      </tbody></table>
-      <p class="note">Removing it leaves ${fmt(h.sole)} with no place within ${km(state.thr)}${
-        h.second ? ` and ${fmt(h.second)} back on a single place` : ""}.</p></div>
-      ${h.bu.length ? `<div class="sec"><h3>Neighbourhoods that rely on it</h3><div class="links">${shown.map(([bu,p]) =>
+      </tbody></table></div>
+      ${h.bu.length ? `<div class="sec"><h3>Neighbourhoods reached by no other place</h3><div class="links">${shown.map(([bu,p]) =>
         `<button type="button" class="link" data-goto="${bu}"><span>${esc(BU[bu].name)}</span><span>${fmt(p)}</span></button>`).join("")}</div>
         ${h.bu.length > shown.length ? `<div class="more">${h.bu.length - shown.length} more</div>` : ""}</div>` : ""}`;
   }else if(s.kind === "p"){
@@ -810,21 +808,19 @@ function detailHTML(){
                 sub:`${cap(CAND[o.k].kind)} · ${n > 1 ? `reaches ${n} neighbourhoods` : "reaches only this one"}`},
               val(o), top, fmt, addBtn(o.k));
           }).join("")}</div>${rest ? `<button type="button" class="showmore" id="bumore">Show ${Math.min(20, rest)} more · ${fmt(rest)} left</button>` : ""}`
-          : `<p class="more">No candidate ${cr === "people" ? "newly reaches anyone here" : "gives anyone here a second option"} within ${km(state.thr)}.</p>`}</div>
+          : `<p class="more">No candidate ${cr === "people" ? "newly reaches residents" : "adds a second option"} within ${km(state.thr)}.</p>`}</div>
 `;
   }else{
     const rows = venueRows(), r = rows[s.id], out = state.removed.includes(s.id);
     const btn = ORGS ? `<button type="button" class="primary drop${out ? " on" : ""}" data-drop="${s.id}">${
-      out ? "Restore this place" : "Remove this place"}</button>
-      <p class="note">${out ? "Everyone it served is" : "Models it leaving the scheme: everyone it serves is"}
-        recounted against the places that remain.</p>` : "";
+      out ? "Restore place" : "Remove place"}</button>` : "";
     if(out){
       const b = model([], []), lost = cutOff(s.id);
-      body = `<h2>${esc(r.name)}</h2><div class="meta">Cooling place · removed in this plan</div>${btn}
+      body = `<h2>${esc(r.name)}</h2><div class="meta">Cooling place · removed</div>${btn}
         <div class="sec"><h3>Within ${km(state.thr)}</h3><table class="kvt"><tbody>
           ${kvRow("Served today", fmt(b.serves[s.id]))}
           ${kvRow("No alternative today", fmt(b.sole[s.id]))}
-          ${kvRow("Left with no place", fmt(lost), "strong")}
+          ${kvRow("Lose access", fmt(lost), "strong")}
         </tbody></table></div>`;
     }else{
       const rank = rows.filter(x => !state.removed.includes(x.id) && x.sole > r.sole).length + 1;
@@ -853,28 +849,27 @@ function cutOff(v){
   return p;
 }
 function planHTML(){
-  if(!planSize()) return `<p class="empty">Nothing in the plan. Use + on a candidate to add it, or open an
-    existing place to remove it.</p>`;
+  if(!planSize()) return `<p class="empty">No changes.</p>`;
   const m = model(), b = model([], []);
   let second = 0;
   for(let i=0;i<N;i++) if(m.realOpts[i] === 1 && m.addOpts[i] > 0) second += G.pop[i];
   const A = state.added.length, R = state.removed.length;
   return `<div class="plansum"><table class="kvt"><tbody>
       ${kvRow(`Coverage within ${km(state.thr)}`, `${pct(b.served/m.total)} → ${pct(m.served/m.total)}`, "strong")}
-      ${R ? kvRow("Cut off by removals", signed(m.base - b.served)) : ""}
+      ${R ? kvRow("Lose access", signed(m.base - b.served)) : ""}
       ${A ? kvRow("Newly reached", signed(m.served - m.base)) : ""}
       ${A ? kvRow("Gain a second option", signed(second)) : ""}
     </tbody></table></div>
-    <div class="planhead"><span>${A ? `${A} added · reached by no other` : R ? `${R} removed · left with no place` : ""}</span>
+    <div class="planhead"><span>${A ? `${A} added · reached by no other` : R ? `${R} removed · lose access` : ""}</span>
       <button type="button" class="textbtn" id="clearplan">Clear all</button></div>
     <div class="scroll">${state.added.map(k => { const c = CAND[k];
       return `<div class="row" data-k="p${k}" tabindex="0" role="button">
         <button type="button" class="addbtn" data-add="${k}" aria-label="Remove from plan" title="Remove from plan">${ICON.close}</button>
         <div><div class="rn">${esc(c.name)}</div><div class="rm">${esc([cap(c.kind), c.where || c.stadsdeel].filter(Boolean).join(" · "))}</div></div>
         <div class="rv">${fmt(contribution(k))}</div></div>`; }).join("")}
-      ${R && A ? `<div class="planhead sub"><span>${R} removed · left with no place</span></div>` : ""}
+      ${R && A ? `<div class="planhead sub"><span>${R} removed · lose access</span></div>` : ""}
       ${state.removed.map(v => `<div class="row out" data-k="v${v}" tabindex="0" role="button">
-        <button type="button" class="addbtn" data-drop="${v}" aria-label="Restore this place" title="Restore this place">${ICON.close}</button>
+        <button type="button" class="addbtn" data-drop="${v}" aria-label="Restore place" title="Restore place">${ICON.close}</button>
         <div><div class="rn">${esc(VEN[v].name)}</div><div class="rm">Existing place, removed</div></div>
         <div class="rv">${signed(-cutOff(v))}</div></div>`).join("")}</div>`;
 }
@@ -1005,7 +1000,7 @@ function chart(){
   const sw = hollow => `<span class="sw dot" style="${hollow ? `border:1.2px solid ${col}` : `background:${col}`}"></span>`;
   document.getElementById("chartkeys").innerHTML =
     `<span class="lg">${sw(false)}Open on Sundays</span><span class="lg">${sw(true)}Closed on Sundays</span>
-     <span class="lg">Diagonal: nobody has an alternative</span>`;
+     <span class="lg">Diagonal: no alternative for any resident served</span>`;
 }
 
 /* ---- toolbar ------------------------------------------------------------ */
@@ -1119,7 +1114,7 @@ function bindMap(){
     el.onclick = () => { state.mode = "protect"; state.tab.protect = "venues"; select("v" + el.dataset.v); };
     el.onmousemove = e => { const r = cv.getBoundingClientRect(), i = +el.dataset.v, m = model();
       showTip(`<div class="t">${esc(VEN[i].name)}</div>` + (state.removed.includes(i)
-          ? trow("Removed in this plan", "") + trow("Left with no place", fmt(cutOff(i)))
+          ? trow("Status", "Removed") + trow("Lose access", fmt(cutOff(i)))
           : trow("Residents served", fmt(m.serves[i])) + trow("No alternative", fmt(m.sole[i]))),
         e.clientX-r.left, e.clientY-r.top); };
     el.onmouseleave = () => tip.style.opacity = 0;
@@ -1155,8 +1150,7 @@ function applyTheme(t){
 }
 themeBtn.onclick = () => applyTheme(isDark() ? "light" : "dark");
 const SOURCES = `Residents: CBS 100 m grid, 2025 · Network and venues: © OpenStreetMap contributors ·
-  Overheating: EP-Online · Heat, canopy, health: Klimaateffectatlas, 2025 (CC BY 4.0) ·
-  Candidates are OSM venues; availability not assessed`;
+  Overheating: EP-Online · Heat, canopy, health: Klimaateffectatlas, 2025 (CC BY 4.0)`;
 document.getElementById("foot").innerHTML = `<p title="${SOURCES.replace(/\s+/g, " ")}">${SOURCES}</p>`;
 
 fit(); applyTheme(null);
