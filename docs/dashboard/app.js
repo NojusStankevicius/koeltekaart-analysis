@@ -476,7 +476,7 @@ function drawGrid(){
     for(let i=0;i<N;i++) if(m.realOpts[i] === 0 && m.addOpts[i] > 0) done.push(i);
     paint(done, P["--plan"], prev ? .25 : .6);
   }
-  // Reduce reliance: residents who had exactly one place and now have a second, from the plan.
+  // Backup: residents who had exactly one place and now have a second, from the plan.
   if(state.added.length && state.mode === "protect"){
     const backed = [];
     for(let i=0;i<N;i++) if(m.realOpts[i] === 1 && m.addOpts[i] > 0) backed.push(i);
@@ -607,7 +607,7 @@ function kpis(){
     tile("Rely on a single place", fmt(m.one), d(m.one, b.one), `within ${km(state.thr)}`),
     tile("Have two or more places", fmt(m.byOpts[2] + m.byOpts[3]),
       d(m.byOpts[2] + m.byOpts[3], b.byOpts[2] + b.byOpts[3]), `within ${km(state.thr)}`),
-    tile("Sites without redundancy", `${m.orphans} of ${m.inUse}`, "", "No resident served has an alternative")
+    tile("Places with no backup", `${m.orphans} of ${m.inUse}`, "", "No resident served has an alternative")
   ];
   const n = state.added.length, r = state.removed.length;
   tiles.push(`<button type="button" class="kpi" id="kpiplan"><div class="kl">Plan</div>
@@ -831,7 +831,7 @@ function detailHTML(){
           ${kvRow("Have an alternative", fmt(r.backed))}
           ${kvRow("Rank by no alternative", `${rank} of ${NV - state.removed.length}`)}
         </tbody></table></div>
-        ${chartSec("Load against reliance, all places")}`;
+        ${chartSec("Residents served vs. residents with no backup")}`;
     }
   }
   return backBtn + `<div class="scroll"><div class="detail">${body}</div></div>`;
@@ -969,7 +969,7 @@ function niceTicks(lo, hi, n = 4){
   for(let v = Math.ceil(lo/step)*step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(10));
   return out;
 }
-/* Existing places, load against reliance. Distance below the diagonal is the backup. */
+/* Existing places, served vs. no backup. Distance below the diagonal is the backup. */
 function chart(){
   const svg = document.getElementById("chart");
   if(!svg) return;

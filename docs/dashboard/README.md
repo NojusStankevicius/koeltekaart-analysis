@@ -26,13 +26,13 @@ section 19, rebuild, republish.
 ## Layout
 
 - **Header** — title, walking distance (which drives every number on the page), the two
-  decisions (*Expand coverage*, *Reduce reliance*) and the theme switch.
+  decisions (*Coverage*, *Backup*) and the theme switch.
 - **Summary** — three figures for the active decision, each showing the plan's effect as a
   delta once anything has been added, plus a Plan tile that opens the plan.
-- **Map** — the gap (expand) or single-option reliance (reduce reliance). Legend bottom left,
+- **Map** — who is out of reach (Coverage) or who has only one place (Backup). Legend bottom left,
   the hover preview for a candidate top left, *Show covered areas* top right.
   The map is read in **neighbourhoods**: hovering outlines the buurt under the cursor and reports
-  it (coverage, 65+ and frailty in expand; single-option and two-or-more in reduce reliance), and
+  it (coverage, 65+ and frailty in Coverage; single-option and two-or-more in Backup), and
   clicking opens it. The 100 m square is the grid the analysis measures on, never a unit shown.
 - **Side panel** — tabs: *Candidates*, *Neighbourhoods* or *Existing places*, and *Plan*. A list
   has search and a sort; selecting a row replaces the list with its detail, and `←` or Escape
@@ -45,7 +45,7 @@ query, and must stay in step. Below that size the page is an ordinary scrolling 
 
 Neighbourhoods carry no heat x age label and there is no heat-against-age chart (decision 29):
 a neighbourhood is compared with the city on seven indicators side by side. The one chart left is
-load against reliance, in an existing place's detail.
+residents served against residents with no backup, in an existing place's detail.
 
 ## Measures name the population they count
 
