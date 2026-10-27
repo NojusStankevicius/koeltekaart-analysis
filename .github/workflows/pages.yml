@@ -1,0 +1,44 @@
+name: Publish the dashboard to GitHub Pages
+
+# The page holds no data of its own: build.py inlines data/processed/dashboard.json, so a push
+# that changes the analysis output or the dashboard source republishes it. Nothing here runs
+# the notebook; dashboard.json is committed by whoever re-ran section 19.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/dashboard/**"
+      - "data/processed/dashboard.json"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      # build.py uses only the standard library. --standalone adds the <html>/<body> wrapper
+      # that the Artifact host otherwise supplies.
+      - name: Build
+        run: |
+          python3 docs/dashboard/build.py --standalone
+          mkdir -p _site
+          cp docs/dashboard/standalone.html _site/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

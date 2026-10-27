@@ -1,0 +1,46 @@
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Cooling place coverage in Amsterdam</h1>
+      <p>Walking distance to indoor koelteplekken over the street network</p>
+    </div>
+    <div class="walk">
+      <label for="thr">Walking distance</label>
+      <div class="slider">
+        <input type="range" id="thr" min="200" max="1500" step="50">
+        <div class="ticks" id="ticks"></div>
+      </div>
+      <output for="thr" id="thrv"></output>
+    </div>
+    <div class="top-actions">
+      <div class="seg" role="tablist" aria-label="View">
+        <button type="button" role="tab" data-mode="expand" aria-selected="true">Expand coverage</button>
+        <button type="button" role="tab" data-mode="protect" aria-selected="false">Reduce reliance</button>
+      </div>
+      <button class="iconbtn" id="theme" type="button" aria-label="Switch colour theme"></button>
+    </div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="Summary"></section>
+
+  <div class="shell">
+    <div class="main">
+      <div class="mapwrap" id="mapbox">
+        <canvas id="cv"></canvas>
+        <svg id="ov" aria-hidden="true"></svg>
+        <div class="tip" id="tip"></div>
+        <div class="preview" id="preview" hidden></div>
+        <div class="maplegend" id="legend"></div>
+        <label class="mapctl" id="dimwrap"><input type="checkbox" id="dim"> Show covered areas</label>
+        <div class="zoomctl" role="group" aria-label="Map zoom">
+          <button type="button" id="zin" aria-label="Zoom in" title="Zoom in">+</button>
+          <button type="button" id="zout" aria-label="Zoom out" title="Zoom out">−</button>
+          <button type="button" id="zfit" aria-label="Show the whole city" title="Show the whole city"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 4.2V1.5h2.7M7.8 1.5h2.7v2.7M10.5 7.8v2.7H7.8M4.2 10.5H1.5V7.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+      <aside class="side"><div class="side-inner" id="inspector"></div></aside>
+    </div>
+  </div>
+
+  <footer id="foot"></footer>
+</div>
