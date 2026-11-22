@@ -1029,6 +1029,58 @@ the weighting still does not matter (Spearman 0.997-1.000); TOjuli still inverts
 numbers. Decisions 11-29 and the notebook's markdown still quote pre-fix figures where they cite
 them; the table above is authoritative until each is revised.
 
+## 31. The AC grant is sited by residents who gain an air-conditioned place, not by reach
+
+A €100k grant pays for air conditioning at buurthuizen and OBA libraries. Notebook section 20
+exports what the page needs, and `docs/dashboard/ac/` is the page.
+
+**The quantity.** A site is worth the residents within walking distance who have **no
+air-conditioned cooling place in reach today**. Raw reach is the wrong measure. At 500 m it ranks
+the eligible network sites at Spearman **0.22** against the right one, and at 1 km at **0.04**.
+Huis de Pinto reaches 5,800 residents, but only 115 of them lack an air-conditioned place nearby.
+
+**Who is eligible.** The koeltekaart's own `airco` field says 15 of 16 network OBAs already have AC.
+The sixteenth, OBA Oosterdok, is corrected to `yes` (Nojus, 22 Nov 2026; `AIRCO_CORRECTIONS` in
+section 20). That leaves two pools:
+- network buurthuizen without AC (16);
+- the OBA branches in the OSM candidate set that are not on the koeltekaart (10). These are
+  assumed to have no AC and would join the network.
+
+OSM community centres (132) are an optional third pool, off by default. The tag is loose, and with
+the pool on it takes nine of the top ten. Two duplicate checks use same-type matching within
+150 m. Any-type matching wrongly dropped OBA Bijlmerplein, which stands 140 m from an Albert Heijn.
+
+**Choice rule.** The reader builds the plan by adding sites, as in the coverage dashboard. Each
+candidate is valued by what it adds on top of the plan as it stands, so overlap is counted once.
+The ranking is either at the chosen walking distance or averaged over 300 m to 1.5 km. The average
+is the area under the gain-against-distance curve, divided by the span, as in decision 26's
+robustness measure. Auto-picking *n* sites (greedy, by the active ranking) is a secondary shortcut,
+not the main control.
+
+**Finding - the walk average favours outer OBAs.** At 500 m the leaders after De Hallen are
+Spaarndammerbuurt, CC Amstel and Het Afvalpaleis. Averaged over walking distances, OBA Reigersbos
+and OBA Weesp move to second and fourth. Their gains arrive at 1-1.5 km, where nothing else is
+air-conditioned. Choosing between the two rankings is choosing how far people are expected to walk.
+
+**Rejected: a cost model.** No per-site cost data exists, so every site counts as costing the same.
+The page ranks; it does not fit a budget.
+
+**Finding - age and frailty weighting change one or two of the top ten, not the list.** At every
+walking distance from 300 m to 1.5 km, ranking by residents aged 65+ or by frailty-weighted
+residents swaps one or two of the ten funded sites. That is decision 15's result again. Geography
+dominates, because which sites sit beside existing air conditioning varies far more than who lives
+near them. The page keeps both weightings as one click, so a reader can see that the answer barely
+moves.
+
+**Finding - the ranking is sensitive to walking distance.** In a ten-site greedy plan at 500 m,
+only three sites are also chosen at four or five of the five distances (OBA De Hallen, De Eester,
+OBA CC Amstel). Het Afvalpaleis is #4 at 500 m and adds almost nobody at 1 km, because an
+air-conditioned place sits just beyond 500 m. Each site's detail shows its gain at every distance.
+
+**Limits.** AC status is self-reported by venues to the koeltekaart. Installation cost, floor area,
+opening hours and whether a site would accept AC are not in the data. Readers can correct AC
+status and exclude sites on the page; those corrections stay in their browser and are not data.
+
 ## Open questions
 
 - **Ferry routing.** Adding ferry ways via `custom_filter`, or a fixed crossing penalty, would

@@ -162,3 +162,22 @@ redundancy, per-venue load and per-neighbourhood totals at any threshold.
 
 Validated against the notebook at 500 m: 254,020 served, 207,125 with one option (after decision
 30, 29 Sep 2026; previously 214,600 and 177,160). If those stop matching, the page is wrong.
+
+## The AC-grant page (`ac/`)
+
+A second page, published at `/ac/`, ranks buurthuizen and OBA branches for a €100k air-conditioning
+grant (decision 31). It reuses `style.html` and adds `ac/style.html`, `ac/markup.html` and `ac/app.js`.
+It also inlines `data/processed/ac_grant.json` (notebook section 20) as `DA`.
+
+```bash
+python docs/dashboard/build.py --page ac --standalone   # open ac/standalone.html
+```
+
+- **Header**: walking distance, and what is counted (residents, 65+, frailty-weighted).
+- **Candidates**: each site valued by what it adds on top of the current plan, ranked within the
+  chosen distance or by the 300 m–1.5 km walk average. `+` adds a site to the plan, and the list
+  re-ranks.
+- **Plan**: the before → after figures, the sites in the order they were added, *Auto-pick n*
+  (greedy, secondary), and *Copy summary* (Markdown: funded sites, and why each other site was not).
+- **Sites & AC**: correct AC status, exclude sites, and switch on the OSM community-centre pool.
+  The plan and these settings are kept in `localStorage` only.

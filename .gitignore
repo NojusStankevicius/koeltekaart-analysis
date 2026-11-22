@@ -18,3 +18,5 @@ docs/dashboard/index.html
 docs/dashboard/standalone.html
 docs/dashboard/*.png
 docs/dashboard/*.mjs
+docs/dashboard/ac/index.html
+docs/dashboard/ac/standalone.html

@@ -9,6 +9,7 @@ on:
     paths:
       - "docs/dashboard/**"
       - "data/processed/dashboard.json"
+      - "data/processed/ac_grant.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch: {}
 
@@ -34,8 +35,10 @@ jobs:
       - name: Build
         run: |
           python3 docs/dashboard/build.py --standalone
-          mkdir -p _site
+          python3 docs/dashboard/build.py --standalone --page ac
+          mkdir -p _site/ac
           cp docs/dashboard/standalone.html _site/index.html
+          cp docs/dashboard/ac/standalone.html _site/ac/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
