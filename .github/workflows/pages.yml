@@ -39,9 +39,9 @@ jobs:
           mkdir -p _site/ac
           cp docs/dashboard/standalone.html _site/index.html
           cp docs/dashboard/ac/standalone.html _site/ac/index.html
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
