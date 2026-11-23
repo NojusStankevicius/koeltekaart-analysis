@@ -56,19 +56,24 @@ const trapz = v => { let a = 0;
 
 /* ---- state, remembered in this browser ----------------------------------------------------- */
 const STORE = "ac-grant-v2";
+/* Which sites the grant may fund. Existing AC of every type still counts as coverage either way.
+   OSM community centres are buurthuis-like, so they go with the buurthuizen. */
+const KINDS = {all: {t: "Both", f: () => true}, oba: {t: "OBA branches only", f: s => s.kind === "OBA"},
+               buurt: {t: "Buurthuizen only", f: s => s.kind !== "OBA"}};
 const state = {thr: T.threshold, metric: "people", sort: "at", plan: [], autoN: 10,
-  tab: "cands", sel: null, hover: null, acSet: {}, excl: new Set(), osm: false};
+  tab: "cands", sel: null, hover: null, acSet: {}, excl: new Set(), osm: false, kind: "all"};
 try { const s = JSON.parse(localStorage.getItem(STORE) || "null");
   if(s){ Object.assign(state, {acSet: s.acSet || {}, excl: new Set(s.excl || []), osm: !!s.osm,
     plan: (s.plan || []).filter(id => SITE.has(id)), autoN: s.autoN || 10,
-    metric: METRIC[s.metric] ? s.metric : "people", sort: s.sort === "avg" ? "avg" : "at"}); } } catch(e) {}
+    metric: METRIC[s.metric] ? s.metric : "people", sort: s.sort === "avg" ? "avg" : "at",
+    kind: KINDS[s.kind] ? s.kind : "all"}); } } catch(e) {}
 function save(){ try { localStorage.setItem(STORE, JSON.stringify({acSet: state.acSet, excl: [...state.excl],
-  osm: state.osm, plan: state.plan, autoN: state.autoN, metric: state.metric, sort: state.sort})); } catch(e) {} }
+  osm: state.osm, plan: state.plan, autoN: state.autoN, metric: state.metric, sort: state.sort, kind: state.kind})); } catch(e) {} }
 
 const orgAC = k => { const v = state.acSet["n" + k]; return v === undefined ? ORGS[k].airco : v; };
 const hasAC = s => s.pool === "network" ? orgAC(s.org) : !!state.acSet[s.id];
 const acDefault = s => s.pool === "network" ? ORGS[s.org].airco : false;
-const inPool = s => s.pool !== "osm" || state.osm;
+const inPool = s => (s.pool !== "osm" || state.osm) && KINDS[state.kind].f(s);
 const isCandidate = s => inPool(s) && !hasAC(s) && !state.excl.has(s.id);
 const inPlan = id => state.plan.includes(id);
 /* Corrections can make a planned site ineligible; it leaves the plan rather than lingering. */
@@ -76,7 +81,7 @@ const prunePlan = () => { state.plan = state.plan.filter(id => isCandidate(SITE.
 
 /* ---- the model ----------------------------------------------------------------------------- */
 const memo = new Map();
-const statusKey = () => JSON.stringify([state.acSet, [...state.excl].sort(), state.osm]);
+const statusKey = () => JSON.stringify([state.acSet, [...state.excl].sort(), state.osm, state.kind]);
 function coolAt(t){
   const k = "cool|" + t + "|" + statusKey();
   if(memo.has(k)) return memo.get(k);
@@ -307,7 +312,7 @@ function inspector(){
 const sortLabel = () => state.sort === "avg" ? "Walk average, 300 m–1.5 km" : `Within ${km(state.thr)}`;
 function candHTML(){
   const R = rows(), top = Math.max(1, ...R.map(r => r.v));
-  return `<div class="listhead"><span>${R.length} candidates</span>
+  return `<div class="listhead"><span>${R.length} candidates${state.kind !== "all" ? ` · ${KINDS[state.kind].t.replace(" only", "")}` : ""}</span>
       <label class="sortby">Rank by <select id="sort">
         <option value="at"${state.sort === "at" ? " selected" : ""}>Within ${km(state.thr)}</option>
         <option value="avg"${state.sort === "avg" ? " selected" : ""}>Walk average, 300 m–1.5 km</option></select></label></div>
@@ -377,6 +382,7 @@ function summaryMarkdown(){
   const out = R.filter(r => r.s.pool !== "osm").map(r => `| ${r.s.name} | ${fmt(r.alone.people)} | ${fmt(r.at.people)} | ${reason(r.s, r) || (val(r.at) < minAdd ? "Adds less than every funded site" : "Not chosen")} |`);
   return [`## AC grant: ${p.steps.length} sites`, ``,
     `${fmt(p.sum.people)} residents (${fmt(p.sum.eld)} aged 65+) gain an air-conditioned cooling place within ${thr} on foot. Coverage: ${pct(p.base / p.tot)} → ${pct(p.after / p.tot)}.`, ``,
+    ...(state.kind !== "all" ? [`Funding restricted to ${KINDS[state.kind].t.toLowerCase().replace(" only", "")}; existing AC at every site type still counts as coverage.`, ``] : []),
     `Each site counts the ${M.s} within ${thr} with no air-conditioned place in reach, after the sites before it.`, ``,
     `| # | Site | Adds | 65+ |`, `|---:|---|---:|---:|`,
     ...p.steps.map((x, i) => `| ${i + 1} | ${x.s.name} | ${fmt(x.gain.people)} | ${fmt(x.gain.eld)} |`), ``,
@@ -424,6 +430,7 @@ function toolbar(){
     aria-current="${state.thr === v}" aria-label="${km(v)}">${v >= 1000 ? (v/1000) + "k" : v}</button>`).join("");
   el.querySelectorAll("button").forEach(b => b.onclick = () => setThr(+b.dataset.t));
   document.querySelectorAll("[data-metric]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.metric === state.metric)));
+  document.querySelectorAll("[data-kind]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.kind === state.kind)));
 }
 function setThr(v){ state.thr = v; document.getElementById("thr").value = v; render(); }
 function render(){ palette(); drawGrid(); drawOverlay(); legend(); kpis(); inspector(); toolbar(); }
@@ -432,6 +439,7 @@ function render(){ palette(); drawGrid(); drawOverlay(); legend(); kpis(); inspe
 const thrIn = document.getElementById("thr");
 thrIn.value = state.thr; thrIn.addEventListener("input", () => setThr(+thrIn.value));
 document.querySelectorAll("[data-metric]").forEach(b => b.onclick = () => { state.metric = b.dataset.metric; save(); render(); });
+document.querySelectorAll("[data-kind]").forEach(b => b.onclick = () => { state.kind = b.dataset.kind; prunePlan(); save(); render(); });
 addEventListener("keydown", e => { if(e.key === "Escape" && state.sel){ state.sel = null; render(); } });
 
 let zf = 0;
