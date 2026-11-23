@@ -65,10 +65,10 @@ const state = {thr: T.threshold, metric: "people", sort: "at", plan: [], autoN: 
 try { const s = JSON.parse(localStorage.getItem(STORE) || "null");
   if(s){ Object.assign(state, {acSet: s.acSet || {}, excl: new Set(s.excl || []), osm: !!s.osm,
     plan: (s.plan || []).filter(id => SITE.has(id)), autoN: s.autoN || 10,
-    metric: METRIC[s.metric] ? s.metric : "people", sort: s.sort === "avg" ? "avg" : "at",
+    sort: s.sort === "avg" ? "avg" : "at",
     kind: KINDS[s.kind] ? s.kind : "all"}); } } catch(e) {}
 function save(){ try { localStorage.setItem(STORE, JSON.stringify({acSet: state.acSet, excl: [...state.excl],
-  osm: state.osm, plan: state.plan, autoN: state.autoN, metric: state.metric, sort: state.sort, kind: state.kind})); } catch(e) {} }
+  osm: state.osm, plan: state.plan, autoN: state.autoN, sort: state.sort, kind: state.kind})); } catch(e) {} }
 
 const orgAC = k => { const v = state.acSet["n" + k]; return v === undefined ? ORGS[k].airco : v; };
 const hasAC = s => s.pool === "network" ? orgAC(s.org) : !!state.acSet[s.id];
@@ -429,7 +429,6 @@ function toolbar(){
   el.innerHTML = THR_MARKS.map(v => `<button type="button" data-t="${v}" style="left:${((v-200)/1300*100).toFixed(2)}%"
     aria-current="${state.thr === v}" aria-label="${km(v)}">${v >= 1000 ? (v/1000) + "k" : v}</button>`).join("");
   el.querySelectorAll("button").forEach(b => b.onclick = () => setThr(+b.dataset.t));
-  document.querySelectorAll("[data-metric]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.metric === state.metric)));
   document.querySelectorAll("[data-kind]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.kind === state.kind)));
 }
 function setThr(v){ state.thr = v; document.getElementById("thr").value = v; render(); }
@@ -438,7 +437,6 @@ function render(){ palette(); drawGrid(); drawOverlay(); legend(); kpis(); inspe
 /* ---- wiring -------------------------------------------------------------------------------- */
 const thrIn = document.getElementById("thr");
 thrIn.value = state.thr; thrIn.addEventListener("input", () => setThr(+thrIn.value));
-document.querySelectorAll("[data-metric]").forEach(b => b.onclick = () => { state.metric = b.dataset.metric; save(); render(); });
 document.querySelectorAll("[data-kind]").forEach(b => b.onclick = () => { state.kind = b.dataset.kind; prunePlan(); save(); render(); });
 addEventListener("keydown", e => { if(e.key === "Escape" && state.sel){ state.sel = null; render(); } });
 
