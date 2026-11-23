@@ -177,6 +177,8 @@ python docs/dashboard/build.py --page ac --standalone   # open ac/standalone.htm
 - **Header**: walking distance; *Fund* (both, OBAs only, buurthuizen only) narrows which sites can be
   funded, while existing AC of every type still counts as coverage; EN/NL language switch.
   Candidates rank by residents gained; 65+ and frailty-weighted figures are shown alongside.
+- **OBA view**: the koeltekaart's air-conditioned OBAs get larger markers and their own shade, and
+  a tile shows the share of residents within walking distance of an OBA, today and with the plan.
 - **Language**: `?lang=nl` opens the Dutch version (`?lang=en` English); otherwise the last choice in
   this browser. All text, number formats and the copied summary follow the language.
 - **Candidates**: each site valued by what it adds on top of the current plan, ranked within the

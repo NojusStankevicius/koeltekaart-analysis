@@ -105,6 +105,18 @@ function coolAt(t){
   ORGS.forEach((o, j) => { if(orgAC(j)) for(let q = 0; q < o.cells.length; q++) if(o.d[q] <= t) c[o.cells[q]] = 1; });
   memo.set(k, c); return c;
 }
+/* Squares within t of an air-conditioned OBA: the koeltekaart's own, plus any OBA in the plan. */
+const isLib = j => ORGS[j].type === "library";
+function obaAt(t, plan = []){
+  const k = "oba|" + t + "|" + statusKey() + "|" + plan.join(",");
+  if(memo.has(k)) return memo.get(k);
+  const c = new Uint8Array(N);
+  ORGS.forEach((o, j) => { if(isLib(j) && orgAC(j)) for(let q = 0; q < o.cells.length; q++) if(o.d[q] <= t) c[o.cells[q]] = 1; });
+  for(const id of plan){ const s = SITE.get(id); if(s.kind !== "OBA") continue;
+    for(let j = 0; j < s.cells.length; j++) if(s.d[j] <= t) c[s.cells[j]] = 1; }
+  memo.set(k, c); return c;
+}
+const obaView = () => state.kind === "oba";
 function coverAt(t, plan = state.plan){
   const k = "cover|" + t + "|" + statusKey() + "|" + plan.join(",");
   if(memo.has(k)) return memo.get(k);
@@ -232,9 +244,10 @@ function drawGrid(){
   ctx.clearRect(0,0,W,H);
   const s = Math.max(1.15, 100*sc), cool = coolAt(state.thr), cover = coverAt(state.thr);
   const ground = mix(P["--grid-base"], P["--ground"], .35), coolC = mix(P["--blue"], P["--ground"], .72);
+  const oba = obaView() ? obaAt(state.thr) : null, obaC = mix(P["--blue"], P["--ground"], .4);
   const focus = state.hover || state.sel, f = focus ? SITE.get(focus) : null;
   const sq = i => ctx.fillRect(px(G.x[i]) - s/2, py(G.y[i]) - s/2, s, s);
-  for(let i = 0; i < N; i++){ if(!G.pop[i]) continue; ctx.fillStyle = cool[i] ? coolC : ground; sq(i); }
+  for(let i = 0; i < N; i++){ if(!G.pop[i]) continue; ctx.fillStyle = oba && oba[i] ? obaC : cool[i] ? coolC : ground; sq(i); }
   ctx.fillStyle = P["--plan"]; ctx.globalAlpha = f ? .35 : .8;
   for(let i = 0; i < N; i++) if(G.pop[i] && cover[i] && !cool[i]) sq(i);
   ctx.globalAlpha = 1;
@@ -247,14 +260,16 @@ function drawGrid(){
 const svgPath = rings => rings.map(r => "M" + r.map(p => px(p[0]).toFixed(1)+" "+py(p[1]).toFixed(1)).join("L") + "Z").join(" ");
 function drawOverlay(){
   const parts = [`<path d="${svgPath(D.city)}" fill="none" stroke="${P["--line"]}" stroke-width="1"/>`];
-  const seen = new Set();
+  const seen = new Set(), obaDots = [];
   ORGS.forEach((o, k) => {
     if(seen.has(o.site)) return; seen.add(o.site);
     const same = ORGS.map((x, j) => x.site === o.site ? j : -1).filter(j => j >= 0);
     if(same.some(j => { const s = SITE.get("n" + j); return s && isCandidate(s); })) return;
-    parts.push(`<circle class="site" data-org="${k}" cx="${px(o.x).toFixed(1)}" cy="${py(o.y).toFixed(1)}" r="2.3"
-      fill="${same.some(orgAC) ? P["--blue"] : P["--mute"]}" stroke="${P["--panel"]}" stroke-width=".8"/>`);
+    const big = obaView() && same.some(j => isLib(j) && orgAC(j));
+    (big ? obaDots : parts).push(`<circle class="site" data-org="${k}" cx="${px(o.x).toFixed(1)}" cy="${py(o.y).toFixed(1)}" r="${big ? 5.5 : 2.3}"
+      fill="${same.some(orgAC) ? P["--blue"] : P["--mute"]}" stroke="${P["--panel"]}" stroke-width="${big ? 1.6 : .8}"/>`);
   });
+  parts.push(...obaDots);   // existing OBAs above the small dots
   const R = rows(), byId = new Map(R.map(r => [r.s.id, r]));
   for(const r of R){
     const s = r.s, hot = state.hover === s.id || state.sel === s.id, zero = r.v <= 0;
@@ -290,20 +305,30 @@ function showTip(html, e){
 function legend(){
   const sw = (st, l, c = "") => `<span class="lg"><span class="sw${c}" style="${st}"></span>${l}</span>`;
   document.getElementById("legend").innerHTML = `<div class="keys">
-    ${sw(`background:${mix(P["--blue"], P["--ground"], .72)}`, t("AC in reach", "Airco binnen bereik"))}
+    ${obaView() ? sw(`background:${mix(P["--blue"], P["--ground"], .4)}`, t("Reached by an OBA", "Binnen bereik van een OBA")) : ""}
+    ${sw(`background:${mix(P["--blue"], P["--ground"], .72)}`, obaView() ? t("Other AC in reach", "Andere airco binnen bereik") : t("AC in reach", "Airco binnen bereik"))}
     ${sw(`background:${mix(P["--plan"], P["--panel"], .2)}`, t("Gained by plan", "Erbij door plan"))}
     ${sw(`border-color:${P["--orange"]}`, t("Candidate", "Kandidaat"), " ring")}
-    ${sw(`background:${P["--blue"]}`, t("Has AC", "Heeft airco"), " dot")}</div>`;
+    ${obaView() ? sw(`background:${P["--blue"]};width:11px;height:11px;box-shadow:0 0 0 1.5px ${P["--panel"]}`, t("OBA with AC", "OBA met airco"), " dot") : ""}
+    ${sw(`background:${P["--blue"]}`, obaView() ? t("Other AC", "Andere airco") : t("Has AC", "Heeft airco"), " dot")}</div>`;
 }
 
 /* ---- summary ------------------------------------------------------------------------------- */
+/* OBA view: how far the plan extends the reach of OBA's air-conditioned branches. */
+function obaTile(tile){
+  const before = obaAt(state.thr), after = obaAt(state.thr, state.plan);
+  let a = 0, b = 0, tot = 0;
+  for(let i = 0; i < N; i++){ tot += G.pop[i]; if(before[i]) a += G.pop[i]; if(after[i]) b += G.pop[i]; }
+  return tile(t(`OBA within ${km(state.thr)}`, `OBA binnen ${km(state.thr)}`), pct(b / tot),
+    b > a ? `+${dec1((b - a) / tot * 100)} ${t("pts", "pp")}` : "", t(`${pct(a / tot)} today`, `${pct(a / tot)} nu`));
+}
 function kpis(){
   const p = planStats(), n = state.plan.length;
   const tile = (l, v, d, s) => `<div class="kpi"><div class="kl">${l}</div><div class="kv">${v}${d ? `<span class="kd">${d}</span>` : ""}</div>${s ? `<div class="ks">${s}</div>` : ""}</div>`;
   document.getElementById("kpis").innerHTML = [
     tile(t(`AC place within ${km(state.thr)}`, `Airco-plek binnen ${km(state.thr)}`), pct(p.after / p.tot), n ? `+${dec1((p.after - p.base) / p.tot * 100)} ${t("pts", "pp")}` : "", t(`of ${fmt(p.tot)} residents`, `van ${fmt(p.tot)} inwoners`)),
     tile(t("Newly reached", "Nieuw bereikt"), fmt(p.sum.people), "", t(`${fmt(p.sum.eld)} aged 65+`, `${fmt(p.sum.eld)} 65-plussers`)),
-    tile(t("Frailty-weighted", "Kwetsbaarheidsgewogen"), fmt(p.sum.frail), "", t("Newly reached", "Nieuw bereikt")),
+    obaView() ? obaTile(tile) : tile(t("Frailty-weighted", "Kwetsbaarheidsgewogen"), fmt(p.sum.frail), "", t("Newly reached", "Nieuw bereikt")),
     `<button type="button" class="kpi" id="kpiplan"><div class="kl">Plan</div><div class="kv">${n} ${n === 1 ? t("site", "locatie") : t("sites", "locaties")}</div><div class="ks">${n ? t("Open plan", "Plan openen") : t("Add candidates", "Kandidaten toevoegen")}</div></button>`
   ].join("");
   document.getElementById("kpiplan").onclick = () => { state.tab = "plan"; state.sel = null; render(); };
