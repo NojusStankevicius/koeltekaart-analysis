@@ -15,7 +15,10 @@ function unpack(R, k, P){
   return {cells: P.cell.subarray(a, z), d};
 }
 const PO = packed(D.orgs), PR = packed(D.reach);
-const ORGS = D.orgs.site.map((site, k) => ({...DA.orgs[k], site, x: VEN[site].x, y: VEN[site].y, ...unpack(D.orgs, k, PO)}));
+/* Spelling fixes for names as they come from the koeltekaart (data/raw stays as it was). */
+const NAME_FIX = {"OBA Next lab Kraainnest": "OBA Next Lab Kraaiennest", "OBA Ijburg": "OBA IJburg"};
+const fixName = n => NAME_FIX[n] || n;
+const ORGS = D.orgs.site.map((site, k) => ({...DA.orgs[k], name: fixName(DA.orgs[k].name), site, x: VEN[site].x, y: VEN[site].y, ...unpack(D.orgs, k, PO)}));
 
 /* Frailty-weighted residents: each square scaled by its buurt's frail-health rate against the city. */
 const FW = new Float64Array(N);
@@ -268,7 +271,7 @@ function drawOverlay(){
         : r ? trow(state.sort === "avg" ? t("Adds, walk average", "Voegt toe, loopgemiddelde") : t(`Adds within ${km(state.thr)}`, `Voegt toe binnen ${km(state.thr)}`), fmt(r.v)) : ""), e); };
     el.onmouseleave = () => { state.hover = null; tip.style.opacity = 0; drawGrid(); }; });
   ov.querySelectorAll("[data-org]").forEach(el => { const o = ORGS[+el.dataset.org];
-    el.onmousemove = e => showTip(`<div class="t">${esc(VEN[o.site].name)}</div>` + trow(t("AC", "Airco"), ORGS.some((x, j) => x.site === o.site && orgAC(j)) ? t("Yes", "Ja") : t("No", "Nee")), e);
+    el.onmousemove = e => showTip(`<div class="t">${esc(fixName(VEN[o.site].name))}</div>` + trow(t("AC", "Airco"), ORGS.some((x, j) => x.site === o.site && orgAC(j)) ? t("Yes", "Ja") : t("No", "Nee")), e);
     el.onmouseleave = () => tip.style.opacity = 0; });
 }
 const trow = (k, v) => `<div class="r"><span>${k}</span><b>${v}</b></div>`;
