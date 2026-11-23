@@ -31,7 +31,7 @@ const addCand = (k, kind, pool) => { const c = D.candidates[k];
 DA.osm_oba.forEach(k => addCand(k, "OBA", "outside"));
 DA.osm_cc.forEach(k => addCand(k, "Community centre", "osm"));
 const SITE = new Map(SITES.map(s => [s.id, s]));
-const subOf = s => s.kind + (s.pool === "outside" ? " · new to the koeltekaart" : s.pool === "osm" ? " · OSM, unverified" : "");
+const subOf = s => s.kind;
 
 /* Square -> network organisations, for naming what already covers a site. */
 const AT = (() => {
@@ -312,7 +312,7 @@ function inspector(){
 const sortLabel = () => state.sort === "avg" ? "Walk average, 300 m–1.5 km" : `Within ${km(state.thr)}`;
 function candHTML(){
   const R = rows(), top = Math.max(1, ...R.map(r => r.v));
-  return `<div class="listhead"><span>${R.length} candidates${state.kind !== "all" ? ` · ${KINDS[state.kind].t.replace(" only", "")}` : ""}</span>
+  return `<div class="listhead"><span>${R.length} candidates</span>
       <label class="sortby">Rank by <select id="sort">
         <option value="at"${state.sort === "at" ? " selected" : ""}>Within ${km(state.thr)}</option>
         <option value="avg"${state.sort === "avg" ? " selected" : ""}>Walk average, 300 m–1.5 km</option></select></label></div>
