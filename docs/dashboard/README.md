@@ -173,7 +173,11 @@ It also inlines `data/processed/ac_grant.json` (notebook section 20) as `DA`.
 python docs/dashboard/build.py --page ac --standalone   # open ac/standalone.html
 ```
 
-- **Header**: walking distance, and what is counted (residents, 65+, frailty-weighted).
+- **Header**: walking distance; *Fund* (both, OBAs only, buurthuizen only) narrows which sites can be
+  funded, while existing AC of every type still counts as coverage; EN/NL language switch.
+  Candidates rank by residents gained; 65+ and frailty-weighted figures are shown alongside.
+- **Language**: `?lang=nl` opens the Dutch version (`?lang=en` English); otherwise the last choice in
+  this browser. All text, number formats and the copied summary follow the language.
 - **Candidates**: each site valued by what it adds on top of the current plan, ranked within the
   chosen distance or by the 300 m–1.5 km walk average. `+` adds a site to the plan, and the list
   re-ranks.
