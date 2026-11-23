@@ -1043,8 +1043,8 @@ Huis de Pinto reaches 5,800 residents, but only 115 of them lack an air-conditio
 The sixteenth, OBA Oosterdok, is corrected to `yes` (Nojus, 22 Nov 2026; `AIRCO_CORRECTIONS` in
 section 20). That leaves two pools:
 - network buurthuizen without AC (16);
-- the OBA branches in the OSM candidate set that are not on the koeltekaart (10). These are
-  assumed to have no AC and would join the network.
+- the OBA branches on OBA's own location list that are not on the koeltekaart (14 of 30, list read
+  23 Nov 2026). These are assumed to have no AC and would join the network.
 
 OSM community centres (132) are an optional third pool, off by default. The tag is loose, and with
 the pool on it takes nine of the top ten. Two duplicate checks use same-type matching within
@@ -1076,6 +1076,17 @@ moves.
 only three sites are also chosen at four or five of the five distances (OBA De Hallen, De Eester,
 OBA CC Amstel). Het Afvalpaleis is #4 at 500 m and adds almost nobody at 1 km, because an
 air-conditioned place sits just beyond 500 m. Each site's detail shows its gain at every distance.
+
+**Revised 23 Nov 2026 - OBA branches come from OBA's list, not OSM.** The first version took them
+from the section 14 OSM candidates, and that set is filtered for a different question. It drops a
+venue within 40 m of an existing koelteplek, and one that brings no cooling place closer to anyone.
+That lost OBA Osdorp, next to the Meervaart. Section 20b now geocodes all 30 branches with PDOK and
+routes each one, matching a branch to a koeltekaart library within 150 m. All 16 koeltekaart OBAs
+matched, and all 10 OSM OBAs were real branches at the right buildings. The additions are Osdorp,
+Next Lab Slotervaart, Duivendrecht and Ouderkerk. Osdorp adds about 50 residents at 500 m, because
+an air-conditioned Albert Heijn is next door. Ouderkerk has no Amsterdam residents within 1.5 km.
+Residents outside Amsterdam are not in the grid, so the two Ouder-Amstel branches are undercounted
+by design.
 
 **Limits.** AC status is self-reported by venues to the koeltekaart. Installation cost, floor area,
 opening hours and whether a site would accept AC are not in the data. Readers can correct AC

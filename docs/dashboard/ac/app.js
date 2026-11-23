@@ -16,7 +16,8 @@ function unpack(R, k, P){
 }
 const PO = packed(D.orgs), PR = packed(D.reach);
 /* Spelling fixes for names as they come from the koeltekaart (data/raw stays as it was). */
-const NAME_FIX = {"OBA Next lab Kraainnest": "OBA Next Lab Kraaiennest", "OBA Ijburg": "OBA IJburg"};
+const NAME_FIX = {"OBA Next lab Kraainnest": "OBA Next Lab Kraaiennest", "OBA Ijburg": "OBA IJburg",
+  "OBA De Staatsliedenbuurt": "OBA Staatsliedenbuurt"};
 const fixName = n => NAME_FIX[n] || n;
 const ORGS = D.orgs.site.map((site, k) => ({...DA.orgs[k], name: fixName(DA.orgs[k].name), site, x: VEN[site].x, y: VEN[site].y, ...unpack(D.orgs, k, PO)}));
 
@@ -40,7 +41,9 @@ ORGS.forEach((o, k) => { if(o.eligible) SITES.push({id: "n" + k, org: k, name: o
   kind: o.type === "library" ? "OBA" : "Buurthuis", pool: "network", x: o.x, y: o.y, cells: o.cells, d: o.d}); });
 const addCand = (k, kind, pool) => { const c = D.candidates[k];
   SITES.push({id: "c" + k, cand: k, name: c.name, kind, pool, x: c.x, y: c.y, ...unpack(D.reach, k, PR)}); };
-DA.osm_oba.forEach(k => addCand(k, "OBA", "outside"));
+/* OBA branches not on the koeltekaart, from OBA's own list, each with its own catchment (notebook 20b). */
+const PB = packed(DA.oba_reach);
+DA.oba.forEach((b, k) => SITES.push({id: "b" + k, name: b.name, kind: "OBA", pool: "outside", x: b.x, y: b.y, ...unpack(DA.oba_reach, k, PB)}));
 DA.osm_cc.forEach(k => addCand(k, "Community centre", "osm"));
 const SITE = new Map(SITES.map(s => [s.id, s]));
 const subOf = s => KIND_T[s.kind]();
@@ -177,6 +180,8 @@ function reason(s, r){
   if(hasAC(s)) return acDefault(s) ? (s.pool === "network" && ORGS[s.org].corrected ? t("Has AC (corrected)", "Heeft airco (gecorrigeerd)") : t("Has AC", "Heeft airco")) : t("Marked as having AC", "Gemarkeerd als met airco");
   if(state.excl.has(s.id)) return t("Excluded", "Uitgesloten");
   if(!r) return "";
+  if(r.alone.people === 0 && gainOf(s, state.thr, new Uint8Array(N)).people === 0)
+    return t(`No Amsterdam residents within ${km(state.thr)}`, `Geen Amsterdamse inwoners binnen ${km(state.thr)}`);
   if(r.alone.people === 0){ const by = coveredBy(s); return by.length ? t(`Already covered by ${by[0][0]}`, `Al gedekt door ${by[0][0]}`) : t("Already covered by AC", "Al gedekt door airco"); }
   const ov = overlapWithPlan(s);
   if(ov && r.at.people < 0.8 * r.alone.people) return t(`Overlaps ${ov.name}`, `Overlapt met ${ov.name}`);

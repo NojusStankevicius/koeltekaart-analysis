@@ -167,7 +167,8 @@ Validated against the notebook at 500 m: 254,020 served, 207,125 with one option
 
 A second page, published at `/ac/`, ranks buurthuizen and OBA branches for a €100k air-conditioning
 grant (decision 31). It reuses `style.html` and adds `ac/style.html`, `ac/markup.html` and `ac/app.js`.
-It also inlines `data/processed/ac_grant.json` (notebook section 20) as `DA`.
+It also inlines `data/processed/ac_grant.json` (notebook section 20) as `DA`. OBA branches not on the
+koeltekaart come from OBA's own location list with their own catchments (section 20b), not from OSM.
 
 ```bash
 python docs/dashboard/build.py --page ac --standalone   # open ac/standalone.html
