@@ -13,6 +13,10 @@ const CAND = (() => {
 })();
 const DISTRICTS = [...new Set(BU.map(b => b.stadsdeel).filter(Boolean))].sort();
 const KINDS = [...new Set(CAND.map(c => c.kind))].sort();
+/* "cult" marks a venue on the city's register of cultural spaces (notebook section 21): either an OSM
+   candidate matched to it, or a building from the register itself. The type filter offers them as one
+   group, ahead of the single types. */
+const CULT = "@cultural";
 const NB = BU.length, NV = VEN.length;
 
 /* Every organisation's catchment, packed the same way. The nearest-four distances in the grid
@@ -336,7 +340,7 @@ function placeRows(){
     return {key:"p"+k, id:k, kind:"p", name:c.name,
       sub:[cap(c.kind), c.where || c.stadsdeel].filter(Boolean).join(" · "),
       people:e.people, eld:e.eld, frailW:e.frailW, secondPeople:e.secondPeople, total:e.total,
-      km2:e.km2, robust:rb.auc[k], perT:rb.per[k], stadsdeel:c.stadsdeel, vkind:c.kind};
+      km2:e.km2, robust:rb.auc[k], perT:rb.per[k], stadsdeel:c.stadsdeel, vkind:c.kind, cult:!!c.cult};
   });
   _pr = {key, v};
   return v;
@@ -657,7 +661,8 @@ function listHTML(){
       <input class="search" id="q" type="search" placeholder="Search" aria-label="Search by name"
         value="${esc(state.q)}" autocomplete="off">
       ${t !== "venues" ? `<select id="fsd" aria-label="District">${opts(DISTRICTS, state.fsd, "All districts")}</select>` : ""}
-      ${t === "places" ? `<select id="fkind" aria-label="Venue type">${opts(KINDS, state.fkind, "All types")}</select>` : ""}
+      ${t === "places" ? `<select id="fkind" aria-label="Venue type">${opts(KINDS, state.fkind, "All types").replace("</option>",
+        `</option><option value="${CULT}"${state.fkind === CULT ? " selected" : ""}>Cultural venues</option>`)}</select>` : ""}
     </div>
     <div class="listhead"><span id="listcount"></span>
       <label class="sortby">Sort by <select id="rank">${set.map(k =>
@@ -687,7 +692,7 @@ function fillList(){
   const shown = sorted.map((r, i) => [r, i + 1]).filter(([r]) =>
     (!q || (r.name + " " + (r.sub || "")).toLowerCase().includes(q))
     && (!state.fsd || r.stadsdeel === state.fsd)
-    && (!state.fkind || r.vkind === state.fkind));
+    && (!state.fkind || (state.fkind === CULT ? r.cult : r.vkind === state.fkind)));
   const noun = LIST_NOUN[tab()], page = shown.slice(0, state.limit), rest = shown.length - page.length;
   document.getElementById("listcount").textContent =
     `${fmt(shown.length)} ${shown.length === 1 ? noun[0] : noun[1]}`;
@@ -755,7 +760,7 @@ function detailHTML(){
       .filter(o => o.k !== s.id && o.dist <= 300 && !state.added.includes(o.k))
       .sort((a, b) => rows[b.k].people - rows[a.k].people).slice(0, 8);
     const altTop = Math.max(1, ...alts.map(o => rows[o.k].people));
-    body = `<h2>${esc(r.name)}</h2><div class="meta">${esc(r.sub)}</div>
+    body = `<h2>${esc(r.name)}</h2><div class="meta">${esc([r.sub, C.address].filter(Boolean).join(" · "))}</div>
       <button type="button" class="primary${on ? " on" : ""}" data-add="${s.id}">${on ? "Remove from plan" : "Add to plan"}</button>
       <div class="sec"><h3>Within ${km(state.thr)}</h3><table class="kvt"><tbody>
         ${kvRow("Newly reached", fmt(r.people), "strong")}
@@ -770,6 +775,7 @@ function detailHTML(){
       ${sb.length ? `<div class="sec"><h3>Neighbourhoods reached</h3><div class="links">${shown.map(([bu,p]) =>
         `<button type="button" class="link" data-goto="${bu}"><span>${esc(BU[bu].name)}</span><span>${fmt(p)}</span></button>`).join("")}</div>
         ${sb.length > shown.length ? `<div class="more">${sb.length - shown.length} more</div>` : ""}</div>` : ""}
+      ${C.also && C.also.length ? `<div class="sec"><h3>Also at this address</h3><p class="also">${C.also.map(esc).join(" · ")}</p></div>` : ""}
       ${alts.length ? `<div class="sec"><h3>Alternatives within 300 m</h3><div class="cands">${alts.map(o =>
         rowHTML({key:"p"+o.k, name:CAND[o.k].name, sub:`${cap(CAND[o.k].kind)} · ${Math.round(o.dist / 10) * 10} m away`},
           rows[o.k].people, altTop, fmt, addBtn(o.k))).join("")}</div></div>` : ""}`;
@@ -1150,6 +1156,7 @@ function applyTheme(t){
 }
 themeBtn.onclick = () => applyTheme(isDark() ? "light" : "dark");
 const SOURCES = `Residents: CBS 100 m grid, 2025 · Network and venues: © OpenStreetMap contributors ·
+  Cultural venues: Gemeente Amsterdam ·
   Overheating: EP-Online · Heat, canopy, health: Klimaateffectatlas, 2025 (CC BY 4.0)`;
 document.getElementById("foot").innerHTML = `<p title="${SOURCES.replace(/\s+/g, " ")}">${SOURCES}</p>`;
 

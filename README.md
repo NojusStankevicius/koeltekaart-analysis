@@ -46,7 +46,8 @@ reconciles the three priority lists that come out of all this into two decisions
   a priority rule: its heat axis misses 16% of housing and its age axis runs against frailty
   (decision 29). Only **two of eight** high-effect siting areas sit in a *hot + elderly* zone —
   Lootsbuurt (first by reach) and Haarlemmerbuurt-West — and the second-best site is in Weesp.
-- The dashboard lists **4,317 named venues** that would newly reach someone or give someone a
+- The dashboard lists **4,694 named venues** (632 of them cultural venues from the city's register,
+  decision 32) that would newly reach someone or give someone a
   second option, because most will be unsuitable or say no. The list used to hold one branch of
   every chain - one Albert Heijn for the city - through a de-duplication bug (decision 27).
 - **Adding places barely moves the total.** The twelve highest-effect areas, ordered by marginal

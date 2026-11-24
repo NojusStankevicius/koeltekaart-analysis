@@ -82,10 +82,16 @@ painted at low opacity so progress never out-shouts the remaining gap.
 
 ## Candidates
 
-4,317 named OSM venues: every one that would newly reach someone, or give someone a second
+4,694 named venues: every one that would newly reach someone, or give someone a second
 option, at some walk up to 1.5 km (decision 27). There is no shortlist, because most will be
 unsuitable or refuse; the list filters by district and venue type, and pages 100 at a time.
 A candidate's detail lists **alternatives within 300 m**, the fallback when one says no.
+
+**Cultural venues** (notebook section 21, decision 32): 632 candidates are on the city's register
+of cultural spaces, marked `cult`. 255 are OSM venues matched to the register. 377 come from the
+register itself (`src: "city"`) and are appended after the OSM rows, so section 20's indices still
+hold. *Cultural venues*, at the top of the type filter, shows only these. Their detail shows the
+register address and the other organisations there.
 
 Catchments ship packed: `reach.off` / `reach.cell` (uint16 grid index) / `reach.d10` (uint8, walk
 in tens of metres rounded up), decoded once on load. Plain JSON arrays would be over 10 MB.

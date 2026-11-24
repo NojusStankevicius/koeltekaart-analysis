@@ -1092,6 +1092,40 @@ by design.
 opening hours and whether a site would accept AC are not in the data. Readers can correct AC
 status and exclude sites on the page; those corrections stay in their browser and are not data.
 
+## 32. Cultural venues come from the city's register, grouped into buildings
+
+The koeltekaart wants more cultural venues next season, so the dashboard's candidates can be
+filtered to cultural venues alone. Section 21 takes them from the gemeente's register of cultural
+spaces (947 organisations at 800 addresses, received 24 Nov 2026) rather than from OSM's culture
+tags.
+
+**The unit is the building.** The register lists organisations, and many of them have no venue of
+their own. Piet Heinkade 5 holds ten, nine of them ensembles and festivals with space type
+`Onbekend`. Organisations are grouped by address. A building is named after the organisation with
+the most public space, and the others are shown as *Also at this address*.
+
+**Only spaces a visitor can sit in qualify.** These are activity room, horeca, exhibition room,
+stage hall, museum hall, club hall, foyer, library hall and film hall. Studios, workshops, rehearsal
+rooms, offices, recording studios, dance and class rooms, depots and live-work units do not. Neither
+does outdoor space, which belongs to the other map (decision 22). `Onbekend` is no evidence either
+way, so it cannot qualify a building on its own. 646 of 800 addresses qualify.
+
+**Each building is matched before it is routed.** 27 are within 40 m of a koelteplek and are
+dropped, the 14b rule. That includes OBA Osdorp, because it is next to the Meervaart. The AC page
+handles it separately (20b). 255 match an OSM candidate within 50 m by name. A match means one name
+contains the other, the names are near-identical, or they share a distinctive word ("Werkgebouw Het
+Veem" and "Het Veem Theater"). Place names and venue words such as Weesp, Zuidoost, museum and
+theater do not count as distinctive. Those OSM rows are tagged cultural rather than duplicated. The
+other 379 are routed, and the 377 that would newly reach someone or add a second option are
+appended. The dashboard then lists 632 cultural candidates out of 4,694.
+
+**Limits.** The register says what spaces an organisation has, not whether the public may drop in
+or when it is open. A gallery with an exhibition room counts the same as a museum, as every
+candidate does (decision 27): a person works down the list and most will say no. Some buildings
+appear under two register addresses, Muziekgebouw at Piet Heinkade 1 and 5 for example. When they
+match the same OSM venue they are merged into it. When they don't, they are listed as separate
+candidates.
+
 ## Open questions
 
 - **Ferry routing.** Adding ferry ways via `custom_filter`, or a fixed crossing penalty, would

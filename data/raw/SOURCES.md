@@ -129,6 +129,18 @@ filtering to `status` containing "in gebruik" and `gebruiksdoel` containing "woo
 First two lines are metadata; the header is line 3. `Temperatuuroverschrijding` is TOjuli.
 Amsterdam is postcodes 1000–1109 **plus 1380–1384** (Weesp, annexed 2022).
 
+## `culturele_ruimtes_amsterdam.geojson` — cultural spaces register
+
+| | |
+|---|---|
+| Source | Gemeente Amsterdam, register of cultural spaces (`KUNST_CULTUUR`), received as `geojson_lnglat.json` |
+| Retrieved | 24 Nov 2026 |
+| SHA-256 | `641d2ae824a828ad671a0400c3e45be5cf6ac3834dc42ef274adbde04ad933b9` |
+| Contents | 947 organisations, WGS84 points: name, description, discipline, up to six space types, address |
+
+Used by notebook section 21 (decision 32). Rows are organisations, not venues. Licence not
+recorded; credited as "Gemeente Amsterdam" in the dashboard footer.
+
 ## `kea/` — Klimaateffectatlas layers
 
 Ten national layers from the Klimaateffectatlas (KEA), retrieved 14 Sep 2026. Filenames are the
